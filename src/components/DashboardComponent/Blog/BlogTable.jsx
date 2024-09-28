@@ -20,18 +20,7 @@ const BlogTable = () => {
   const { blogs, reload, setLoading, setReload, blogsCount, loading } =
     useAllblogs();
 
-  // useEffect(() => {
-  //   fetch(
-  //     `http://localhost:5000/api/v1/blogs?page=${page}&limit=${limit}`,
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBlogs(data?.data?.allBlogs);
-  //       setTolatBlog(data?.data?.totlaBlogs);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => toast.error(err.message));
-  // }, [page, limit, loading, reload]);
+  
 
   const totalPage = Math.ceil(blogsCount / limit);
 

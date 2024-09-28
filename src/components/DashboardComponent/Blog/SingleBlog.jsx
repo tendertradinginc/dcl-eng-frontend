@@ -4,6 +4,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import BlogUpdate from "./BlogUpdate";
 // import DeleteBlog from "./DeleteBlog";
 import ViewBlog from "./ViewBlog";
+import DeleteDataModal from "@/components/shared/DeleteDataModal/DeleteDataModal";
 
 const SingleBlog = ({ data, index, setReload }) => {
   const { title } = data;
@@ -16,7 +17,7 @@ const SingleBlog = ({ data, index, setReload }) => {
         <AlertDialog className="flex gap-3">
           <ViewBlog data={data}/>
           <BlogUpdate setReload={setReload} data={data} />
-          {/* <DeleteBlog setReload={setReload} id={data?._id} /> */}
+        <DeleteDataModal setReload={setReload} url={`http://localhost:5000/api/v1/blogs/${data?._id}`} />
         </AlertDialog>
       </td>
     </tr>
