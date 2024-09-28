@@ -7,22 +7,20 @@ import { toast } from "sonner";
 import BlogCreateButton from "./BlogCreateButton";
 import SingleBlog from "./SingleBlog";
 import useAllblogs from "@/hooks/useAllBlogs";
+import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
 
 const BlogTable = () => {
   const searchParams = useSearchParams();
-  // const [loading, setLoading] = useState(true);
-  // const [blogs, setBlogs] = useState([]);
-  const [page, setPage] = useState(searchParams.get("page") || 1);
-  const [limit, setLimit] = useState(searchParams.get("limit") || 10);
-  // const [totalBlog, setTolatBlog] = useState(0);
-  // const [reload, setReload] = useState(0);
+  const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
+  const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
+
+
+
 
   const { blogs, reload, setLoading, setReload, blogsCount, loading } =
     useAllblogs();
 
-  
-
-  const totalPage = Math.ceil(blogsCount / limit);
+  const totalPage = Math.ceil(blogsCount / pageLimit);
 
   return (
     <div>
@@ -74,11 +72,20 @@ const BlogTable = () => {
                 </table>
               }
             </div>
-            {/* {!loading && (
+            {!loading && (
               <div className="mt-5">
-                <PaginationBlog data={{ setPage, page, limit, totalPage }} />
+                <PaginationRaw
+                  data={{
+                    setCurrentPage,
+                    dataCount:blogsCount,
+                    currentPage,
+                    pageLimit,
+                    setPageLimit,
+                    defaultPageLimit:10,
+                  }}
+                />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
