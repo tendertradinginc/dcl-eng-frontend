@@ -59,9 +59,11 @@ const BlogCreateButton = ({ setReload }) => {
         },
       );
       const data = await response.json();
-      if (data?.status === "success") {
+      console.log(data)
+      if (data?.success === true) {
         toast.success("Article submitted successfully");
         e.target.reset();
+        
         setReload((prev) => prev + 1);
       }
     } catch (error) {
@@ -135,7 +137,7 @@ const BlogCreateButton = ({ setReload }) => {
           ) : (
             <Button
               type="submit"
-              className="mt-2 w-full rounded-sm bg-si-primary p-1 px-3 font-semibold text-white hover:bg-si-secondary"
+              className="mt-2 w-full rounded-sm bg-si-primary p-1 px-3 font-semibold "
             >
               Submit
             </Button>

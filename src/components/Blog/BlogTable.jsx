@@ -18,7 +18,7 @@ const BlogTable = () => {
   // const [reload, setReload] = useState(0);
 
   const { blogs, reload, setLoading, setReload, blogsCount, loading } =
-    useAllblogs;
+    useAllblogs();
 
   // useEffect(() => {
   //   fetch(

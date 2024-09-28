@@ -14,8 +14,9 @@ const useAllblogs = (page, limit, searchValue) => {
           `http://localhost:5000/api/v1/blogs?page=${page}&limit=${limit}`
         );
         const data = await response.json();
-        setBlogs(data?.data?.laws);
-        setBlogsCount(data?.data?.lawsCount);
+        setBlogs(data?.data?.allBlogs);
+        setBlogsCount(data?.data?.totlaBlogs);
+        console.log({blogs, blogsCount})
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {
