@@ -1,5 +1,6 @@
 "use client";
-import { logOut } from "@/app/(withCommonLayout)/action/authAction";
+
+import { logOut } from "@/components/FrontendComponent/action/authAction";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,45 +35,14 @@ const SideNavbar = () => {
   const links = [
     { id: 1, href: "/", label: "Home" },
     { id: 2, href: "/dashboard", label: "Dashboard" },
-    {
-      id: 3,
-      href: "/dashboard/hospital-furniture-table",
-      label: "Hospital Furniture",
-    },
+    // {
+    //   id: 3,
+    //   href: "/dashboard/hospital-furniture-table",
+    //   label: "Hospital Furniture",
+    // },
 
-    // {
-    //   id: 4,
-    //   href: "/dashboard/add-hospital-furniture",
-    //   label: "Add Hospital Furniture",
-    // },
     {
-      id: 5,
-      href: "/dashboard/medical-equipment-table",
-      label: "Medical Equipment",
-    },
-    // {
-    //   id: 6,
-    //   href: "/dashboard/add-medical-equipment",
-    //   label: "Add Medical Equipment",
-    // },
-    {
-      id: 34,
-      href: "/dashboard/archived-equipment-table",
-      label: "Archived Equipment",
-    },
-    { id: 7, href: "/dashboard/blog-page", label: "Blog" },
-    {
-      id: 8,
-      href: "/dashboard/medical-category-page",
-      label: "Medical Category",
-    },
-    {
-      id: 9,
-      href: "/dashboard/hospital-furniture-category-page",
-      label: "Hospital Furniture Category",
-    },
-    {
-      id: 10,
+      id: 4,
       href: "/dashboard/clients-page",
       label: "Clients",
     },

@@ -1,5 +1,4 @@
-import AllClients from "@/components/Dashboard/OurClients/AllClients";
-
+import AllClients from "@/components/DashboardComponent/OurClients/AllClients";
 import { Suspense } from "react";
 const ClientsPage = () => {
   return (

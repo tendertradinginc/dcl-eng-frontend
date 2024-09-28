@@ -1,4 +1,4 @@
-import SideNavbar from "../../components/sidebar/SideNavbar";
+import SideNavbar from "@/components/DashboardComponent/sidebar/SideNavbar";
 
 export default function AdminLayout({ children }) {
   return (
