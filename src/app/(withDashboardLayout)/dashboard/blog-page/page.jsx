@@ -1,5 +1,6 @@
 "use client";
-import BlogTable from "@/components/Dashboard/Blog/BlogTable";
+import BlogTable from "@/components/DashboardComponent/Blog/BlogTable";
+// import BlogTable from "@/components/Dashboard/Blog/BlogTable";
 import { Suspense } from "react";
 const blogPage = () => {
   return (
