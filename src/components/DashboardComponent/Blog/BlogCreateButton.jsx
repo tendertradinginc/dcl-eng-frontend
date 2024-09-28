@@ -59,7 +59,7 @@ const BlogCreateButton = ({ setReload }) => {
         },
       );
       const data = await response.json();
-      console.log(data)
+      
       if (data?.success === true) {
         toast.success("Article submitted successfully");
         e.target.reset();
