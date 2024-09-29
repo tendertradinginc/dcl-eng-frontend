@@ -33,7 +33,7 @@ const ProjectTable = () => {
             <div className="flex items-center justify-between pb-6">
               <h2 className="text-2xl font-semibold text-si-primary">
                 <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
-                Blog List
+                Project List
               </h2>
               <div className="flex flex-wrap gap-3 text-center">
                 {" "}
