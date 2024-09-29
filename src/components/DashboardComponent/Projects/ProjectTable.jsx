@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
 import useAllProjects from "@/hooks/useAllProjects";
 import SingleProject from "./SingleProject";
+import ProjectCreateModal from "./ProjectCreateModal";
 
 const ProjectTable = () => {
   const searchParams = useSearchParams();
@@ -36,7 +37,8 @@ const ProjectTable = () => {
               <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
               Blog List
             </h2>
-            {/* <BlogCreateButton setReload={setReload} /> */}
+            <ProjectCreateModal setReload={setReload} />
+          
           </div>
           <hr />
 
