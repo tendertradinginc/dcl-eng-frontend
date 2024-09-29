@@ -35,12 +35,11 @@ const SideNavbar = () => {
   const links = [
     { id: 1, href: "/", label: "Home" },
     { id: 2, href: "/dashboard", label: "Dashboard" },
-    // {
-    //   id: 3,
-    //   href: "/dashboard/hospital-furniture-table",
-    //   label: "Hospital Furniture",
-    // },
-
+    {
+      id: 3,
+      href: "/dashboard/service-category",
+      label: "Service Category",
+    },
     {
       id: 4,
       href: "/dashboard/clients-page",
