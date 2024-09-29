@@ -82,12 +82,12 @@ const ProjectTable = () => {
               </table>
             }
           </div>
-          {/* {!loading && (
+          {!loading && (
           <div className="mt-5">
             <PaginationRaw
               data={{
                 setCurrentPage,
-                dataCount:blogsCount,
+                dataCount:projectsCount,
                 currentPage,
                 pageLimit,
                 setPageLimit,
@@ -95,7 +95,7 @@ const ProjectTable = () => {
               }}
             />
           </div>
-        )} */}
+        )}
         </div>
       </div>
     </div>
