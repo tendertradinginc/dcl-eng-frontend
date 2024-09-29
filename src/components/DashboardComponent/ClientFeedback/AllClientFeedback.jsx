@@ -36,7 +36,7 @@ const AllClientFeedback = () => {
                 );
                 const data = await response.json();
 
-                setClients(data?.data.result);
+                setClientFeedback(data?.data.result);
                 setTotalClientFeedback(data?.data?.total);
             } catch (error) {
                 console.error("Error fetching :", error);
@@ -52,7 +52,7 @@ const AllClientFeedback = () => {
 
 
     // loading skeleton
-    const skeleton = new Array(10).fill(Math.random());
+    // const skeleton = new Array(10).fill(Math.random());
 
     return (
         <div>
@@ -109,8 +109,9 @@ const AllClientFeedback = () => {
                                         <tr className="text-left">
                                             <th className="px-4 py-2">No</th>
                                             <th className="py-2 pl-16">Image</th>
-                                            <th className="py-2 pl-16">Title</th>
-                                            <th className="py-2">Details</th>
+                                            <th className="py-2 pl-16">Author</th>
+                                            <th className="py-2">Designation</th>
+                                            {/* <th className="py-2">Feedback</th> */}
                                             <th className="px-4 pl-6">Actions</th>
                                         </tr>
                                     </thead>
