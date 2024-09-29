@@ -1,6 +1,7 @@
 "use client";
 import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
 import useAllUsers from "@/hooks/useAllUsers";
+import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
@@ -8,10 +9,13 @@ import SingleUser from "./SingleUser";
 
 const UserTable = () => {
   const searchParams = useSearchParams();
+
   const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
-  const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
+  const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 20);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 1000);
   const { users, reload, setReload, userCount, loading, setLoading } =
-    useAllUsers(currentPage, pageLimit, "");
+    useAllUsers(currentPage, pageLimit, debouncedSearchTerm);
 
   const totalPage = Math.ceil(userCount / pageLimit);
 
@@ -33,6 +37,8 @@ const UserTable = () => {
                       className="border border-gray-700 px-3 py-1.5 rounded-md"
                       type="text"
                       placeholder="Search by name, id, email"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
                     />
                   </div>
                 </div>
