@@ -89,7 +89,7 @@ const ProjectCreateModal = ({ setReload }) => {
       <AlertDialogTrigger asChild>
         <Button
           variant="outline"
-          className="flex gap-3 bg-si-primary py-4 text-end font-semibold text-white duration-500 bg-gray-700 hover:bg-gray-700"
+          className="flex gap-3 bg-si-primary py-4 text-end font-semibold text-white duration-500 bg-gray-700 "
         >
           Create Blog
           <FaPlusCircle className="inline text-xl" />

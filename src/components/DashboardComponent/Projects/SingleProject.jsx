@@ -1,6 +1,7 @@
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import ProjectUpdate from "./ProjectUpdate";
 // import BlogUpdate from "./BlogUpdate";
 // import DeleteBlog from "./DeleteBlog";
 // import ViewBlog from "./ViewBlog";
@@ -16,6 +17,7 @@ const SingleProject = ({ data, index, setReload }) => {
       <td className="space-x-3 md:px-4">
         <AlertDialog className="flex gap-3">
           {/* <ViewBlog data={data}/> */}
+          <ProjectUpdate setReload={setReload} data={data} />
           {/* <BlogUpdate setReload={setReload} data={data} /> */}
         {/* <DeleteDataModal setReload={setReload} url={`http://localhost:5000/api/v1/blogs/${data?._id}`} /> */}
         </AlertDialog>
