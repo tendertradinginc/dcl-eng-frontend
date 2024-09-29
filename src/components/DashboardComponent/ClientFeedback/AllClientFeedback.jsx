@@ -15,8 +15,9 @@ import { useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
 import { CgSpinnerAlt } from "react-icons/cg";
 import { FaPlusCircle } from "react-icons/fa";
-import SingleClient from "./SingleClient";
+
 import CreateClientFeedback from "./CreateClientFeedback";
+import SingleFeedback from "./singleFeedback";
 
 const AllClientFeedback = () => {
     const searchParams = useSearchParams();
@@ -65,7 +66,7 @@ const AllClientFeedback = () => {
                             <div className="flex items-center justify-between pb-6">
                                 <h2 className="text-2xl font-semibold text-si-primary">
                                     <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
-                                    Clients List
+                                    Client Feedback List
                                 </h2>
                                 <div className="mt-4 flex items-center justify-between px-2">
                                     <div>
@@ -108,10 +109,9 @@ const AllClientFeedback = () => {
                                     <thead className="bg-gradient-to-r from-green-400 to-green-700 text-white">
                                         <tr className="text-left">
                                             <th className="px-4 py-2">No</th>
-                                            <th className="py-2 pl-16">Image</th>
                                             <th className="py-2 pl-16">Author</th>
                                             <th className="py-2">Designation</th>
-                                            {/* <th className="py-2">Feedback</th> */}
+                                            <th className="py-2 pl-16">Feedback</th>
                                             <th className="px-4 pl-6">Actions</th>
                                         </tr>
                                     </thead>
@@ -119,7 +119,7 @@ const AllClientFeedback = () => {
                                     <tbody>
                                         {clientFeedback.length > 0 ? (
                                             clientFeedback?.map((feedback, index) => (
-                                                <SingleClient
+                                                <SingleFeedback
                                                     key={clientFeedback?._id}
                                                     index={index}
                                                     clientFeedbackData={feedback}
