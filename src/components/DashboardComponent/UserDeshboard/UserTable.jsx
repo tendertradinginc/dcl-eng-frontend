@@ -1,22 +1,23 @@
 "use client";
+import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
+import useAllUsers from "@/hooks/useAllUsers";
+import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
-// import PaginationBlog from "../../shared/pagination/PaginationShadcn";
-import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
-import useAllblogs from "@/hooks/useAllBlogs";
-import BlogCreateButton from "./BlogCreateButton";
-import SingleBlog from "./SingleBlog";
+import SingleUser from "./SingleUser";
 
-const BlogTable = () => {
+const UserTable = () => {
   const searchParams = useSearchParams();
+
   const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
-  const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
+  const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 20);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 1000);
+  const { users, reload, setReload, userCount, loading, setLoading } =
+    useAllUsers(currentPage, pageLimit, debouncedSearchTerm);
 
-  const { blogs, reload, setLoading, setReload, blogsCount, loading } =
-    useAllblogs();
-
-  const totalPage = Math.ceil(blogsCount / pageLimit);
+  const totalPage = Math.ceil(userCount / pageLimit);
 
   return (
     <div>
@@ -28,9 +29,19 @@ const BlogTable = () => {
               <div className="flex items-center justify-between pb-6">
                 <h2 className="text-2xl font-semibold text-si-primary">
                   <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
-                  Blog List
+                  User List
                 </h2>
-                <BlogCreateButton setReload={setReload} />
+                <div>
+                  <div>
+                    <input
+                      className="border border-gray-700 px-3 py-1.5 rounded-md"
+                      type="text"
+                      placeholder="Search by name, id, email"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
               <hr />
 
@@ -40,19 +51,21 @@ const BlogTable = () => {
                     <tr className="">
                       <th className="px-4 py-2">No</th>
                       <th className="px-4 py-2 text-left">Title</th>
+                      <th className="px-4 py-2 text-left">Email</th>
+                      <th className="px-4 py-2 text-left">Role</th>
                       <th className="px-4 py-2">Actions</th>
                     </tr>
                   </thead>
 
                   <tbody className="border text-center">
-                    {blogs?.length > 0
-                      ? blogs?.map((blog, index) => (
-                          <SingleBlog
+                    {users?.length > 0
+                      ? users?.map((user, index) => (
+                          <SingleUser
                             key={index}
                             index={index}
-                            data={blog}
+                            data={user}
                             setReload={setReload}
-                          ></SingleBlog>
+                          ></SingleUser>
                         ))
                       : Array.from({ length: 10 }).map((_, idx) => (
                           <tr
@@ -61,7 +74,7 @@ const BlogTable = () => {
                               idx % 2 == 0 ? "bg-secondary" : ""
                             } `}
                           >
-                            <td className="col" colSpan={4}></td>
+                            <td className="col" colSpan={6}></td>
                           </tr>
                         ))}
                   </tbody>
@@ -73,7 +86,7 @@ const BlogTable = () => {
                 <PaginationRaw
                   data={{
                     setCurrentPage,
-                    dataCount: blogsCount,
+                    dataCount: userCount,
                     currentPage,
                     pageLimit,
                     setPageLimit,
@@ -89,4 +102,4 @@ const BlogTable = () => {
   );
 };
 
-export default BlogTable;
+export default UserTable;
