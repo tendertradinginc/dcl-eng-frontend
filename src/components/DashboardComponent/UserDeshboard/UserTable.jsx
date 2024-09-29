@@ -51,6 +51,8 @@ const UserTable = () => {
                     <tr className="">
                       <th className="px-4 py-2">No</th>
                       <th className="px-4 py-2 text-left">Title</th>
+                      <th className="px-4 py-2 text-left">Email</th>
+                      <th className="px-4 py-2 text-left">Role</th>
                       <th className="px-4 py-2">Actions</th>
                     </tr>
                   </thead>
@@ -72,7 +74,7 @@ const UserTable = () => {
                               idx % 2 == 0 ? "bg-secondary" : ""
                             } `}
                           >
-                            <td className="col" colSpan={4}></td>
+                            <td className="col" colSpan={6}></td>
                           </tr>
                         ))}
                   </tbody>
