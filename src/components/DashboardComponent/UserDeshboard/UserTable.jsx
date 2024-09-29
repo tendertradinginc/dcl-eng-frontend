@@ -1,14 +1,19 @@
-import useAllClients from "@/hooks/useAllClients";
+"use client";
+import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
+import useAllUsers from "@/hooks/useAllUsers";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
+import SingleUser from "./SingleUser";
 
 const UserTable = () => {
   const searchParams = useSearchParams();
   const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
   const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
-  const { user, reload, setReload, userCount } = useAllClients();
+  const { users, reload, setReload, userCount, loading, setLoading } =
+    useAllUsers(currentPage, pageLimit, "");
 
-  const totalPage = Math.ceil(blogsCount / pageLimit);
+  const totalPage = Math.ceil(userCount / pageLimit);
 
   return (
     <div>
@@ -20,9 +25,17 @@ const UserTable = () => {
               <div className="flex items-center justify-between pb-6">
                 <h2 className="text-2xl font-semibold text-si-primary">
                   <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
-                  Blog List
+                  User List
                 </h2>
-                {/* <BlogCreateButton setReload={setReload} /> */}
+                <div>
+                  <div>
+                    <input
+                      className="border border-gray-700 px-3 py-1.5 rounded-md"
+                      type="text"
+                      placeholder="Search by name, id, email"
+                    />
+                  </div>
+                </div>
               </div>
               <hr />
 
@@ -37,14 +50,14 @@ const UserTable = () => {
                   </thead>
 
                   <tbody className="border text-center">
-                    {blogs?.length > 0
-                      ? blogs?.map((blog, index) => (
-                          <SingleBlog
+                    {users?.length > 0
+                      ? users?.map((user, index) => (
+                          <SingleUser
                             key={index}
                             index={index}
-                            data={blog}
+                            data={user}
                             setReload={setReload}
-                          ></SingleBlog>
+                          ></SingleUser>
                         ))
                       : Array.from({ length: 10 }).map((_, idx) => (
                           <tr
@@ -65,7 +78,7 @@ const UserTable = () => {
                 <PaginationRaw
                   data={{
                     setCurrentPage,
-                    dataCount: blogsCount,
+                    dataCount: userCount,
                     currentPage,
                     pageLimit,
                     setPageLimit,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const useAllClients = (page, limit, searchValue) => {
-  const [user, setUsers] = useState([]);
+const useAllUsers = (page, limit, searchValue) => {
+  const [users, setUsers] = useState([]);
   const [userCount, setUsersCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [reload, setReload] = useState(0);
@@ -11,11 +11,12 @@ const useAllClients = (page, limit, searchValue) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/v1/users?page=${page}&limit=${limit}&search=${searchValue}`
+          `http://localhost:5000/api/v1/users/dashboard_all_user?page=${page}&limit=${limit}&search=${searchValue}`
         );
         const data = await response.json();
-        setBlogs(data?.data?.result);
-        setBlogsCount(data?.data?.total);
+        console.log(data);
+        setUsers(data?.data?.result);
+        setUsersCount(data?.data?.total);
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {
@@ -26,11 +27,13 @@ const useAllClients = (page, limit, searchValue) => {
   }, [page, limit, reload, searchValue]);
 
   return {
-    user,
+    users,
     reload,
     setReload,
     userCount,
+    loading,
+    setLoading,
   };
 };
 
-export default useAllClients;
+export default useAllUsers;

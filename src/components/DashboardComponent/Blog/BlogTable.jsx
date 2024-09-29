@@ -1,18 +1,18 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
-import { toast } from "sonner";
 // import PaginationBlog from "../../shared/pagination/PaginationShadcn";
+import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
+import useAllblogs from "@/hooks/useAllBlogs";
 import BlogCreateButton from "./BlogCreateButton";
 import SingleBlog from "./SingleBlog";
-import useAllblogs from "@/hooks/useAllBlogs";
-import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
 
 const BlogTable = () => {
   const searchParams = useSearchParams();
   const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
   const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
+
   const { blogs, reload, setLoading, setReload, blogsCount, loading } =
     useAllblogs();
 
@@ -73,11 +73,11 @@ const BlogTable = () => {
                 <PaginationRaw
                   data={{
                     setCurrentPage,
-                    dataCount:blogsCount,
+                    dataCount: blogsCount,
                     currentPage,
                     pageLimit,
                     setPageLimit,
-                    defaultPageLimit:10,
+                    defaultPageLimit: 10,
                   }}
                 />
               </div>
