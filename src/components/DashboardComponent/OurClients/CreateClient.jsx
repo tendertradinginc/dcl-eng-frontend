@@ -138,7 +138,7 @@ const CreateClient = () => {
 
             <Button
               type="submit"
-              className="mt-2 w-full rounded-sm bg-si-primary p-1 px-3 font-semibold text-white hover:bg-si-secondary"
+              className="mt-2 w-full rounded-sm bg-secondary p-1 px-3 font-semibold hover:text-white text-black hover:bg-black"
               disabled={loading}
             >
               {loading ? "Submitting..." : "Submit"}

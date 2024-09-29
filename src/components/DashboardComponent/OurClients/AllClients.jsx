@@ -93,7 +93,7 @@ const AllClients = () => {
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <Button
-                          className="cursor-pointer rounded-lg border bg-si-primary px-3 py-1 text-base font-semibold text-white duration-500 hover:bg-si-secondary hover:text-black"
+                          className="cursor-pointer rounded-lg border bg-secondary px-3 py-1 text-base font-semibold  hover:text-black duration-500 hover:bg-si-secondary text-black"
                           variant="outline"
                         >
                           Create Client{" "}
@@ -147,7 +147,7 @@ const AllClients = () => {
                         />
                       ))
                     ) : (
-                      <p>No Clients Available.</p>
+                      <p className="text center">No Clients Available.</p>
                     )}
                   </tbody>
                 </table>
