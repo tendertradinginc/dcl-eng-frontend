@@ -47,7 +47,12 @@ const SideNavbar = () => {
       label: "Clients",
     },
     {
-      id: 4,
+      id: 5,
+      href: "/dashboard/clientsFeedback-page",
+      label: "Clients Feedback",
+    },
+    {
+      id: 6,
       href: "/dashboard/blog-page",
       label: "Blogs",
     },
