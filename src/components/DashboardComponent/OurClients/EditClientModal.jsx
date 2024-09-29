@@ -139,9 +139,8 @@ const EditClientModal = ({ data, setReload }) => {
 
             <div className="">
               <div
-                className={`flex h-10 items-center justify-center rounded font-semibold text-white hover:text-black ${
-                  isDisbaled ? "bg-si-secondary" : "bg-si-primary"
-                }`}
+                className={`flex h-10 items-center justify-center rounded font-semibold  hover:text-white text-black ${isDisbaled ? "bg-secondary" : "bg-black"
+                  }`}
               >
                 <button className=" ">
                   <Image
@@ -150,16 +149,15 @@ const EditClientModal = ({ data, setReload }) => {
                     alt="client"
                     height="56"
                     width="30"
-                    className={`mx-auto w-8 text-center ${
-                      !loading && "hidden"
-                    }`}
+                    className={`mx-auto w-8 text-center ${!loading && "hidden"
+                      }`}
                   />
                 </button>
 
                 <button
                   disabled={isDisbaled}
                   type="submit"
-                  className={`py-18 h-full w-full ${loading && "hidden"}`}
+                  className={`py-18 h-full w-full  ${loading && "hidden"}`}
                 >
                   <span>Submit</span>
                 </button>
