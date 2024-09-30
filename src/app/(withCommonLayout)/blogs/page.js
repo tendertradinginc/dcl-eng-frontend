@@ -1,5 +1,5 @@
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
-// import data from "@/lib/blogs.json";
+
 import { customLoader } from "@/utils/customLoader";
 import Image from "next/image";
 import Link from "next/link";
