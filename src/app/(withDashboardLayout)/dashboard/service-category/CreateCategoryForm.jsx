@@ -1,6 +1,7 @@
 "use client";
 
-import { uploadImageToImgBB } from "@/app/utils/imageUpload";
+import axios from "axios";
+import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,13 +16,14 @@ export default function CreateCategoryForm() {
     img: "",
   });
 
-  console.log(formData);
-
+  // Image upload handler
   const handleImageUpload = async (e) => {
     setUploading(true);
     try {
       const image = e.target.files[0];
+
       const imageUrl = await uploadImageToImgBB(image);
+
       setFormData((prev) => ({ ...prev, img: imageUrl }));
     } catch (error) {
       toast.error("Failed to upload images. Please try again.");
@@ -30,12 +32,42 @@ export default function CreateCategoryForm() {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.img) {
+      toast.error("Please provide all required fields.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/category",
+        formData
+      );
+
+      console.log("Form submitted:", response.data);
+
+      toast.success("Category created successfully!");
+
+      setFormData({ name: "", img: "" });
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+      toast.error("Failed to create category. Please try again.");
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="space-y-5">
         <div className="space-y-2">
           <Label htmlFor="category-name">Category Name</Label>
-          <Input name="category-name" placeholder="Enter category name" />
+          <Input
+            name="category-name"
+            placeholder="Enter category name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
         </div>
 
         <div className="space-y-2">
@@ -59,7 +91,9 @@ export default function CreateCategoryForm() {
           />
         )}
 
-        <Button>Submit</Button>
+        <Button type="submit" disabled={uploading}>
+          Submit
+        </Button>
       </div>
     </form>
   );
