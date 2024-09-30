@@ -1,8 +1,10 @@
 
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const PaginationRaw = ({ data }) => {
+  const router = useRouter()
   const {
     setCurrentPage,
     dataCount,
@@ -17,14 +19,16 @@ const PaginationRaw = ({ data }) => {
   const handlePagination = (e) => {
     e.preventDefault();
     setCurrentPage(Number(e.target.value));
-    redirect(`?page=${e.target.value}&limit=${pageLimit}`);
+    // redirect(`?page=${e.target.value}&limit=${pageLimit}`);
+    router.push(`?page=${e.target.value}&limit=${pageLimit}`)
   };
 
   const handlePreviousPage = (e) => {
     e.preventDefault();
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      redirect(`?page=${currentPage - 1}&limit=${pageLimit}`);
+      // redirect(`?page=${currentPage - 1}&limit=${pageLimit}`);
+      router.push(`?page=${currentPage - 1}&limit=${pageLimit}`)
     }
   };
 
@@ -35,7 +39,8 @@ const PaginationRaw = ({ data }) => {
     e.preventDefault();
     if (currentPage < totalPage) {
       setCurrentPage(currentPage + 1);
-      redirect(`?page=${currentPage + 1}&limit=${pageLimit}`);
+      // redirect(`?page=${currentPage + 1}&limit=${pageLimit}`);
+     router.push( `?page=${currentPage + 1}&limit=${pageLimit}`)
     }
   };
 
@@ -68,7 +73,8 @@ const PaginationRaw = ({ data }) => {
           onChange={(e) => {
             setCurrentPage(1);
             setPageLimit(Number(e.target.value));
-            navigate(`?limit=${e.target.value}&page=${1}`);
+            // redirect(`?limit=${e.target.value}&page=${1}`);
+            router.push(`?limit=${e.target.value}&page=${1}`)
           
           }}
           value={pageLimit}
@@ -131,14 +137,14 @@ const PaginationRaw = ({ data }) => {
       {currentPage == 1 ? (
         <button
           disabled
-          className="btn border-none flex items-center  gap-2 bg-white text-gray-500 hover:bg-white hover:text-gray-500 font-bold"
+          className="btn border-none p-1 rounded-md flex items-center  gap-2 bg-white text-gray-500 hover:bg-white hover:text-gray-500 font-bold"
           onClick={handlePreviousPage}
         >
           <FaAngleLeft className="text-gray-500 font-bold " /> Prev
         </button>
       ) : (
         <button
-          className="btn border-none flex items-center gap-2 hover:bg-[#91aadf] bg-blue-950 text-base font-bold"
+          className="btn border-none p-1 rounded-md flex items-center gap-2 hover:bg-[#91aadf] bg-blue-950 text-base font-bold"
           onClick={handlePreviousPage}
         >
           <FaAngleLeft className="text-white font-bold" /> Prev
@@ -148,14 +154,14 @@ const PaginationRaw = ({ data }) => {
       {currentPage == totalPage ? (
         <button
           disabled
-          className="btn border-none flex items-center gap-2 bg-white text-gray-500 hover:bg-white hover:text-gray-500 text-base font-bold"
+          className="btn border-none p-1 rounded-md flex items-center gap-2 bg-white text-gray-500 hover:bg-white hover:text-gray-500 text-base font-bold"
           onClick={handleNextPage}
         >
           Next <FaAngleRight className=" text-gray-500 font-bold" />
         </button>
       ) : (
         <button
-          className="btn border-none flex items-center gap-2 hover:bg-[#91aadf] bg-blue-950 text-base font-bold"
+          className="btn border-none p-1 rounded-md flex items-center gap-2 hover:bg-[#91aadf] bg-blue-950 text-base font-bold"
           onClick={handleNextPage}
         >
           Next <FaAngleRight className=" text-white font-bold" />
