@@ -74,7 +74,7 @@ const UserTable = () => {
                               idx % 2 == 0 ? "bg-secondary" : ""
                             } `}
                           >
-                            <td className="col" colSpan={6}></td>
+                            <td className="col" colSpan={10}></td>
                           </tr>
                         ))}
                   </tbody>

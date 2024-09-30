@@ -56,14 +56,14 @@ const BlogCreateButton = ({ setReload }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(blogData),
-        },
+        }
       );
       const data = await response.json();
-      
+
       if (data?.success === true) {
         toast.success("Article submitted successfully");
         e.target.reset();
-        
+
         setReload((prev) => prev + 1);
       }
     } catch (error) {
@@ -79,10 +79,7 @@ const BlogCreateButton = ({ setReload }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button
-          variant="outline"
-          className="flex gap-3 bg-si-primary py-4 text-end font-semibold text-white duration-500 hover:bg-si-secondary"
-        >
+        <Button className="flex gap-3  ">
           Create Blog
           <FaPlusCircle className="inline text-xl" />
         </Button>
@@ -135,10 +132,7 @@ const BlogCreateButton = ({ setReload }) => {
               </span>
             </Button>
           ) : (
-            <Button
-              type="submit"
-              className="mt-2 w-full rounded-sm bg-si-primary p-1 px-3 font-semibold "
-            >
+            <Button type="submit" variant="dashboard">
               Submit
             </Button>
           )}
