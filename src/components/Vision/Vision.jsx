@@ -5,8 +5,22 @@ const Vision = () => {
   return (
     <div className="mt-20 py-20">
       <MaxWidthWrapper className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
-        <div className="pr-5 font-semibold">
-          <h1 className="text-4xl text-center lg:text-left">
+        <div className="pr-5 font-semibold ">
+          <div className="mb-5 z-10 ">
+            <Image
+              alt="our vision imave"
+              height={64}
+              width={386}
+              className=""
+              src="https://i.postimg.cc/kGgDznXX/VISION.png"
+            ></Image>
+          </div>
+          <div className="flex items-center gap-3 -mt-14 ml-4">
+            {" "}
+            <p className="text-[#F78C40] inline-block">Vision & Values</p>
+            <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
+          </div>
+          <h1 className="text-4xl mt-10 text-center lg:text-left">
             We have a vision for <br /> the future of <br />
             <span className="border-b-4 border-[#F78C40]">construction</span>
           </h1>
@@ -16,7 +30,7 @@ const Vision = () => {
                 Our Vision
               </button>
               <button className="border-2 text-[#A5A5A5] py-2.5 px-6 rounded-full">
-                Our Vision
+                Core Values
               </button>
             </div>
           </div>
@@ -34,27 +48,36 @@ const Vision = () => {
           <div className="text-[#090909] font-semibold text-lg mt-10">
             <ul className="grid grid-cols-1 md:grid-cols-2 border-y-2 py-2 ">
               <li>
-                <span>•</span> Building inch by inch 
+                <span>•</span> Building inch by inch
               </li>
-              <li><span>•</span> Building to last </li>
+              <li>
+                <span>•</span> Building to last{" "}
+              </li>
             </ul>
             <ul className="grid grid-cols-1 md:grid-cols-2 border-b-2 py-2 ">
               <li>
                 <span>•</span> Building for the future
               </li>
-              <li><span>•</span> Building with trust </li>
+              <li>
+                <span>•</span> Building with trust{" "}
+              </li>
             </ul>
             <ul className="grid grid-cols-1 md:grid-cols-2 border-b-2 py-2 ">
               <li>
                 <span>•</span> Building together
               </li>
-              <li><span>•</span> Building safely </li>
+              <li>
+                <span>•</span> Building safely{" "}
+              </li>
             </ul>
             {/* <ul className="flex "><li>Building to last</li></ul> */}
           </div>
         </div>
-        <div className="">
-          <div className="p-2 border-4 border-[#F78C40] w-full">
+        <div
+          style={{ boxShadow: "-94px -10px 87px -51px rgba(247,140,64,0.48)" }}
+          className=""
+        >
+          <div className="p-2 border-4 border-[#F78C40] w-full h-full">
             <Image
               src="https://i.postimg.cc/4ysfpKG8/Frame-76484-1.png"
               alt="our vision image"
