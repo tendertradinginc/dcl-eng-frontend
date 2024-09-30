@@ -49,15 +49,16 @@ const page = async ({ params }) => {
             <div className="flex-1">
               <h2
                 style={{ lineHeight: "1.2" }}
-                className="text-3xl font-bold leading-normal text-si-primary md:text-4xl"
+                className="text-3xl font-semibold leading-normal text-[#0A2F4D] md:text-4xl"
               >
                 {blog?.title}
               </h2>
 
               <div className="mt-5">
-                <p className="whitespace-break-spaces text-justify font-semibold">
+                <p className="whitespace-break-spaces text-[#454545] text-justify text-lg font-medium">
                   {blog?.description}
                 </p>
+                
               </div>
             </div>
           </div>
