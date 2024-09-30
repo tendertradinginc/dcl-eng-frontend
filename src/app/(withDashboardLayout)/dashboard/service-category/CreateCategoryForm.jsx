@@ -44,7 +44,6 @@ export default function CreateCategoryForm() {
             type="file"
             accept="image/*"
             name="category-image"
-            multiple
             disabled={uploading}
             onChange={handleImageUpload}
           />
