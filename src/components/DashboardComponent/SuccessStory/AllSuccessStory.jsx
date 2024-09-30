@@ -18,7 +18,7 @@ import { FaPlusCircle } from "react-icons/fa";
 
 
 
-const AllClientFeedback = () => {
+const AllSuccessStory = () => {
     const searchParams = useSearchParams();
     const [successStories, setSuccessStories] = useState([]);
     const [page, setPage] = useState(searchParams.get("page") || 1);
@@ -120,7 +120,7 @@ const AllClientFeedback = () => {
                                                 <SingleSuccessStory
                                                     key={successStories?._id}
                                                     index={index}
-                                                    SuccessStoryData={SuccessStory}
+                                                    successStoryData={SuccessStory}
                                                     setReload={setReload}
                                                 />
                                             ))
@@ -143,4 +143,4 @@ const AllClientFeedback = () => {
     );
 };
 
-export default AllClientFeedback;
+export default AllSuccessStory;
