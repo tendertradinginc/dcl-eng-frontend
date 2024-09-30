@@ -1,38 +1,43 @@
 import { useEffect, useState } from "react";
 
-const useAllProjects = (page, limit, searchValue) => {
-  const [messages, setMessages] = useState([]);
-  const [messagesCount, setMessagesCount] = useState(0);
+const useAllMessage = (page, limit, searchValue) => {
+  const [allMessage, setAllMessage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [reload, setReload] = useState(0);
+  const [count, setCount] = useState(0);
+  const [messagesCount, setMessagesCount] = useState(0);
 
   useEffect(() => {
     const result = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}&search=${searchValue}`
+          `http://localhost:5000/api/v1/message?page=${page}&limit=${limit}&search=${searchValue}`
         );
         const data = await response.json();
-        setMessages(data?.data?.result);
+        setAllMessage(data?.data?.result);
         setMessagesCount(data?.data?.total);
       } catch (error) {
-        console.error("Error fetching :", error);
+        console.error("Error fetching:", error);
       } finally {
         setLoading(false);
       }
     };
+
     result();
   }, [page, limit, reload, searchValue]);
 
   return {
-    messages,
+    allMessage,
+    setAllMessage,
+    count,
+    setCount,
+    loading,
+    page,
     reload,
-    setLoading,
     setReload,
     messagesCount,
-    loading,
   };
 };
 
-export default useAllProjects;
+export default useAllMessage;
