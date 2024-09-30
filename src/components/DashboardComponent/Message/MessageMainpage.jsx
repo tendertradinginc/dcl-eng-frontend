@@ -1,10 +1,24 @@
+"use client";
+import PaginationRaw from "@/components/shared/pagination/PaginationRaw";
+import useAllMessage from "@/hooks/useAllMessage";
+import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useState } from "react";
+import { AiFillDatabase } from "react-icons/ai";
+import SingleMessage from "./SingleMessage";
 
 const MessageMainpage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageLimit, setPageLimit] = useState(10);
-  const { allMessage, setAllMessage, loading, total, messagesCount } =
-    useAllMessage(currentPage, pageLimit);
+  const [pageLimit, setPageLimit] = useState(5);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 1000);
+  const {
+    allMessage,
+    setAllMessage,
+    loading,
+    total,
+    messagesCount,
+    setReload,
+  } = useAllMessage(currentPage, pageLimit, debouncedSearchTerm);
   const skleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const handelReadMessage = async (_id, status) => {
@@ -14,7 +28,7 @@ const MessageMainpage = () => {
       }
 
       const response = await fetch(
-        `https://www.server.tendertradinginc.com/api/v1/contactus/${_id}`,
+        `http://localhost:5000/api/v1/message/${_id}`,
         {
           method: "PATCH",
           headers: {
@@ -40,7 +54,7 @@ const MessageMainpage = () => {
   const handleRemovecategory = async (id) => {
     try {
       const response = await fetch(
-        `https://www.server.tendertradinginc.com/api/v1/contactus/${id}`,
+        `http://localhost:5000/api/v1/message/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -61,16 +75,6 @@ const MessageMainpage = () => {
     }
   };
 
-  if (allMessage.length <= 0 && !loading) {
-    return (
-      <div className=" max-h-16">
-        <p className="text-blue-800 font-bold text-4xl flex justify-center items-center">
-          No Message found yet.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-[80vh] ">
       <div className="container mx-auto px-2">
@@ -81,25 +85,25 @@ const MessageMainpage = () => {
             <div className="pb-6 flex justify-between items-center">
               <h2 className="text-blue-950 font-semibold text-2xl ">
                 <AiFillDatabase className="inline mb-1"></AiFillDatabase>
-                Message List
+                Message List -{messagesCount}
               </h2>
               <div className="flex items-center justify-between mt-4 px-2">
-                <p>
-                  Total Message : {total} <span>{""}</span>
-                </p>
+                <div>
+                  <div>
+                    <input
+                      className="border border-gray-700 px-3 py-1.5 rounded-md"
+                      type="text"
+                      placeholder="Search by name, id, email"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <hr />
-            {loading ? (
-              <table className="w-full table-auto">
-                <tbody className="my-2">
-                  {skleton.map((skel, index) => (
-                    <SkeletonNotice key={index} index={index}></SkeletonNotice>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <table className="w-full table-auto">
+            <div className="min-h-[50vh]">
+              <table className="w-full table-auto ">
                 <thead>
                   <tr className="text-left">
                     <th className="px-4 py-2">id</th>
@@ -113,28 +117,44 @@ const MessageMainpage = () => {
                 </thead>
 
                 <tbody>
-                  {allMessage?.map((message, index) => (
-                    <SingleMessage
-                      key={message._id}
-                      index={index}
-                      data={message}
-                      handelReadMessage={handelReadMessage}
-                      handleRemovecategory={handleRemovecategory}
-                    ></SingleMessage>
-                  ))}
+                  {allMessage?.length > 0
+                    ? allMessage?.map((message, index) => (
+                        <SingleMessage
+                          key={index}
+                          index={index}
+                          data={message}
+                          setReload={setReload}
+                          handelReadMessage={handelReadMessage}
+                        ></SingleMessage>
+                      ))
+                    : Array.from({ length: 10 }).map((_, idx) => (
+                        <tr
+                          key={idx}
+                          className={`h-10 w-full ${
+                            idx % 2 == 0 ? "bg-secondary" : ""
+                          } `}
+                        >
+                          <td className="col" colSpan={10}></td>
+                        </tr>
+                      ))}
                 </tbody>
               </table>
-            )}
+            </div>
           </div>
-          <Pagination
-            data={{
-              pageLimit,
-              setCurrentPage,
-              setPageLimit,
-              articlesCount: messagesCount,
-              currentPage,
-            }}
-          />
+          {!loading && (
+            <div className="mt-5">
+              <PaginationRaw
+                data={{
+                  setCurrentPage,
+                  dataCount: messagesCount,
+                  currentPage,
+                  pageLimit,
+                  setPageLimit,
+                  defaultPageLimit: 10,
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
