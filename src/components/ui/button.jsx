@@ -1,6 +1,6 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,8 @@ const buttonVariants = cva(
           "bg-si-accent font-semibold text-black shadow hover:bg-si-accent/80",
         seeThrough:
           "bg-transparent font-semibold text-si-primary shadow border border-si-primary hover:bg-si-secondary/40",
+
+        dcl_pi: "bg-[#0A2F4D] hover:bg-[#F78C40] text-white ",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -35,7 +37,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 const Button = React.forwardRef(
@@ -48,7 +50,7 @@ const Button = React.forwardRef(
         {...props}
       />
     );
-  },
+  }
 );
 Button.displayName = "Button";
 

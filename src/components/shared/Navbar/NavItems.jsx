@@ -1,14 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { CaretDownIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -16,47 +9,18 @@ const NavItems = ({ className }) => {
   const pathname = usePathname();
 
   const navLinks = [
-    { id: 1, url: "/", label: "Services" },
-    { id: 2, url: "/", label: "Gallery" },
-    { id: 3, url: "/", label: "About Us" },
-    { id: 4, url: "/", label: "Blog" },
+    { id: 1, url: "/", label: "Home" },
+    { id: 2, url: "/", label: "Services" },
+    { id: 3, url: "/", label: "Project" },
+    { id: 4, url: "/", label: "Success" },
+    { id: 5, url: "/", label: "Blog" },
+    { id: 6, url: "/", label: "About Us" },
+    { id: 7, url: "/", label: "Contact Us" },
+    { id: 7, url: "/dashboard", label: "dashboard" },
   ];
 
   return (
     <div className="flex flex-col items-center md:flex-row">
-      <Button
-        asChild
-        variant="link"
-        className={cn(pathname === "/" ? "underline" : "")}
-      >
-        <Link href={"/"} className="font-semibold">
-          Home
-        </Link>
-      </Button>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="link"
-            className={cn(
-              pathname === "/hospital-furniture" ||
-                pathname === "/medical-equipment"
-                ? "underline"
-                : ""
-            )}
-          >
-            Products <CaretDownIcon className="ml-1 size-5" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem asChild>
-            <Link href="/hospital-furniture">Hospital Furniture</Link>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem asChild>
-            <Link href="/medical-equipment">Medical Equipment</Link>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
       <div className="flex flex-col items-center md:flex-row">
         {navLinks.map((link) => (
           <Button
@@ -75,7 +39,7 @@ const NavItems = ({ className }) => {
       <div className="mt-2 block md:hidden">
         <Link href="/AboutUs#contact-section">
           {" "}
-          <Button>Contact Us</Button>
+          <Button variant="dcl_pi">Contact Us</Button>
         </Link>
       </div>
     </div>
