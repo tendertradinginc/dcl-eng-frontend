@@ -17,7 +17,8 @@ import { CgSpinnerAlt } from "react-icons/cg";
 import { FaPlusCircle } from "react-icons/fa";
 
 import CreateClientFeedback from "./CreateClientFeedback";
-import SingleFeedback from "./singleFeedback";
+import SingleFeedback from "./SingleFeedback";
+
 
 const AllClientFeedback = () => {
     const searchParams = useSearchParams();
@@ -110,7 +111,8 @@ const AllClientFeedback = () => {
                                         <tr className="text-left">
                                             <th className="px-4 py-2">No</th>
                                             <th className="py-2 pl-16">Author</th>
-                                            <th className="py-2">Designation</th>
+                                            <th className="py-2 pl-16">Image</th>
+                                            <th className="py-2 pl-16">Designation</th>
                                             <th className="py-2 pl-16">Feedback</th>
                                             <th className="px-4 pl-6">Actions</th>
                                         </tr>
