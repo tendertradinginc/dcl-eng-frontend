@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+          "bg-[#0A2F4D] text-white shadow hover:bg-[#F78C40] duration-300",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
@@ -24,7 +24,8 @@ const buttonVariants = cva(
         seeThrough:
           "bg-transparent font-semibold text-si-primary shadow border border-si-primary hover:bg-si-secondary/40",
 
-        dcl_pi: "bg-[#0A2F4D] hover:bg-[#F78C40] text-white ",
+        dashboard:
+          "bg-[#0A2F4D] text-white shadow hover:bg-[#F78C40] duration-500 w-full",
       },
       size: {
         default: "h-9 px-4 py-2",

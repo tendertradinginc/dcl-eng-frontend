@@ -1,2 +1,2 @@
-button:
-varient="dcl-pi"
+Button: default
+Button: varient="dashboard"
