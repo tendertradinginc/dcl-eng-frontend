@@ -4,6 +4,7 @@ import EditFeedback from "./EditFeedback";
 import DeleteFeedback from "./DeleteFeedback";
 import Image from "next/image";
 import { customLoader } from "@/utils/customLoader";
+import ViewFeedback from "./ViewFeedback";
 
 const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
     // const { author, image, authorDesignation: designation, feedback } = clientFeedbackData; // Include feedback
@@ -17,11 +18,11 @@ const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
 
             {/* <td className="px-16 py-1 font-semibold text-black">{author}</td> */}
 
-            <td className="px-16 py-1 font-semibold text-black">{authorName || "N/A"}</td>
+            <td className="px-8 py-1 font-semibold text-black">{authorName || "N/A"}</td>
 
             {/* <td className="py-1 pr-2 font-semibold text-black">{image}</td> */}
 
-            <td className="px-16 py-1 font-semibold text-black">
+            <td className="px-8 py-1 font-semibold text-black">
                 <Image
                     loader={customLoader}
                     src={image}
@@ -40,23 +41,24 @@ const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
 
             {/* <td className="py-1 px-16 pr-2 font-semibold text-black">{feedback}</td> */}
 
-            <td className="py-1 px-16 pr-2 font-semibold text-black text-center">
+            {/* <td className="py-1 px-8 pr-2 font-semibold text-black">
                 <p
                     onClick={() => alert(feedback)}  // Example action, replace with actual modal or action
                     className=" text-black font-bold py-1 px-4 rounded"
                 >
                     View
                 </p>
+            </td> */}
+
+            <td className="py-1 px-8 pr-2 font-semibold text-black">
+                {/* Call ViewFeedback component */}
+                <ViewFeedback data={clientFeedbackData} />
             </td>
 
 
 
             <td className="flex items-center space-x-3 py-2 md:px-4">
                 <AlertDialog>
-                    {/* <ViewFeedback
-                        data={clientFeedbackData}
-                        setReload={setReload}
-                    ></ViewFeedback> */}
                     <EditFeedback
                         data={clientFeedbackData}
                         setReload={setReload}
