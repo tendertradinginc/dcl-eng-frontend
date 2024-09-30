@@ -12,8 +12,10 @@ import { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { toast } from "sonner";
 
-const DeleteFeedback = ({ clientFeedbackData, setReload }) => {
+const DeleteFeedback = ({ data, setReload }) => {
     const [isOpen, setIsOpen] = useState(false);
+
+
 
     const handleFeedbackDelete = async (id) => {
         const toastId = toast.loading("Loading...");
@@ -58,7 +60,7 @@ const DeleteFeedback = ({ clientFeedbackData, setReload }) => {
                         Cancel
                     </AlertDialogCancel>
                     <button
-                        onClick={() => handleFeedbackDelete(clientFeedbackData?._id)}
+                        onClick={() => handleFeedbackDelete(data?._id)}
                         className="btn bg-red-800 px-2 text-white hover:bg-red-800"
                     >
                         Delete

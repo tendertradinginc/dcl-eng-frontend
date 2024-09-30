@@ -1,10 +1,10 @@
 
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import EditFeedback from "./EditFeedback";
-import DeleteFeedback from "./DeleteFeedback";
 import Image from "next/image";
 import { customLoader } from "@/utils/customLoader";
 import ViewFeedback from "./ViewFeedback";
+import DeleteDataModal from "@/components/shared/DeleteDataModal/DeleteDataModal";
 
 const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
     // const { author, image, authorDesignation: designation, feedback } = clientFeedbackData; // Include feedback
@@ -16,11 +16,7 @@ const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
         <tr className={index % 2 === 1 ? "bg-[#f2f2f2]" : ""}>
             <td className="px-4 py-1">{index + 1}</td>
 
-            {/* <td className="px-16 py-1 font-semibold text-black">{author}</td> */}
-
             <td className="px-8 py-1 font-semibold text-black">{authorName || "N/A"}</td>
-
-            {/* <td className="py-1 pr-2 font-semibold text-black">{image}</td> */}
 
             <td className="px-8 py-1 font-semibold text-black">
                 <Image
@@ -33,13 +29,7 @@ const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
                 />
             </td>
 
-            {/* <td className="py-1 pr-2 font-semibold text-black">{designation}</td> */}
-
-
             <td className="py-1 px-16 pr-2 font-semibold text-black">{authorDesignation || "N/A"}</td>
-
-
-            {/* <td className="py-1 px-16 pr-2 font-semibold text-black">{feedback}</td> */}
 
             {/* <td className="py-1 px-8 pr-2 font-semibold text-black">
                 <p
@@ -63,10 +53,13 @@ const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
                         data={clientFeedbackData}
                         setReload={setReload}
                     ></EditFeedback>
-                    <DeleteFeedback
+                    {/* <DeleteFeedback
                         data={clientFeedbackData}
                         setReload={setReload}
-                    ></DeleteFeedback>
+                    ></DeleteFeedback> */}
+                    <DeleteDataModal
+                        setReload={setReload}
+                        url={`http://localhost:5000/api/v1/clientFeedback/${clientFeedbackData._id}`} />
                 </AlertDialog>
             </td>
         </tr>

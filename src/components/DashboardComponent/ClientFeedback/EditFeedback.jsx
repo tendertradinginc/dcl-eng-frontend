@@ -1,3 +1,4 @@
+"use client";
 import {
     AlertDialog,
     AlertDialogCancel,
@@ -10,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { customLoader } from "@/utils/customLoader";
+import { uploadImageToImgBB } from "@/utils/imageUpload"; // Import the upload function
 import Image from "next/image";
 import { useState } from "react";
 import { CiEdit } from "react-icons/ci";
@@ -17,12 +19,13 @@ import { toast } from "sonner";
 import blue from "./blue.gif";
 
 const EditFeedback = ({ data, setReload }) => {
-    const { author, designation, _id, feedback } = data;
+    const { authorName, authorDesignation, _id, image, feedback } = data;
     const [loading, setLoading] = useState(false);
-    const [updatedAuthor, setUpdatedAuthor] = useState(author);
-    const [updatedDesignation, setUpdatedDesignation] = useState(designation);
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [updatedAuthor, setUpdatedAuthor] = useState(authorName);
+    const [updatedDesignation, setUpdatedDesignation] = useState(authorDesignation);
     const [updatedFeedback, setUpdatedFeedback] = useState(feedback);
+    const [file, setFile] = useState(null);
+    const [isDisabled, setIsDisabled] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -31,10 +34,17 @@ const EditFeedback = ({ data, setReload }) => {
         const toastId = toast.loading("Loading...");
 
         try {
+            let imageUrl = image;
+            // If a new file is selected, upload it
+            if (file) {
+                imageUrl = await uploadImageToImgBB(file);
+            }
+
             const updatedClientFeedback = {
-                author: updatedAuthor,
-                designation: updatedDesignation,
+                authorName: updatedAuthor,
+                authorDesignation: updatedDesignation,
                 feedback: updatedFeedback,
+                image: imageUrl, // Include the image URL
             };
 
             const response = await fetch(
@@ -82,6 +92,28 @@ const EditFeedback = ({ data, setReload }) => {
                         className="mx-auto w-full space-y-10 py-4"
                     >
                         <div className="mb-5">
+                            <Image
+                                loader={customLoader}
+                                height={400}
+                                width={400}
+                                className="h-64 border shadow-md"
+                                src={image} // Display the current image
+                                alt="Feedback Image"
+                            />
+                            <Label className="mb-2 mt-5 block">Update Image</Label>
+                            <Input
+                                type="file"
+                                accept="image/*"
+                                name="image"
+                                className="max-w-96"
+                                onChange={(e) => {
+                                    setIsDisabled(false);
+                                    setFile(e.target.files[0]);
+                                }}
+                            />
+                        </div>
+
+                        <div className="mb-5">
                             <Label className="mb-2 block">Author</Label>
                             <Input
                                 value={updatedAuthor}
@@ -90,7 +122,7 @@ const EditFeedback = ({ data, setReload }) => {
                                     setIsDisabled(false);
                                 }}
                                 type="text"
-                                name="name"
+                                name="author"
                             />
                         </div>
 
@@ -116,7 +148,7 @@ const EditFeedback = ({ data, setReload }) => {
                                     setIsDisabled(false);
                                 }}
                                 type="text"
-                                name="Feedback"
+                                name="feedback"
                             />
                         </div>
 
@@ -136,7 +168,7 @@ const EditFeedback = ({ data, setReload }) => {
                                         className="mx-auto w-8 text-center"
                                     />
                                 ) : (
-                                    <span>Submit</span>
+                                    <span className="px-8 text-sm bg-black text-white py-1 rounded-md">Submit</span>
                                 )}
                             </button>
                         </div>
@@ -146,7 +178,7 @@ const EditFeedback = ({ data, setReload }) => {
                 <AlertDialogFooter>
                     <AlertDialogCancel
                         onClick={() => setIsOpen(false)}
-                        className="hover:bg-si-primary hover:text-white"
+                        className="hover:bg-black hover:text-white"
                     >
                         Close
                     </AlertDialogCancel>
