@@ -41,7 +41,7 @@ const SideNavbar = () => {
       label: "Users",
     },
     {
-      id: 3,
+      id: 6,
       href: "/dashboard/service-category",
       label: "Service Category",
     },
