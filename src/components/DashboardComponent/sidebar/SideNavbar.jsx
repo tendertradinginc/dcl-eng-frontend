@@ -67,6 +67,11 @@ const SideNavbar = () => {
       href: "/dashboard/projects",
       label: "Projects",
     },
+    {
+      id: 7,
+      href: "/dashboard/message-page",
+      label: "Message",
+    },
   ];
 
   return (

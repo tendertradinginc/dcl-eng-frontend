@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 const useAllProjects = (page, limit, searchValue) => {
-  const [projects, setProjects] = useState([]);
-  const [projectsCount, setProjectsCount] = useState(0);
+  const [messages, setMessages] = useState([]);
+  const [messagesCount, setMessagesCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [reload, setReload] = useState(0);
 
@@ -11,12 +11,11 @@ const useAllProjects = (page, limit, searchValue) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}&searchValue=${searchValue}`
+          `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}&search=${searchValue}`
         );
         const data = await response.json();
-        setProjects(data?.data?.allProjects);
-        setProjectsCount(data?.data?.totlaProjects);
-        console.log({projects, projectsCount})
+        setMessages(data?.data?.result);
+        setMessagesCount(data?.data?.total);
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {
@@ -27,11 +26,11 @@ const useAllProjects = (page, limit, searchValue) => {
   }, [page, limit, reload, searchValue]);
 
   return {
-    projects,
+    messages,
     reload,
     setLoading,
     setReload,
-    projectsCount,
+    messagesCount,
     loading,
   };
 };
