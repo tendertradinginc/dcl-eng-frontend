@@ -15,6 +15,8 @@ import { useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
 import { CgSpinnerAlt } from "react-icons/cg";
 import { FaPlusCircle } from "react-icons/fa";
+import CreateSuccessStory from "./CreateSuccessStory";
+import SingleSuccessStory from "./SingleSuccessStory";
 
 
 
