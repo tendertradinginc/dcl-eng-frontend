@@ -56,7 +56,7 @@ const Navbar = () => {
         <div className="hidden md:block  ">
           <Link href="/AboutUs#contact-section">
             {" "}
-            <Button>Contact Us</Button>
+            <Button variant="dcl">Contact Us</Button>
           </Link>
         </div>
 
