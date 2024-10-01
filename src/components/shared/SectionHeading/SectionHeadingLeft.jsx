@@ -25,6 +25,7 @@ const SectionHeadingLeft = ({ imageUrl, subTitle, title, description,  className
           
           <span className="border-b-4 border-[#F78C40]">construction</span> */}
         </h1>
+        <p className="text-[#454545] font-semibold my-3">{description}</p>
       </div>
     </div>
   );
