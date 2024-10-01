@@ -1,9 +1,9 @@
 import SingleCategory from "@/components/custom/SingleCategory";
-import { AlertDialogHeader } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -11,14 +11,19 @@ import { AiFillDatabase } from "react-icons/ai";
 import { FaPlusCircle } from "react-icons/fa";
 import CreateCategoryForm from "./CreateCategoryForm";
 
-export default async function page() {
-  let res = await fetch("https://jsonplaceholder.typicode.com/todos/");
+async function fetchCategories() {
+  const res = await fetch("http://localhost:5000/api/v1/category");
 
-  let blah = await res.json();
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
 
-  const data = blah?.data;
+  return res.json();
+}
 
-  console.log(blah);
+export default async function Page() {
+  const categoryData = await fetchCategories();
+  const data = categoryData?.data || [];
 
   return (
     <div>
@@ -46,9 +51,9 @@ export default async function page() {
                       </DialogTrigger>
 
                       <DialogContent>
-                        <AlertDialogHeader>
+                        <DialogHeader>
                           <DialogTitle>Create Category</DialogTitle>
-                        </AlertDialogHeader>
+                        </DialogHeader>
 
                         <CreateCategoryForm />
                       </DialogContent>
@@ -59,7 +64,7 @@ export default async function page() {
               <hr />
 
               <table className="w-full table-auto border">
-                <thead className="bg-gradient-to-r from-si-primary to-si-secondary text-white">
+                <thead className="bg-blue-500">
                   <tr className="text-left">
                     <th className="px-4 py-2">No</th>
                     <th className="px-4 py-2">Title</th>
@@ -69,13 +74,21 @@ export default async function page() {
                 </thead>
 
                 <tbody>
-                  {data?.map((category, index) => (
-                    <SingleCategory
-                      key={category?._id}
-                      index={index}
-                      data={category}
-                    />
-                  ))}
+                  {Array.isArray(data) && data.length > 0 ? (
+                    data.map((category, index) => (
+                      <SingleCategory
+                        key={category._id || index}
+                        index={index}
+                        data={category}
+                      />
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="4" className="px-4 py-2 text-center">
+                        No categories found.
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
