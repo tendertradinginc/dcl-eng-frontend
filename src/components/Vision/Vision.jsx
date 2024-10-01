@@ -92,7 +92,7 @@ const Vision = () => {
           </div>
         </div>
         <div
-          style={{ boxShadow: "-94px -10px 87px -51px rgba(247,140,64,0.48)" }}
+          style={{ boxShadow: "-94px -10px 87px -51px rgba(247, 140, 64, 0.233)" }}
           className=""
         >
           <div className="p-2 border-4 border-[#F78C40] w-full h-full">
