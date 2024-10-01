@@ -1,29 +1,47 @@
 import Image from "next/image";
 import MaxWidthWrapper from "../custom/MaxWidthWrapper";
+import SectionHeadingLeft from "../shared/SectionHeading/SectionHeadingLeft";
 
 const Vision = () => {
   return (
     <div className="mt-20 py-20">
       <MaxWidthWrapper className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
-        <div className="pr-5 font-semibold ">
-          <div className="mb-5 z-10 ">
-            <Image
-              alt="our vision imave"
-              height={64}
-              width={386}
-              className=""
-              src="https://i.postimg.cc/kGgDznXX/VISION.png"
-            ></Image>
-          </div>
-          <div className="flex items-center gap-3 -mt-14 ml-4">
-            {" "}
-            <p className="text-[#F78C40] inline-block">Vision & Values</p>
-            <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
-          </div>
-          <h1 className="text-4xl mt-10 text-center lg:text-left">
+        <div className="pr-5 font-semibold  ">
+          {/* <div className="">
+            <div className="mb-5 z-10 ">
+              <Image
+                alt="our vision imave"
+                height={64}
+                width={386}
+                className=""
+                src="https://i.postimg.cc/kGgDznXX/VISION.png"
+              ></Image>
+            </div>
+            <div className="flex items-center gap-3 -mt-14 ml-4 ">
+              {" "}
+              <p className="text-[#F78C40] inline-block">Vision & Values</p>
+              <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
+            </div>
+            <h1 className="text-4xl mt-10 text-center lg:text-left">
             We have a vision for <br /> the future of <br />
             <span className="border-b-4 border-[#F78C40]">construction</span>
           </h1>
+          </div> */}
+          <SectionHeadingLeft
+            subTitle="Vision & Values"
+            imageUrl="https://i.postimg.cc/kGgDznXX/VISION.png"
+       
+            title={
+              <>
+                {" "}
+                We have a vision for <br /> the future of <br />
+                <span className="border-b-4 border-[#F78C40]">
+                  construction
+                </span>
+              </>
+            }
+          />
+
           <div className="flex justify-center my-8">
             <div className="w-max rounded-full border p-2 flex gap-2">
               <button className="bg-[#F78C40] text-white py-2.5 px-6 rounded-full">

@@ -1,5 +1,6 @@
 import Image from "next/image";
-import MaxWidthWrapper from "../custom/MaxWidthWrapper";
+import MaxWidthWrapper from "../../custom/MaxWidthWrapper";
+import { customLoader } from "@/utils/customLoader";
 
 const Clients = async () => {
   const res = await fetch(`http://localhost:5000/api/v1/client`, {
@@ -18,16 +19,16 @@ const Clients = async () => {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 py-8">
-        {clientsArray?.map((item) => (
+        {clients?.map((item) => (
           <div key={item?._id}>
            
             <Image
-              src={"https://i.postimg.cc/8PS7tvjp/Frame-76463-1.png"}
+              src={item.image}
               height={200}
               width={200}
-              className="w-full"
+              className="w-full h-28 object-cover"
               alt="Client Image"
-            //   loader={}
+              loader={customLoader}
             />
           </div>
         ))}
