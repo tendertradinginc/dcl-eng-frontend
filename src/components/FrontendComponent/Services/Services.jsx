@@ -34,7 +34,7 @@ const Services = () => {
         ))}
       </div>
 
-      {/* <div>
+      <div>
       <Button
                 className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0"
                 variant="tti"
@@ -44,7 +44,7 @@ const Services = () => {
                   <FaArrowRightLong className="text-lg  text-white -rotate-45" />
                 </div>
               </Button>
-      </div> */}
+      </div>
     </MaxWidthWrapper>
   );
 };
