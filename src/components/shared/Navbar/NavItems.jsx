@@ -12,7 +12,7 @@ const NavItems = ({ className }) => {
     { id: 1, url: "/", label: "Home" },
     { id: 2, url: "/", label: "Services" },
     { id: 3, url: "/", label: "Project" },
-    { id: 4, url: "/", label: "Success" },
+    { id: 4, url: "/successStory", label: "Success" },
     { id: 5, url: "/", label: "Blog" },
     { id: 6, url: "/", label: "About Us" },
     { id: 7, url: "/", label: "Contact Us" },
