@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useDebounce } from "use-debounce";
 import { AiFillDatabase } from "react-icons/ai";
 import { FaPlusCircle } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
@@ -16,43 +17,86 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import CreateServiceForm from "@/components/DashboardComponent/Service-page/CreateServiceForm";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Pencil, Trash, Trash2 } from "lucide-react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Pencil, Trash2 } from "lucide-react";
 import UpdateServiceForm from "@/components/DashboardComponent/Service-page/UpdateServiceForm";
 import { toast } from "sonner";
 import axios from "axios";
+import { Input } from "@/components/ui/input";
+import { useRouter, useSearchParams } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { CaretDownIcon } from "@radix-ui/react-icons";
 
 const Page = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [reload, setReload] = useState(false);
   const [data, setData] = useState(null);
+  const [metadata, setMetadata] = useState(null);
+
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+  const currentLimit = parseInt(searchParams.get("limit") || "10", 10);
+  const currentSearch = searchParams.get("search") || "";
+
+  const [selectedPage, setSelectedPage] = useState(currentPage);
+  const [selectedLimit, setSelectedLimit] = useState(currentLimit);
+  const [searchTerm, setSearchTerm] = useState(currentSearch);
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/service"
+          `http://localhost:5000/api/v1/service?page=${selectedPage}&limit=${selectedLimit}&search=${debouncedSearchTerm}`
         );
-        setData(response.data.data.result);
+        setData(response.data.data);
+        setMetadata(response.data.metadata);
       } catch (error) {
         console.error("Error fetching data:", error);
+        toast.error("Failed to fetch services. Please try again.");
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [reload]);
+  }, [reload, selectedPage, selectedLimit, debouncedSearchTerm]);
 
   const handleDelete = async (serviceId) => {
     try {
       await axios.delete(`http://localhost:5000/api/v1/service/${serviceId}`);
       toast.success("Service deleted successfully!");
-      setReload(true);
+      setReload((prev) => !prev);
     } catch (error) {
       console.error("Failed to delete service:", error);
       toast.error("Failed to delete service. Please try again.");
     }
+  };
+
+  const handleSearch = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    setSelectedPage(1);
+    updateURL(1, selectedLimit, newSearchTerm);
+  };
+
+  const handlePageChange = (newPage, newLimit) => {
+    setSelectedPage(newPage);
+    setSelectedLimit(newLimit);
+    updateURL(newPage, newLimit, searchTerm);
+  };
+
+  const updateURL = (page, limit, search) => {
+    router.push(
+      `/dashboard/service-page?page=${page}&limit=${limit}&search=${search}`
+    );
   };
 
   if (loading) {
@@ -67,12 +111,20 @@ const Page = () => {
 
           <div className="mx-auto w-full bg-white">
             <div className="overflow-x-auto sm:px-1">
-              <div className="flex items-center justify-between pb-6">
+              <div className="flex items-center justify-between py-6 px-2">
                 <h2 className="text-2xl font-semibold text-si-primary">
                   <AiFillDatabase className="mb-1 inline" />
                   Service List
                 </h2>
-                <div className="mt-4 flex items-center justify-between px-2">
+                <div className="flex items-center gap-2">
+                  <div>
+                    <Input
+                      type="text"
+                      placeholder="Search"
+                      value={searchTerm}
+                      onChange={handleSearch}
+                    />
+                  </div>
                   <div>
                     <Dialog>
                       <DialogTrigger asChild>
@@ -194,6 +246,90 @@ const Page = () => {
               </table>
             </div>
           </div>
+
+          {metadata && (
+            <section className="flex flex-col lg:flex-row items-center justify-between my-10">
+              <div className="flex flex-col lg:flex-row items-center gap-5 lg:gap-10 mb-5 lg:mb-0">
+                <p className="font-semibold">
+                  Page {metadata.page} of {metadata.totalPages}
+                </p>
+
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold">Content per page</p>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button size="sm" className="gap-1">
+                        {selectedLimit} <CaretDownIcon />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="min-w-min flex items-center gap-2">
+                      {[10, 20, 30, 40, 50, 100].map((limit) => (
+                        <DropdownMenuItem
+                          key={limit}
+                          asChild
+                          onSelect={() => handlePageChange(1, limit)}
+                        >
+                          <Button size="sm">{limit}</Button>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold">Current page</p>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button size="sm" className="gap-1">
+                        {selectedPage} <CaretDownIcon />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <ScrollArea className="w-44 md:w-96 whitespace-nowrap rounded-md">
+                        <div className="w-max flex items-center gap-2 py-2 mb-2">
+                          {Array.from(
+                            { length: metadata.totalPages },
+                            (_, i) => i + 1
+                          ).map((page) => (
+                            <DropdownMenuItem
+                              key={page}
+                              asChild
+                              onSelect={() =>
+                                handlePageChange(page, selectedLimit)
+                              }
+                            >
+                              <Button size="sm">{page}</Button>
+                            </DropdownMenuItem>
+                          ))}
+                        </div>
+                        <ScrollBar orientation="horizontal" />
+                      </ScrollArea>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
+              <div className="space-x-2">
+                <Button
+                  size="sm"
+                  onClick={() =>
+                    handlePageChange(selectedPage - 1, selectedLimit)
+                  }
+                  disabled={selectedPage === 1}
+                >
+                  Prev
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() =>
+                    handlePageChange(selectedPage + 1, selectedLimit)
+                  }
+                  disabled={selectedPage === metadata.totalPages}
+                >
+                  Next
+                </Button>
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>
