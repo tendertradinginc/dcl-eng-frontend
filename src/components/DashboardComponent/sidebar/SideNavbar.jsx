@@ -47,31 +47,36 @@ const SideNavbar = () => {
     },
     {
       id: 5,
+      href: "/dashboard/service-page",
+      label: "Service",
+    },
+    {
+      id: 6,
       href: "/dashboard/clients-page",
       label: "Clients",
     },
     {
-      id: 6,
+      id: 7,
       href: "/dashboard/clientsFeedback-page",
       label: "Clients Feedback",
     },
     {
-      id: 7,
+      id: 8,
       href: "/dashboard/blog-page",
       label: "Blogs",
     },
     {
-      id: 8,
+      id: 9,
       href: "/dashboard/projects",
       label: "Projects",
     },
     {
-      id: 9,
+      id: 10,
       href: "/dashboard/successStory",
       label: "Success Story",
     },
     {
-      id: 10,
+      id: 11,
       href: "/dashboard/message-page",
       label: "Message",
     },
