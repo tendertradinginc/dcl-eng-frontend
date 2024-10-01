@@ -1,4 +1,5 @@
-import SingleCategory from "@/components/custom/SingleCategory";
+import CreateCategoryForm from "@/components/DashboardComponent/Service-Category-page/CreateCategoryForm";
+import SingleCategory from "@/components/DashboardComponent/Service-Category-page/SingleCategory";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,7 +10,6 @@ import {
 } from "@/components/ui/dialog";
 import { AiFillDatabase } from "react-icons/ai";
 import { FaPlusCircle } from "react-icons/fa";
-import CreateCategoryForm from "./CreateCategoryForm";
 
 async function fetchCategories() {
   const res = await fetch("http://localhost:5000/api/v1/category");
