@@ -7,9 +7,9 @@ import { BsBoxArrowUpRight } from "react-icons/bs";
 const Overview = () => {
   return (
     <section class="bg-[url('/overviewBg.jpeg')] bg-cover bg-no-repeat bg-bottom  relative py-32 w-full rounded-lg overflow-hidden">
-      <div class="absolute top-[-50%] left-[-50%] md:left-[-20%] lg:left-[-20%] xl:left-[-10%] w-[500px] h-[500px] md:w-[600px] md:h-[600px] xl:w-[700px] xl:h-[700px] bg-gradient-to-tr from-red-200 to-transparent rounded-full blur-2xl"></div>
+      <div class="absolute top-[-50%] left-[-50%] md:left-[-40%] lg:left-[-20%] xl:left-[-10%] w-[500px] h-[500px] md:w-[600px] md:h-[600px] xl:w-[700px] xl:h-[700px] bg-gradient-to-tr from-red-200 to-transparent rounded-full blur-2xl"></div>
 
-      <div class="absolute bottom-[-50%] right-[-50%] md:right-[-30%] lg:right-[-20%] xl:right-[-10%] w-[500px] h-[500px] md:h-[600px] lg:w-[600px] xl:w-[700px] xl:h-[700px] bg-gradient-to-tr from-transparent to-red-200 rounded-full blur-2xl"></div>
+      <div class="absolute bottom-[-50%] right-[-50%] md:right-[-40%] lg:right-[-20%] xl:right-[-10%] w-[500px] h-[500px] md:h-[600px] lg:w-[600px] xl:w-[700px] xl:h-[700px] bg-gradient-to-tr from-transparent to-red-200 rounded-full blur-2xl"></div>
       <MaxWidthWrapper>
         <SectionTitle
           title={"Contact Us"}
