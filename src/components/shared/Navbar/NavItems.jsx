@@ -10,13 +10,14 @@ const NavItems = ({ className }) => {
 
   const navLinks = [
     { id: 1, url: "/", label: "Home" },
-    { id: 2, url: "/", label: "Services" },
-    { id: 3, url: "/projectShowcase", label: "Project" },
-    { id: 4, url: "/successStory", label: "Success" },
-    { id: 5, url: "/", label: "Blog" },
-    { id: 6, url: "/", label: "About Us" },
-    { id: 7, url: "/", label: "Contact Us" },
-    { id: 7, url: "/dashboard", label: "dashboard" },
+    { id: 2, url: "/services", label: "Services" },
+    { id: 3, url: "/projects", label: "Project" },
+    { id: 4, url: "/projectShowcase", label: "Project Showcase" },
+    { id: 5, url: "/successStory", label: "Success" },
+    { id: 6, url: "/blogs", label: "Blog" },
+    { id: 7, url: "/about-us", label: "About Us" },
+    { id: 8, url: "/contactUs", label: "Contact Us" },
+    { id: 9, url: "/dashboard", label: "Dashboard" },
   ];
 
   return (

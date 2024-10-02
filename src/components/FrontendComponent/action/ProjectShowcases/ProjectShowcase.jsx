@@ -10,7 +10,7 @@ const ProjectShowcases = () => {
     return (
         <div>
             <div>
-                <PageBanner title="Project Showcase" banner="https://i.postimg.cc/mksvNfyj/Frame-76521-1.png" description={<> <Breadcrumb className="flex justify-center mt-5">
+                <PageBanner title="Project Showcase" banner="https://i.postimg.cc/15chdz9x/Frame-76591.png" description={<> <Breadcrumb className="flex justify-center mt-5">
                     <BreadcrumbList>
                         <BreadcrumbItem>
                             <BreadcrumbLink asChild>
