@@ -20,7 +20,7 @@ const ProjectCard = ({ title, description, imageUrl }) => {
       <CardHeader className="flex gap-3  py-3 justify-between  p-0"></CardHeader>
 
       <CardContent
-        onMouseOver={() => setIsShow(true)}
+        // onMouseOver={() => setIsShow(true)}
         className="p-0 flex-1 flex flex-col"
       >
        <div className="relative">
@@ -38,13 +38,8 @@ const ProjectCard = ({ title, description, imageUrl }) => {
       </CardContent>
 
       <div
-        className={`transition-opacity duration-1000 ease-in-out  ${
-          isShow ? "opacity-100  h-full duration-1000" : "opacity-0  h-0"
-        }`}
-      >
-        <div
           className={`absolute  w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
-            isShow ? "h-full duration-1000" : "h-20 duration-1000"
+            isShow ? "h-full duration-1000" : "h-0 duration-1000"
           }`}
         >
           <div className="p-10 pb-7">
@@ -63,7 +58,6 @@ const ProjectCard = ({ title, description, imageUrl }) => {
             </Link>
           </div>
         </div>
-      </div>
     </Card>
   );
 };

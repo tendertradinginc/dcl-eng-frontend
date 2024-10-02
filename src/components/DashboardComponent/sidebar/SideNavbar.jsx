@@ -41,42 +41,49 @@ const SideNavbar = () => {
       label: "Users",
     },
     {
+      id: 4,
+      href: "/dashboard/service-page",
+      label: "Service",
+    },
+    {
+      id: 5,
+      href: "/dashboard/team-member-page",
+      label: "Team Member",
+    },
+    {
       id: 6,
       href: "/dashboard/service-category",
       label: "Service Category",
     },
     {
-      id: 4,
+      id: 7,
       href: "/dashboard/clients-page",
       label: "Clients",
     },
     {
-      id: 5,
-
+      id: 8,
       href: "/dashboard/clientsFeedback-page",
       label: "Clients Feedback",
     },
     {
-      id: 6,
-
+      id: 9,
       href: "/dashboard/blog-page",
       label: "Blogs",
     },
     {
-      id: 7,
+      id: 10,
       href: "/dashboard/projects",
       label: "Projects",
     },
     {
-
-      id: 8,
+      id: 11,
       href: "/dashboard/successStory",
       label: "Success Story",
-
-      id: 9,
+    },
+    {
+      id: 12,
       href: "/dashboard/message-page",
       label: "Message",
-
     },
   ];
 

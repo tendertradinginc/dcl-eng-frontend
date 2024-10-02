@@ -20,7 +20,7 @@ console.log(isShow)
       <CardHeader className="flex gap-3  py-3 justify-between  p-0"></CardHeader>
 
       <CardContent
-        onMouseOver={() => setIsShow(true)}
+        // onMouseOver={() => setIsShow(true)}
         className="p-0 flex-1 flex flex-col"
       >
         <div className="relative">
@@ -40,18 +40,14 @@ console.log(isShow)
           </div>
         </div>
       </CardContent>
-
       <div
-        className={`transition-opacity w-full duration-1000 ease-in-out  ${
-          isShow ? "opacity-100  h-full duration-1000" : "opacity-0  h-0"
-        }`}
-      >
-        <div
-          className={`absolute  w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
-            isShow ? "h-full duration-1000" : "h-0 duration-1000"
+          className={`absolute duration-1000 w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
+            isShow ? "h-full  opacity-100 " : "h-0 duration-1000 opacity-0 "
           }`}
         >
-          <div className="p-10 pb-7">
+         <div className={`p-10 pb-7 ${
+            isShow ? "block" : "hidden"
+          }`}>
             <h1 className="text-white font-semibold text-2xl ">{title}</h1>
             <p className="text-[#EFEFEF] text-sm py-2 mb-4">{description}</p>
             <Link className="block" href={`/tenders/`}>
@@ -67,7 +63,8 @@ console.log(isShow)
             </Link>
           </div>
         </div>
-      </div>
+
+     
     </Card>
   );
 };

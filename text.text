@@ -1,2 +1,22 @@
 Button: default
 Button: varient="dashboard"
+
+
+primary color code = #F78C40
+
+pagebanner compnent :
+    <PageBanner
+          title="Contact Us"
+          description=""
+          banner="/contactusBanner.png"
+    ></PageBanner>
+
+
+section title :
+     <SectionTitle
+          title={"Contact Us"}
+          imageLink={"/COUNTACT.png"}
+          position={"items-center"}  // image-start = left e  cole jabe
+          width={637}
+          height={64}
+        ></SectionTitle>
