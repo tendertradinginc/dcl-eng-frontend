@@ -38,7 +38,7 @@ const CreateSuccessStory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData)
+        console.log(formData);
         if (!imageFile) {
             toast.error("Please upload an image.");
             return;
@@ -60,7 +60,7 @@ const CreateSuccessStory = () => {
                 ...formData,
                 image: imageUrl,
             };
-            console.log(successStoryData,);
+            console.log(successStoryData);
 
             const response = await fetch(
                 "http://localhost:5000/api/v1/successStory/create",
@@ -103,12 +103,11 @@ const CreateSuccessStory = () => {
         }
     };
 
-
     return (
-        <div className="mx-auto max-h-[600px] w-full">
-            <Card className="border-none shadow-none outline-none">
+        <div className="mx-auto w-full max-w-2xl">
+            <Card className="border-none shadow-none">
                 <CardContent>
-                    <form className="mx-auto max-w-2xl p-4" onSubmit={handleSubmit}>
+                    <form className="p-4" onSubmit={handleSubmit}>
                         <h2 className="mb-6 text-center text-2xl font-bold">
                             Success Story Details
                         </h2>
@@ -146,6 +145,7 @@ const CreateSuccessStory = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-4">
                             <Label className="mb-2 block">Client Name</Label>
                             <Input
@@ -156,6 +156,7 @@ const CreateSuccessStory = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-4">
                             <Label className="mb-2 block">Client Designation</Label>
                             <Input
@@ -166,6 +167,7 @@ const CreateSuccessStory = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-4">
                             <Label className="mb-2 block">Short Description</Label>
                             <Input
@@ -176,6 +178,7 @@ const CreateSuccessStory = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-4">
                             <Label className="mb-2 block">Full Description</Label>
                             <Input
@@ -186,6 +189,7 @@ const CreateSuccessStory = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-4">
                             <Label className="mb-2 block">Location</Label>
                             <Input
@@ -196,10 +200,11 @@ const CreateSuccessStory = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-4">
                             <Label className="mb-2 block">Handover Date</Label>
                             <Input
-                                type="text"
+                                type="date"
                                 name="handoverDate"
                                 value={formData.handoverDate}
                                 onChange={handleInputChange}
@@ -207,13 +212,16 @@ const CreateSuccessStory = () => {
                             />
                         </div>
 
-                        <Button
-                            type="submit"
-                            className="mt-2 w-full rounded-sm bg-secondary p-1 px-3 font-semibold hover:text-white text-black hover:bg-black"
-                            disabled={loading}
-                        >
-                            {loading ? "Submitting..." : "Submit"}
-                        </Button>
+                        {/* Submit Button at the Bottom */}
+                        <div className="mt-6">
+                            <Button
+                                type="submit"
+                                className="w-full rounded-sm bg-secondary p-2 px-4 font-semibold hover:text-white text-black hover:bg-black"
+                                disabled={loading}
+                            >
+                                {loading ? "Submitting..." : "Submit"}
+                            </Button>
+                        </div>
                     </form>
                 </CardContent>
             </Card>

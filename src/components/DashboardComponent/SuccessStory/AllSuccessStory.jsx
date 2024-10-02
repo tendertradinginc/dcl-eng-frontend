@@ -20,9 +20,9 @@ import SingleSuccessStory from "./SingleSuccessStory";
 
 
 
-const AllSuccessStory = () => {
+const AllClientFeedback = () => {
     const searchParams = useSearchParams();
-    const [successStories, setSuccessStories] = useState([]);
+    const [successStory, setSuccessStory] = useState([]);
     const [page, setPage] = useState(searchParams.get("page") || 1);
     const [limit, setLimit] = useState(searchParams.get("limit") || 5);
     const [totalSuccessStory, setTotalSuccessStory] = useState(0);
@@ -30,7 +30,7 @@ const AllSuccessStory = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchSuccessStory = async () => {
+        const fetchClientFeedback = async () => {
             setLoading(true);
             try {
                 const response = await fetch(
@@ -38,7 +38,7 @@ const AllSuccessStory = () => {
                 );
                 const data = await response.json();
 
-                setSuccessStories(data?.data.result);
+                setSuccessStory(data?.data.result);
                 setTotalSuccessStory(data?.data?.total);
             } catch (error) {
                 console.error("Error fetching :", error);
@@ -46,7 +46,7 @@ const AllSuccessStory = () => {
                 setLoading(false);
             }
         };
-        fetchSuccessStory();
+        fetchClientFeedback();
     }, [reload, page, limit]);
 
     const totalPage = Math.ceil(totalSuccessStory / limit);
@@ -110,19 +110,20 @@ const AllSuccessStory = () => {
                                     <thead className="bg-gradient-to-r from-green-400 to-green-700 text-white">
                                         <tr className="text-left">
                                             <th className="px-4 py-2">No</th>
-                                            <th className="py-2 pl-16">Company Name</th>
+                                            <th className="py-2 pl-8">Company Name</th>
                                             <th className="py-2 pl-16">Project Name</th>
+                                            <th className="py-2  pr-4">Success Story</th>
                                             <th className="px-4 pl-6">Actions</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        {successStories.length > 0 ? (
-                                            successStories?.map((SuccessStory, index) => (
+                                        {successStory.length > 0 ? (
+                                            successStory?.map((story, index) => (
                                                 <SingleSuccessStory
-                                                    key={successStories?._id}
+                                                    key={successStory?._id}
                                                     index={index}
-                                                    successStoryData={SuccessStory}
+                                                    successStoryData={story}
                                                     setReload={setReload}
                                                 />
                                             ))
@@ -145,4 +146,4 @@ const AllSuccessStory = () => {
     );
 };
 
-export default AllSuccessStory;
+export default AllClientFeedback;
