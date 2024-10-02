@@ -31,11 +31,11 @@ const TeamMemberSlider = () => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper my-20"
       >
       
-        {members?.map((item,idx)=>   <SwiperSlide key={idx}>
-            <TeamMemberCard title={item?.name} imageUrl={item?.profileImage} />
+        {members?.map((item,idx)=>   <SwiperSlide className="mb-10" key={idx}>
+            <TeamMemberCard data={item} />
         </SwiperSlide>)}
       
       </Swiper>
@@ -46,28 +46,53 @@ const TeamMemberSlider = () => {
 export default TeamMemberSlider;
 
 const members = [
+  {
+    name:"MD SAKIL SAGOR",
+    profileImage:"https://i.postimg.cc/cLyjDxkn/Component-5.png",
+    position:"Civil Engineer",
+    linkedIn:"www.linkedIn.com",
+    gmail:"www.gmail.com",
+    facebook:"www.facebook.com"
+},
     {
         name:"Evelyn Luna",
-        profileImage:"https://i.postimg.cc/FKtbxRrk/Downloader-La-961709.png",
+        profileImage:"https://i.postimg.cc/mZnKHNQV/Component-3.png",
         position:"Civil Engineer",
         linkedIn:"www.linkedIn.com",
-        twitter:"www.twitter.com",
+        gmail:"www.gmail.com",
         facebook:"www.facebook.com"
     },
     {
         name:"NAFIUL ISLAM JIM",
-        profileImage:"https://i.postimg.cc/GmDG9CFL/Downloader-La-169866.png",
+        profileImage:"https://i.postimg.cc/hvXwYfq9/Component-4.png",
         position:"Civil Engineer",
         linkedIn:"www.linkedIn.com",
-        twitter:"www.twitter.com",
+        gmail:"www.gmail.com",
+        facebook:"www.facebook.com"
+    },
+  {
+    name:"MD SAKIL SAGOR",
+    profileImage:"https://i.postimg.cc/cLyjDxkn/Component-5.png",
+    position:"Civil Engineer",
+    linkedIn:"www.linkedIn.com",
+    gmail:"www.gmail.com",
+    facebook:"www.facebook.com"
+},
+    {
+        name:"Evelyn Luna",
+        profileImage:"https://i.postimg.cc/mZnKHNQV/Component-3.png",
+        position:"Civil Engineer",
+        linkedIn:"www.linkedIn.com",
+        gmail:"www.gmail.com",
         facebook:"www.facebook.com"
     },
     {
-        name:"MD SAKIL SAGOR",
-        profileImage:"https://i.postimg.cc/C1cf9LgN/Downloader-La-638779.png",
+        name:"NAFIUL ISLAM JIM",
+        profileImage:"https://i.postimg.cc/hvXwYfq9/Component-4.png",
         position:"Civil Engineer",
         linkedIn:"www.linkedIn.com",
-        twitter:"www.twitter.com",
+        gmail:"www.gmail.com",
         facebook:"www.facebook.com"
     },
+   
 ]
