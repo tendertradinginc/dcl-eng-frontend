@@ -11,7 +11,7 @@ const NavItems = ({ className }) => {
   const navLinks = [
     { id: 1, url: "/", label: "Home" },
     { id: 2, url: "/", label: "Services" },
-    { id: 3, url: "/", label: "Project" },
+    { id: 3, url: "/projectShowcase", label: "Project" },
     { id: 4, url: "/successStory", label: "Success" },
     { id: 5, url: "/", label: "Blog" },
     { id: 6, url: "/", label: "About Us" },
