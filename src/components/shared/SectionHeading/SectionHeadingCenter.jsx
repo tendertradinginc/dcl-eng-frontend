@@ -7,6 +7,7 @@ const SectionHeadingCenter = ({
   title,
   description,
   className,
+  descriptionClassname,
 }) => {
   return (
     <div className={cn("", className)}>
@@ -29,7 +30,12 @@ const SectionHeadingCenter = ({
           <div className="h-0.5 w-10 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]" />
         </div>
         <h1 className="text-4xl font-bold my-8 text-center ">{title}</h1>
-        <p className="text-[#454545] max-w-4xl text-center mx-auto text-xl">
+        <p
+          className={cn(
+            "text-[#454545] max-w-4xl text-center mx-auto text-xl",
+            descriptionClassname
+          )}
+        >
           {description}
         </p>
       </div>
