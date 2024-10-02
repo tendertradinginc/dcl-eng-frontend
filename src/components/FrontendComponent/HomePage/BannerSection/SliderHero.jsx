@@ -36,7 +36,7 @@ const CustomSlider = ({ slides }) => {
             <MaxWidthWrapper>
               <div className="flex flex-col justify-center items-start h-full py-20 md:py-32 lg:pb-10 text-left text-white">
                 <h1 className="text-3xl lg:text-6xl font-bold">
-                  BUILT ON{" "}
+                  BUILT ON
                   <span
                     className="text-transparent stroke-2 stroke-[#F97316] outline-0"
                     style={{
@@ -45,7 +45,7 @@ const CustomSlider = ({ slides }) => {
                     }}
                   >
                     TRUST
-                  </span>{" "}
+                  </span>
                   <span className="mt-4 block">SINCE 1980</span>
                 </h1>
                 <p className="my-8 w-11/12 md:w-2/3 text-lg font-medium">
