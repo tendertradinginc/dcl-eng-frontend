@@ -7,20 +7,19 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 import { useState } from "react";
 
-const ServiceCard = ({ title, description, imageUrl }) => {
+const TeamMemberCard = ({ title, imageUrl }) => {
   const [isShow, setIsShow] = useState(false);
-console.log(isShow)
+
   return (
     <Card
       onMouseLeave={() => setIsShow(false)}
-        onMouseOver={() => setIsShow(true)}
       className=" relative flex flex-col p-0 min-h-[500px] "
       radius="sm"
     >
       <CardHeader className="flex gap-3  py-3 justify-between  p-0"></CardHeader>
 
       <CardContent
-        // onMouseOver={() => setIsShow(true)}
+        onMouseOver={() => setIsShow(true)}
         className="p-0 flex-1 flex flex-col"
       >
         <div className="relative">
@@ -29,7 +28,7 @@ console.log(isShow)
             src={imageUrl}
             height={500}
             width={427}
-            className="h-[500px] "
+            className="h-[500px] object-cover "
           />
           <div
             className={`absolute bottom-0 p-10 pb-7 ${
@@ -40,16 +39,20 @@ console.log(isShow)
           </div>
         </div>
       </CardContent>
+
       <div
-          className={`absolute duration-1000 w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
-            isShow ? "h-full  opacity-100 " : "h-0 duration-1000 opacity-0 "
+        className={`transition-opacity w-full duration-1000 ease-in-out  ${
+          isShow ? "opacity-100  h-full duration-1000" : "opacity-0  h-0"
+        }`}
+      >
+        <div
+          className={`absolute h-full w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
+            isShow ? "h-full duration-1000" : "h-20 duration-1000"
           }`}
         >
-         <div className={`p-10 pb-7 ${
-            isShow ? "block" : "hidden"
-          }`}>
+          <div className="p-10 pb-7">
             <h1 className="text-white font-semibold text-2xl ">{title}</h1>
-            <p className="text-[#EFEFEF] text-sm py-2 mb-4">{description}</p>
+
             <Link className="block" href={`/tenders/`}>
               <Button
                 className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center   border-2  text-white flex "
@@ -63,10 +66,9 @@ console.log(isShow)
             </Link>
           </div>
         </div>
-
-     
+      </div>
     </Card>
   );
 };
 
-export default ServiceCard;
+export default TeamMemberCard;
