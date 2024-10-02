@@ -1,68 +1,37 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { FaArrowRightLong } from "react-icons/fa6";
 
-import { useState } from "react";
 
-const ServiceCard = ({ title, description, imageUrl }) => {
-  const [isShow, setIsShow] = useState(false);
- 
+export default function ServiceCard() {
   return (
-    <Card
-      onMouseLeave={() => setIsShow(false)}
-      onMouseOver={() => setIsShow(true)}
-      className=" relative flex flex-col p-0 min-h-[500px] "
-      radius="sm"
-    >
-      <CardHeader className="flex gap-3  py-3 justify-between  p-0"></CardHeader>
+    <Card className="w-full max-w-sm overflow-hidden group relative border-purple-200 hover:shadow-md transition-shadow duration-300">
+      <div className="h-80 relative">
+        <Image
+          src="https://picsum.photos/id/156/200/300"
+          alt="Road construction workers operating paving equipment at sunset"
+          layout="fill"
+          objectFit="cover"
+        />
 
-      <CardContent
-       
-        className="p-0 flex-1 flex flex-col"
-      >
-        <div className="relative">
-          <Image
-            alt="slider image"
-            src={imageUrl}
-            height={500}
-            width={427}
-            className="h-[500px] "
-          />
-          <div
-            className={`absolute bottom-0 p-10 pb-7 ${
-              isShow ? "hidden" : "block"
-            }`}
-          >
-            <h1 className="text-white font-semibold text-2xl">{title}</h1>
-          </div>
-        </div>
-      </CardContent>
-      <div
-        className={`absolute duration-1000 w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
-          isShow ? "h-full  opacity-100 " : "h-0 duration-1000 opacity-0 "
-        }`}
-      >
-        <div className={`p-10 pb-7 ${isShow ? "block" : "hidden"}`}>
-          <h1 className="text-white font-semibold text-2xl ">{title}</h1>
-          <p className="text-[#EFEFEF] text-sm py-2 mb-4">{description}</p>
-          <Link className="block" href={`/tenders/`}>
-            <Button
-              className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center   border-2  text-white flex "
-              variant="tti"
-            >
-              Explore Our Prujects{" "}
-              <div className="p-2 rounded-full bg-white">
-                <FaArrowRightLong className="text-lg  text-[#181A39] " />
-              </div>
-            </Button>
-          </Link>
-        </div>
       </div>
+      <CardContent className="p-4">
+        <h2 className="text-xl font-bold mb-2">PIPE SUPPLY & MANUFACTURER</h2>
+        <p className="text-sm text-muted-foreground">
+          We maintain this by ensuring transparency and professional conduct in
+          every aspect of our work.
+        </p>
+      </CardContent>
+      <CardFooter className="p-4 bg-white lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:translate-y-0 lg:transition-transform lg:duration-300 lg:ease-in-out">
+        <Link href="/services/road-construction/123" className="w-full">
+          <Button variant="ghost" className="w-full justify-between">
+            Learn more
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </Link>
+      </CardFooter>
     </Card>
   );
-};
-
-export default ServiceCard;
+}
