@@ -1,42 +1,13 @@
 import Image from "next/image";
 
-const CEO = () => {
+const MD = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 pt-20 pb-5 md:py-20">
-      <div className="relative h-[500px] lg:h-auto">
-        <div className="absolute left-0 top-0 w-[90%] h-[90%]">
-          <Image
-            className="h-full w-full object-cover"
-            src="https://i.postimg.cc/KzdHPQgt/Frame-76557.png"
-            alt="ceo background image"
-            height={500}
-            width={400}
-          />
-        </div>
-        <div className="absolute right-0 md:right-5  bottom-5 w-[90%] h-[90%]">
-          <Image
-            className="h-full w-full object-cover "
-            src="https://i.postimg.cc/Twys5BhR/Frame-76561.png"
-            alt="ceo  image"
-            height={500}
-            width={400}
-          />
-        </div>
-        <div className="bg-[#F78C40] w-max absolute text-center py-2.5 px-10 -bottom-5 right-0 lg:-right-5">
-          <h1 className="text-2xl font-bold text-white">NAFIUL ISLAM JIM</h1>
-          <p className="text-[#EFEFEF] text-sm font-medium">
-            Chief executive officer (CEO)
-          </p>
-          <p className="text-[#EFEFEF] text-sm font-medium">
-            DCL Engineering Ltd
-          </p>
-        </div>
-      </div>
-      <div className="py-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 py-10">
+      <div className="py-10 order-last lg:order-first">
         <div className="flex items-center gap-3 ">
           {" "}
           <p className="text-[#F78C40] inline-block font-semibold">
-            Some Words From CEO
+            Some Words From MD
           </p>
           <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
         </div>
@@ -75,8 +46,37 @@ const CEO = () => {
           </p>
         </div>
       </div>
+      <div className="relative h-[500px] lg:h-auto">
+        <div className="absolute left-0 top-0 w-[90%] h-[90%]">
+          <Image
+            className="h-full w-full object-cover"
+            src="https://i.postimg.cc/KzdHPQgt/Frame-76557.png"
+            alt="ceo background image"
+            height={500}
+            width={400}
+          />
+        </div>
+        <div className="absolute right-0 md:right-5  bottom-5 w-[90%] h-[90%]">
+          <Image
+            className="h-full w-full object-cover "
+            src="https://i.postimg.cc/Twys5BhR/Frame-76561.png"
+            alt="ceo  image"
+            height={500}
+            width={400}
+          />
+        </div>
+        <div className="bg-[#F78C40] w-max absolute text-center py-2.5 px-10 mg:px-14 -bottom-5 left-0 lg:-left-5">
+          <h1 className="text-2xl font-bold text-white">NAFIUL ISLAM JIM</h1>
+          <p className="text-[#EFEFEF] text-sm font-medium">
+            Managing Directors (MD)
+          </p>
+          <p className="text-[#EFEFEF] text-sm font-medium">
+            DCL Engineering Ltd
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CEO;
+export default MD;
