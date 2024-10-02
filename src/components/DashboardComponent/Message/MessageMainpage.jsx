@@ -51,30 +51,6 @@ const MessageMainpage = () => {
     }
   };
 
-  const handleRemovecategory = async (id) => {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/v1/message/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        toast.success("success");
-        const remainingData = allMessage.filter((user) => user._id !== id);
-        setAllMessage(remainingData);
-      } else {
-        console.error("Failed to remove category:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error removing category:", error);
-    }
-  };
-
   return (
     <div className="min-h-[80vh] ">
       <div className="container mx-auto px-2">

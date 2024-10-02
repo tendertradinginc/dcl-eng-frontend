@@ -15,7 +15,7 @@ const NavItems = ({ className }) => {
     { id: 4, url: "/success", label: "Success" },
     { id: 5, url: "/blog", label: "Blog" },
     { id: 6, url: "/about-us", label: "About Us" },
-    { id: 7, url: "/contact-us", label: "Contact Us" },
+    { id: 7, url: "/contactUs", label: "Contact Us" },
     { id: 8, url: "/dashboard", label: "Dashboard" },
   ];
 
