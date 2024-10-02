@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ServiceCard() {
   return (
@@ -22,10 +23,12 @@ export default function ServiceCard() {
         </p>
       </CardContent>
       <CardFooter className="p-4 bg-white lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:translate-y-0 lg:transition-transform lg:duration-300 lg:ease-in-out">
-        <Button variant="ghost" className="w-full justify-between">
-          Learn more
-          <ArrowRight className="h-4 w-4" />
-        </Button>
+        <Link href="/services/road-construction/123" className="w-full">
+          <Button variant="ghost" className="w-full justify-between">
+            Learn more
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
