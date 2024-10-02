@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
   Dialog,
   DialogClose,
@@ -13,10 +13,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Pencil1Icon } from "@radix-ui/react-icons";
-import UpdateCategoryForm from "@/app/(withDashboardLayout)/dashboard/service-category/UpdateCategoryForm";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
+import UpdateCategoryForm from "./UpdateCategoryForm";
 
 export default function SingleCategory({ index, data }) {
   //* Realod with revalidate path
