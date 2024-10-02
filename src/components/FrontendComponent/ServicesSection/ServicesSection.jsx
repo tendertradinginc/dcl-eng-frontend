@@ -4,7 +4,7 @@ import ServiceCard from "@/components/shared/ServiceCard/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const Services = () => {
+const ServicesSection = () => {
   return (
     <MaxWidthWrapper className="my-20">
       <SectionHeadingCenter
@@ -35,21 +35,21 @@ const Services = () => {
       </div>
 
       <div>
-      <Button
-                className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0"
-                variant="tti"
-              >
-                Explore Our Prujects{" "}
-                <div className="p-2 rounded-full  bg-[#0A2F4D] my-0.5">
-                  <FaArrowRightLong className="text-lg  text-white -rotate-45" />
-                </div>
-              </Button>
+        <Button
+          className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0"
+          variant="tti"
+        >
+          Explore Our Prujects{" "}
+          <div className="p-2 rounded-full  bg-[#0A2F4D] my-0.5">
+            <FaArrowRightLong className="text-lg  text-white -rotate-45" />
+          </div>
+        </Button>
       </div>
     </MaxWidthWrapper>
   );
 };
 
-export default Services;
+export default ServicesSection;
 
 const services = [
   {
