@@ -21,7 +21,7 @@ import blue from "./blue.gif";
 const EditSuccessStory = ({ data, setReload }) => {
     const { clientName, clientDesignation, companyName, projectName, shortDescription, fullDescription, location, handoverDate, _id, image } = data;
     const [loading, setLoading] = useState(false);
-    const [updatedAuthor, setUpdatedAuthor] = useState(clientName);
+    const [updatedClientName, setUpdatedClientName] = useState(clientName);
     const [updatedDesignation, setUpdatedDesignation] = useState(clientDesignation);
     const [updatedCompanyName, setUpdatedCompanyName] = useState(companyName);
     const [updatedProjectName, setUpdatedProjectName] = useState(projectName);
@@ -46,7 +46,7 @@ const EditSuccessStory = ({ data, setReload }) => {
             }
 
             const updatedClientFeedback = {
-                clientName: updatedAuthor,
+                clientName: updatedClientName,
                 clientDesignation: updatedDesignation,
                 companyName: updatedCompanyName,
                 projectName: updatedProjectName,
@@ -110,7 +110,7 @@ const EditSuccessStory = ({ data, setReload }) => {
                                 src={image} // Display the current image
                                 alt="Feedback Image"
                             />
-                            <Label className="mb-2 mt-5 block">Update Image</Label>
+                            <Label className="mb-2 mt-5 block">Image</Label>
                             <Input
                                 type="file"
                                 accept="image/*"
@@ -126,9 +126,9 @@ const EditSuccessStory = ({ data, setReload }) => {
                         <div className="mb-5">
                             <Label className="mb-2 block">Author</Label>
                             <Input
-                                value={updatedAuthor}
+                                value={updatedClientName}
                                 onChange={(e) => {
-                                    setUpdatedAuthor(e.target.value);
+                                    setUpdatedClientName(e.target.value);
                                     setIsDisabled(false);
                                 }}
                                 type="text"
@@ -137,7 +137,7 @@ const EditSuccessStory = ({ data, setReload }) => {
                         </div>
 
                         <div className="mb-5">
-                            <Label className="mb-2 block">Designation</Label>
+                            <Label className="mb-2 block">Author Designation</Label>
                             <Input
                                 value={updatedDesignation}
                                 onChange={(e) => {
