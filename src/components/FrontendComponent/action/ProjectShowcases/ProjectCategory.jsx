@@ -1,41 +1,46 @@
+import { useEffect, useState } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import ProjectShowcaseCard from "./ProjectShowcaseCard";
 
+const ProjectCategory = ({ category, loading }) => {
+    const [projects, setProjects] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-const ProjectCategory = () => {
+    useEffect(() => {
+        const fetchProjects = async () => {
+            setIsLoading(true);
+            try {
+                const response = await fetch(`http://localhost:5000/api/v1/projects?category=${category}`);
+                const data = await response.json();
+
+                // Assuming the API returns projects in data.data.projects
+                setProjects(data?.data?.projects || []);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        if (category) {
+            fetchProjects();
+        }
+    }, [category]);
+
     return (
-        <div>
-            <TabsContent className="w-full min-h-[70vh]" value={value}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-                    {loading
-                        ? skeletonElement?.map((item, idx) => (
-                            <div
-                                key={idx}
-                                className="shadow-2xl rounded-md p-4 py-6 border  w-full mx-auto"
-                            >
-                                <div className="animate-pulse flex space-x-4">
-                                    <div className="flex-1 space-y-4 py-1">
-                                        <div className="h-4 bg-gray-400 rounded"></div>
-                                        <div className="space-y-3">
-                                            <div className="grid grid-cols-3 gap-4">
-                                                <div className="h-2 bg-gray-400 rounded col-span-2"></div>
-                                                <div className="h-2 bg-gray-400 rounded col-span-1"></div>
-                                            </div>
-                                            <div className="h-2 bg-gray-400 rounded"></div>
-                                            <div className="h-2 bg-gray-400 rounded"></div>
-                                        </div>
-                                    </div>
-                                    <div className="rounded-md bg-gray-400 h-10 w-20 order-fast"></div>
-                                </div>
-                                <div className="rounded-md bg-gray-400 h-10 w-28 mt-10"></div>
-                            </div>
-                        ))
-                        : projects?.map((project, idx) => (
+        <TabsContent className="w-full min-h-[70vh]" value={category}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+                {
+                    projects.length > 0 ? (
+                        projects.map((project, idx) => (
                             <ProjectShowcaseCard project={project} key={idx} />
-                        ))}
-                </div>
-            </TabsContent>
-        </div>
+                        ))
+                    ) : (
+                        <p className="col-span-full text-center text-gray-500">No projects found for this category.</p>
+                    )
+                }
+            </div>
+        </TabsContent>
     );
 };
 
