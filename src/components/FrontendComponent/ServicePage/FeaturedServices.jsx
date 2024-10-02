@@ -68,15 +68,17 @@ export default function FeaturedServices() {
         </div>
       </div>
       <div className="bg-white py-16">
-        <Button
-          className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 mt-24"
-          variant="tti"
-        >
-          View More Services
-          <div className="p-2 rounded-full  bg-[#0A2F4D] my-0.5">
-            <FaArrowRightLong className="text-lg  text-white -rotate-45" />
-          </div>
-        </Button>
+        <Link href="/services/road-construction">
+          <Button
+            className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 mt-24"
+            variant="tti"
+          >
+            View More Services
+            <div className="p-2 rounded-full  bg-[#0A2F4D] my-0.5">
+              <FaArrowRightLong className="text-lg  text-white -rotate-45" />
+            </div>
+          </Button>
+        </Link>
       </div>
     </section>
   );
