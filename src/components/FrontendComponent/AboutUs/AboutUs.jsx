@@ -15,7 +15,7 @@ import Image from "next/image";
 
 const AboutUs = () => {
   return (
-    <div className="grid lg:grid-cols-2  mt-20 py-20">
+    <div className="grid lg:grid-cols-2  mt-10 py-20">
       <div className="mt-5 md:mt-10 lg:mt-0">
         <SectionHeadingLeft
           imageUrl="https://i.postimg.cc/65SSjyX9/ABOUT-US.png"
