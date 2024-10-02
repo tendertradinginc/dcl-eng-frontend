@@ -13,6 +13,7 @@ const ProjectCard = ({ title, description, imageUrl }) => {
   return (
     <Card
       onMouseLeave={() => setIsShow(false)}
+      onMouseOver={() => setIsShow(true)}
       className=" relative flex flex-col p-0 min-h-[500px] "
       radius="sm"
     >
@@ -42,7 +43,7 @@ const ProjectCard = ({ title, description, imageUrl }) => {
         }`}
       >
         <div
-          className={`absolute h-full w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
+          className={`absolute  w-full   top-0  left-0 bg-[#181A3980]  flex flex-col  justify-end ${
             isShow ? "h-full duration-1000" : "h-20 duration-1000"
           }`}
         >
