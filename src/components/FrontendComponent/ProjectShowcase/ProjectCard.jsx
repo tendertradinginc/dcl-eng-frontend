@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const ProjectCard = ({ title, description, imageUrl }) => {
   const [isShow, setIsShow] = useState(false);
-  // console.log(item.organizationName);
+
   return (
     <Card
       onMouseLeave={() => setIsShow(false)}
