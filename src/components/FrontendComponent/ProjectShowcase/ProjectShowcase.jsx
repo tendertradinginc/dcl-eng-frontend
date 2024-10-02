@@ -8,7 +8,7 @@ const ProjectShowcase = async () => {
   const onGoing = projects?.filter((item) => item?.category == "on-going");
   const upConming = projects?.filter((item) => item?.category == "up-coming");
   const completed = projects?.filter((item) => item?.category == "completed");
-  console.log(completed);
+
 
   return (
     <div>
