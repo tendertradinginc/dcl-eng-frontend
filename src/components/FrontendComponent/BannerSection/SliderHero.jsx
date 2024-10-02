@@ -1,6 +1,7 @@
 "use client";
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import { useEffect, useState } from "react";
+import { GoArrowUpRight } from "react-icons/go";
 
 const CustomSlider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,7 +19,7 @@ const CustomSlider = ({ slides }) => {
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden shadow-lg shadow-blue-500/50">
+    <div className="relative w-full h-[80vh] overflow-hidden shadow-lg shadow-blue-500/50">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -47,13 +48,17 @@ const CustomSlider = ({ slides }) => {
                   </span>{" "}
                   <span className="mt-4 block">SINCE 1980</span>
                 </h1>
-                <p className="mt-4 w-11/12 md:w-2/3 text-lg font-medium">
+                <p className="my-8 w-11/12 md:w-2/3 text-lg font-medium">
                   Focusing on medium to large-scale commercial construction
                   projects, we work with both investors and developers to create
                   landmarks that make an impact.
                 </p>
-                <button className="mt-8 px-6 py-3 text-white bg-[#F97316] rounded-lg hover:bg-[#EA5B10] transition duration-300">
+
+                <button className="relative inline-flex items-center pl-6  border-2  border-white hover:border-[#F97316]  rounded-full text-white hover:bg-[#F97316] hover:text-white text-md font-semibold uppercase transition-colors duration-300">
                   Explore Our Project
+                  <span className="ml-3 inline-flex items-center justify-center w-12 h-12 bg-white rounded-full">
+                    <GoArrowUpRight className="text-black" />
+                  </span>
                 </button>
               </div>
             </MaxWidthWrapper>
@@ -67,18 +72,18 @@ const CustomSlider = ({ slides }) => {
             (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
           )
         }
-        className="absolute top-1/2 left-5 transform -translate-y-1/2 text-white bg-gray-900 bg-opacity-50 p-3 rounded-full hover:bg-opacity-80 shadow-lg shadow-blue-500/50"
+        className="absolute top-1/2 z-50 left-5 transform -translate-y-1/2 text-white text-3xl  border border-transparent hover:border duration-200 hover:border-white  bg-opacity-50 px-1  rounded-full hover:bg-opacity-80"
       >
         &#8592;
       </button>
       <button
         onClick={() => nextSlide()}
-        className="absolute top-1/2 right-5 transform -translate-y-1/2 text-white bg-gray-900 bg-opacity-50 p-3 rounded-full hover:bg-opacity-80 shadow-lg shadow-blue-500/50"
+        className="absolute top-1/2 z-50 right-5 transform -translate-y-1/2 text-white text-3xl border border-transparent hover:border duration-200 hover:border-white bg-opacity-50 px-1  rounded-full hover:bg-opacity-80"
       >
         &#8594;
       </button>
 
-      <div className="absolute bottom-5 w-full flex justify-center space-x-2">
+      <div className="absolute bottom-5 w-full flex justify-center space-x-2 z-50">
         {slides.map((_, index) => (
           <div
             key={index}
