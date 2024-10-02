@@ -1,6 +1,6 @@
 import ContactForm from "@/components/FrontendComponent/ContactUsPage/ContactForm";
 import PageBanner from "@/components/shared/PageBanner/PageBanner";
-import Image from "next/image";
+import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
 
 const Contact = () => {
   return (
@@ -9,7 +9,7 @@ const Contact = () => {
         <PageBanner
           title="Contact Us"
           description=""
-          banner="/contact.png"
+          banner="/contactusBanner.png"
         ></PageBanner>
       </div>
 
@@ -18,24 +18,14 @@ const Contact = () => {
 
         <div class="absolute top-[-50%] right-[-50%] md:right-[-30%] lg:right-[-20%] xl:right-[-10%] w-[450px] h-[450px] bg-gradient-to-tr from-transparent to-red-200 rounded-full blur-md"></div>
 
-        <div className="flex flex-col items-center mb-8">
-          <div className="mb-5 z-10 ">
-            <Image
-              alt="our vision imave"
-              height={64}
-              width={637}
-              className="w-[300px] md:w-[637px]"
-              src="/COUNTACT.png"
-            ></Image>
-          </div>
-          <div className="flex items-center gap-3 -mt-14 ml-4">
-            {" "}
-            <p className="text-[#F78C40] inline-block text-center">
-              What We Do
-            </p>
-            <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
-          </div>
-        </div>
+        <SectionTitle
+          title={"Contact Us"}
+          imageLink={"/COUNTACT.png"}
+          position={"items-center"}
+          width={637}
+          height={64}
+        ></SectionTitle>
+
         <div className="text-5xl font-bold mb-2 text-center">
           <h2> WE'D LOVE TO HEAR FROM</h2>
           <div className="inline-block mt-2">
