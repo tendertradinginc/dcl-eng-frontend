@@ -14,7 +14,9 @@ const SectionTitle = ({ title, imageLink, position, width, height }) => {
       </div>
       <div className="flex items-center gap-3 -mt-14 ml-4">
         {" "}
-        <p className="text-[#F78C40] inline-block text-center ml-4">{title}</p>
+        <p className="text-[#F78C40] inline-block text-center ml-4 font-bold text-lg">
+          {title}
+        </p>
         <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
       </div>
     </div>
