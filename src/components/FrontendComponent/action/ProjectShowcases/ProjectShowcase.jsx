@@ -4,8 +4,53 @@ import MaxWidthWrapper from '@/components/custom/MaxWidthWrapper';
 import PageBanner from '@/components/shared/PageBanner/PageBanner';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
+import { useSearchParams, useNavigate } from 'next/navigation';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ProjectCategory from './ProjectCategory';
+import { useState } from 'react';
+
 
 const ProjectShowcases = () => {
+
+    const { uniqueCatories, setUniqueCategories } = useState([]);
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const [selectedCategory, setSelectedCategory] = useState(uniqueCatories[0]);
+    const [loading, setLoading] = useState(true)
+
+
+    // useEffect(() => {
+    //     if (uniqueCatories.length > 0) {
+    //         const queryCategory = searchParams.get("category");
+    //         if (!queryCategory) {
+    //             setSelectedCategory(uniqueCatories[0]);
+    //         } else {
+    //             setSelectedCategory(queryCategory);
+    //         }
+    //     }
+    // }, [uniqueCatories, searchParams]);
+
+
+    useEffect(() => {
+        const fetchProjectCategory = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch(
+                    `http://localhost:5000/api/v1/projects`
+                );
+                const data = await response.json();
+
+                setUniqueCategories(data?.data.result);
+                setSelectedCategory(data?.data?.uniqueCatories);
+            } catch (error) {
+                console.error("Error fetching :", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProjectCategory();
+    }, [setUniqueCategories]);
+
 
 
     return (
@@ -48,6 +93,38 @@ const ProjectShowcases = () => {
                             </span>
                         </h2>
                     </div>
+                </div>
+
+
+                {/* showcase tab */}
+                <div>
+                    <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
+                        <div className="flex justify-center flex-wrap gap-5 items-center text-5xl mt-5">
+                            <TabsList className="flex  gap-5 flex-wrap justify-start md:justify-end  ">
+                                {uniqueCatories?.map((item, idx) => (
+                                    <TabsTrigger
+                                        className="py-3 bg-white text-black font-semibold data-[state=active]:bg-black data-[state=active]:text-white"
+                                        key={idx}
+                                        value={item}
+                                        onClick={() => navigate(`?category=${item}`)}
+                                    >
+                                        {item}
+                                    </TabsTrigger>
+                                ))}
+                            </TabsList>
+                        </div>
+
+
+                        <div className="grids lg:grid-cols-2 grid-col-1 gap-4">
+                            {uniqueCatories?.map((category, idx) => (
+                                <ProjectCategory setTabLoading={setLoading} key={idx} value={category} />
+                            ))}
+                            {/* <ProjectShowcaseCard /> */}
+                        </div>
+                    </Tabs>
+
+
+
                 </div>
             </MaxWidthWrapper>
 
