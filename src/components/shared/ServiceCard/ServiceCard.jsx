@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+
 export default function ServiceCard() {
   return (
     <Card className="w-full max-w-sm overflow-hidden group relative border-purple-200 hover:shadow-md transition-shadow duration-300">
@@ -14,6 +15,7 @@ export default function ServiceCard() {
           layout="fill"
           objectFit="cover"
         />
+
       </div>
       <CardContent className="p-4">
         <h2 className="text-xl font-bold mb-2">PIPE SUPPLY & MANUFACTURER</h2>
