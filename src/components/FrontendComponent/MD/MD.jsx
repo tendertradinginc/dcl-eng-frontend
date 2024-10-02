@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const MD = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 py-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 py-20 pt-28">
       <div className="py-10 order-last lg:order-first">
         <div className="flex items-center gap-3 ">
           {" "}

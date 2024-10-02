@@ -8,7 +8,7 @@ const OurPromise = () => {
       style={{
         backgroundImage: "url('https://i.postimg.cc/prH7W8px/Frame-76565.png')",
       }}
-      className="py-20 bg-center bg-no-repeat bg-cover"
+      className="py-20 bg-center bg-no-repeat bg-cover mb-20"
     >
       <MaxWidthWrapper>
         <div className="mb-10 lg:hidden">
