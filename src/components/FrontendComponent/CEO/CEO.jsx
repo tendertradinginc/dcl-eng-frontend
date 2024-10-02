@@ -22,7 +22,7 @@ const CEO = () => {
             width={400}
           />
         </div>
-        <div className="bg-[#F78C40] w-max absolute text-center py-2.5 px-10 -bottom-5 right-0 lg:-right-5">
+        <div className="bg-[#F78C40] w-max absolute text-center py-2.5 px-10 md:px-14 -bottom-5 right-0 lg:-right-5">
           <h1 className="text-2xl font-bold text-white">NAFIUL ISLAM JIM</h1>
           <p className="text-[#EFEFEF] text-sm font-medium">
             Chief executive officer (CEO)
