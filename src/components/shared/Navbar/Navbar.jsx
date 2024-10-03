@@ -42,7 +42,7 @@ const Navbar = () => {
         <Link href="/">
           <Image
             loader={customLoader}
-            src="https://i.ibb.co/MZfwXL1/7-removebg-preview.png"
+            src="logo.png"
             width={80}
             height={80}
             alt=""
