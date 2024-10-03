@@ -7,10 +7,11 @@
 
 
 body {
- 
   font-family: Arial, Helvetica, sans-serif;
   background-color: #F1F4FB;
-
+}
+.active-slide .icon-class {
+  color: #dae724; /* your selected color */
 }
 
 @layer utilities {

@@ -11,7 +11,7 @@ const Review = () => {
       className="bg-cover bg-no-repeat bg-center my-16"
     >
       <MaxWidthWrapper className="py-28 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-14 items-center">
           <div className="lg:col-span-1">
             <SectionHeadingLeft
               description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
