@@ -2,11 +2,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/bundle";
-import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import Image from "next/image";
+
 
 const ReviewSlider = () => {
   return (
@@ -15,7 +13,9 @@ const ReviewSlider = () => {
       spaceBetween={10}
       pagination={{
         clickable: true,
+      
       }}
+    
       modules={[Pagination]}
       className="mySwiper "
     >
