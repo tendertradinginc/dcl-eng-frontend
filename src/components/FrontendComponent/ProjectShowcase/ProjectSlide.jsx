@@ -32,23 +32,48 @@ const ProjectSlide = () => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper "
       >
-        <SwiperSlide>
+
+        <SwiperSlide className="mb-12 data">
           <ProjectCard
             title=" ARCHITECTURE & BUILDING"
             imageUrl="https://i.postimg.cc/KvYPyzXh/Component-2.png"
             description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
           />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="mb-12 data">
           <ProjectCard
             title=" ARCHITECTURE & BUILDING"
             imageUrl="https://i.postimg.cc/BbYWj6Q1/Downloader-La-343822.png"
             description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
           />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="mb-12 data">
+          <ProjectCard
+            title="ARCHITECTURE & BUILDING"
+            imageUrl="https://i.postimg.cc/rFwMq6Fr/Component-2-1.png"
+            description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
+          />
+        </SwiperSlide>
+
+        {/*  */}
+
+        <SwiperSlide className="mb-12 data">
+          <ProjectCard
+            title=" ARCHITECTURE & BUILDING"
+            imageUrl="https://i.postimg.cc/KvYPyzXh/Component-2.png"
+            description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
+          />
+        </SwiperSlide>
+        <SwiperSlide className="mb-12 data">
+          <ProjectCard
+            title=" ARCHITECTURE & BUILDING"
+            imageUrl="https://i.postimg.cc/BbYWj6Q1/Downloader-La-343822.png"
+            description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
+          />
+        </SwiperSlide>
+        <SwiperSlide className="mb-12 data">
           <ProjectCard
             title="ARCHITECTURE & BUILDING"
             imageUrl="https://i.postimg.cc/rFwMq6Fr/Component-2-1.png"
