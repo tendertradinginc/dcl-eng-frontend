@@ -70,7 +70,7 @@ export default function CreateTeamMemberForm({ setReload }) {
         },
         featuredStatus: false,
       });
-      setReload(true);
+      setReload((prev) => prev + 1);
     } catch (error) {
       console.error("Failed to submit form:", error.response || error);
       toast.error(

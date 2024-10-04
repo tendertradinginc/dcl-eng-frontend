@@ -36,7 +36,7 @@ const Page = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
-  const [reload, setReload] = useState(false);
+  const [reload, setReload] = useState(0);
   const [data, setData] = useState(null);
   const [metadata, setMetadata] = useState(null);
 

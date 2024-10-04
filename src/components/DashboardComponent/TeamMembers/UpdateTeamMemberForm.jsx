@@ -76,7 +76,7 @@ export default function UpdateTeamMemberForm({ memberId, setReload }) {
 
       console.log("Form submitted:", response.data);
       toast.success("Team member updated successfully!");
-      setReload(true);
+      setReload((prev) => prev + 1);
     } catch (error) {
       console.error("Failed to update team member:", error.response || error);
       toast.error(
