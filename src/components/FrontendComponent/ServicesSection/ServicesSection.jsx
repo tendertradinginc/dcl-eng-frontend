@@ -1,6 +1,7 @@
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import SectionHeadingCenter from "@/components/shared/SectionHeading/SectionHeadingCenter";
 import ServiceCard from "@/components/shared/ServiceCard/ServiceCard";
+import ServiceCardHome from "@/components/shared/ServiceCard/ServiceCardHome";
 import { Button } from "@/components/ui/button";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -25,7 +26,13 @@ const ServicesSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20">
         {services?.map((item, idx) => (
-          <ServiceCard
+          // <ServiceCard
+          //   imageUrl={item?.image}
+          //   title={item?.title}
+          //   description={item?.description}
+          //   key={idx}
+          // />
+          <ServiceCardHome
             imageUrl={item?.image}
             title={item?.title}
             description={item?.description}
@@ -36,12 +43,12 @@ const ServicesSection = () => {
 
       <div>
         <Button
-          className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0"
+          className="group  duration-300 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 hover:bg-[#F78C40] hover:border-[#F78C40]"
           variant="tti"
         >
           Explore Our Prujects{" "}
-          <div className="p-2 rounded-full  bg-[#0A2F4D] my-0.5">
-            <FaArrowRightLong className="text-lg  text-white -rotate-45" />
+          <div className="p-2 rounded-full duration-300  bg-[#0A2F4D] my-0.5 group-hover:bg-white">
+            <FaArrowRightLong className="text-lg duration-300 group-hover:text-[#0A2F4D]  text-white -rotate-45" />
           </div>
         </Button>
       </div>

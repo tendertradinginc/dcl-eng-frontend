@@ -7,7 +7,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 import { useState } from "react";
 
-const ServiceCard = ({ title, description, imageUrl }) => {
+const ServiceCardHome = ({ title, description, imageUrl }) => {
   const [isShow, setIsShow] = useState(false);
  
   return (
@@ -65,4 +65,4 @@ const ServiceCard = ({ title, description, imageUrl }) => {
   );
 };
 
-export default ServiceCard;
+export default ServiceCardHome;
