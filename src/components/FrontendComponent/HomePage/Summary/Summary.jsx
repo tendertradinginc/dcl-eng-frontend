@@ -38,7 +38,7 @@ const Summary = () => {
             <p className="text-[#F78C40] font-semibold text-xl">Summary</p>{" "}
             <hr className="border flex-1 border-[#718698]" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="flex flex-col items-center">
               <div>
                 <span

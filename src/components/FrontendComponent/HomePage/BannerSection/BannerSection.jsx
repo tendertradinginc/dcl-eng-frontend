@@ -2,16 +2,21 @@ import SliderHero from "./SliderHero";
 
 const sliderData = [
   {
-    title: "Built on Trust Since 1980",
+    title: "Built on ",
+    colorWord: "TRUST",
+    lastTitle: " Since 1980",
     subtitle:
       "Focusing on medium to large-scale commercial construction projects...",
     backgroundImage: "/slider2.jpeg",
     buttonText: "Explore Our Project",
     link: "/projects",
-    location: "Airport terminal, ",
+    buttonText: "Discover More",
+    location: "Airport terminal,Dhaka ",
   },
   {
-    title: "Innovative Designs, Quality Work",
+    title: "Built on ",
+    colorWord: "TRUST",
+    lastTitle: " Since 1980",
     subtitle:
       "Delivering exceptional construction solutions for over 40 years.",
     backgroundImage: "slider1.jpg",
@@ -21,7 +26,10 @@ const sliderData = [
     location: "Downtown, Dhaka",
   },
   {
-    title: "Innovative Designs, Quality Work",
+    title: "Innovative Designs  ",
+    colorWord: "TRUST",
+    lastTitle: "Quality Work",
+
     subtitle:
       "Delivering exceptional construction solutions for over 40 years.",
     backgroundImage: "/slider3.png",
@@ -30,7 +38,9 @@ const sliderData = [
     location: "Downtown, Dhaka",
   },
   {
-    title: "Innovative Designs, Quality Work",
+    title: "Innovative Designs  ",
+    colorWord: "TRUST",
+    lastTitle: "Quality Work",
     subtitle:
       "Delivering exceptional construction solutions for over 40 years.",
     backgroundImage: "/slider4.jpg",
