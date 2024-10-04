@@ -4,34 +4,32 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-
-export default function ServiceCard() {
+export default function ServiceCard({ imgUrl }) {
   return (
     <Card className="w-full max-w-sm overflow-hidden group relative border-purple-200 hover:shadow-md transition-shadow duration-300">
-      <div className="h-80 relative">
+      <div className="h-48 relative overflow-hidden group-hover:h-40 transition-all duration-300">
         <Image
-          src="https://picsum.photos/id/156/200/300"
+          src={imgUrl || "/serviceCard4.jpg"}
           alt="Road construction workers operating paving equipment at sunset"
           layout="fill"
           objectFit="cover"
         />
-
       </div>
-      <CardContent className="p-4">
+      <div className="p-4 pb-0 bg-white">
         <h2 className="text-xl font-bold mb-2">PIPE SUPPLY & MANUFACTURER</h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground mb-4">
           We maintain this by ensuring transparency and professional conduct in
           every aspect of our work.
         </p>
-      </CardContent>
-      <CardFooter className="p-4 bg-white lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:translate-y-0 lg:transition-transform lg:duration-300 lg:ease-in-out">
-        <Link href="/services/road-construction/123" className="w-full">
-          <Button variant="ghost" className="w-full justify-between">
-            Learn more
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </Link>
-      </CardFooter>
+        <div className="pt-0.5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <Link href="/services/road-construction/123" className="w-full block">
+            <Button variant="secondary" className="w-full hover:text-[#F78C40] gap-1">
+              Learn more
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </div>
     </Card>
   );
 }
