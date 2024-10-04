@@ -138,14 +138,7 @@ const Vision = () => {
                 </div>
               </TabsContent>
             </Tabs>
-            {/* <div className="w-max rounded-full border p-2 flex gap-2">
-              <button className="bg-[#F78C40] text-white py-2.5 px-6 rounded-full">
-                Our Vision
-              </button>
-              <button className="border-2 text-[#A5A5A5] py-2.5 px-6 rounded-full">
-                Core Values
-              </button>
-            </div> */}
+       
           </div>
         </div>
         <div

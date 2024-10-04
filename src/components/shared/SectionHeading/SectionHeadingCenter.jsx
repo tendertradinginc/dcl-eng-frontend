@@ -17,7 +17,7 @@ const SectionHeadingCenter = ({
               alt="our vision imave"
               height={64}
               width={386}
-              className="mx-auto w-auto"
+              className="mx-auto w-80 md:w-auto"
               src={imageUrl}
             ></Image>
           </div>
