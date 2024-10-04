@@ -24,7 +24,7 @@ export default function page() {
 
 
                 <SectionHeadingCenter
-                    imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
+                    imageUrl="https://i.postimg.cc/q7L1JF7N/SHOWCASE.png"
                     title={
                         <div className="text-center">
                             <h2 className="text-xl lg:text-4xl">
