@@ -20,7 +20,7 @@ const Clients = async () => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 py-8">
         {clients?.map((item) => (
-          <div key={item?._id} className="shadow-lg flex justify-center items-center h-20 md:h-28 rounded-sm border-2 border-gray-50">
+          <div key={item?._id} className="shadow-lg hover:scale-110 duration-300 hover:shadow-2xl flex justify-center items-center h-20 md:h-28 rounded-sm border-2 border-gray-50">
            
             <Image
               src={item.image}
