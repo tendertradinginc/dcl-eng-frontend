@@ -12,11 +12,9 @@ const BlogTable = () => {
   const searchParams = useSearchParams();
   const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
   const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
-
-  const { blogs, reload, setLoading, setReload, blogsCount, loading } =
-    useAllblogs();
-
-  const totalPage = Math.ceil(blogsCount / pageLimit);
+  const [searchValue, setSearchValue] = useState("");
+  const { blogs, setReload, blogsCount, loading } =
+    useAllblogs(currentPage, pageLimit, searchValue);
 
   return (
     <div>
@@ -25,12 +23,20 @@ const BlogTable = () => {
           <br />
           <div className="mx-auto w-full max-w-screen-lg bg-white pb-10">
             <div className="overflow-x-auto sm:px-1">
-              <div className="flex items-center justify-between pb-6">
+              <div className="flex items-center justify-between p-6">
                 <h2 className="text-2xl font-semibold text-si-primary">
                   <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
                   Blog List
                 </h2>
-                <BlogCreateButton setReload={setReload} />
+                <div className="flex flex-wrap gap-3 text-center">
+                  <input
+                    type="text"
+                    placeholder="search"
+                    className="border rounded-md"
+                    onChange={(e) => setSearchValue(e.target.value)}
+                  />
+                  <BlogCreateButton setReload={setReload} />
+                </div>
               </div>
               <hr />
 

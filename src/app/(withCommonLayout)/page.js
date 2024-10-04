@@ -12,7 +12,7 @@ export default function Home() {
     <div>
       <BannerSection></BannerSection>
       <Overview></Overview>
-      <Summary></Summary>
+      {/* <Summary></Summary> */}
       <ServicesSection />
       <Vision />
       <ProjectShowcase />

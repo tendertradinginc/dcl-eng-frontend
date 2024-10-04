@@ -18,15 +18,15 @@ const Clients = async () => {
         <hr className="border flex-1 border-[#718698]" />
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 py-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 py-8">
         {clients?.map((item) => (
-          <div key={item?._id}>
+          <div key={item?._id} className="shadow-lg hover:scale-110 duration-300 hover:shadow-2xl flex justify-center items-center h-20 md:h-28 rounded-sm border-2 border-gray-50">
            
             <Image
               src={item.image}
               height={200}
               width={200}
-              className="w-full h-28 object-cover"
+              className="w-auto h-16 object-cover  md:h-20 "
               alt="Client Image"
               loader={customLoader}
             />
