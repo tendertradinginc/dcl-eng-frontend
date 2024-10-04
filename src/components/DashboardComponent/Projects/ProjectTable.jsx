@@ -18,11 +18,11 @@ const ProjectTable = () => {
   const [pageLimit, setPageLimit] = useState(searchParams.get("limit") || 10);
   const [searchValue, setSearchValue] = useState("");
 
-  const { projects, reload, setLoading, setReload, projectsCount, loading } =
-    useAllProjects(currentPage, pageLimit, searchValue);
-  console.log(searchValue);
+  const { projects,  setReload, projectsCount, loading } = useAllProjects(currentPage, pageLimit, searchValue);
+  
 
   const totalPage = Math.ceil(projectsCount / pageLimit);
+  console.log(projects)
 
   return (
     <div className="min-h-[80vh]">
@@ -30,7 +30,7 @@ const ProjectTable = () => {
         <br />
         <div className="mx-auto w-full max-w-screen-lg bg-white pb-10">
           <div className="overflow-x-auto sm:px-1">
-            <div className="flex items-center justify-between pb-6">
+            <div className="flex items-center justify-between p-6">
               <h2 className="text-2xl font-semibold text-si-primary">
                 <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
                 Project List
