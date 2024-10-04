@@ -58,14 +58,14 @@ const AllClientFeedback = () => {
 
     return (
         <div>
-            <div className="min-h-[80vh]">
+            <div className="min-h-[100vh]">
                 <div className="container mx-auto px-10">
                     <br />
 
-                    <div className="mx-auto w-full max-w-screen-lg bg-white">
+                    <div className="mx-auto w-full max-w-screen-lg bg-white p-8">
                         <div className="overflow-x-auto sm:px-1">
                             <div className="flex items-center justify-between pb-6">
-                                <h2 className="text-2xl font-semibold text-si-primary">
+                                <h2 className="text-2xl font-semibold text-[#F78C40]">
                                     <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
                                     Success Story List
                                 </h2>
@@ -74,7 +74,7 @@ const AllClientFeedback = () => {
                                         <AlertDialog>
                                             <AlertDialogTrigger asChild>
                                                 <Button
-                                                    className="cursor-pointer rounded-lg border bg-secondary px-3 py-1 text-base font-semibold  hover:text-black duration-500 hover:bg-si-secondary text-black"
+                                                    className="cursor-pointer rounded-lg border bg-secondary px-3 py-1 text-base font-semibold  hover:text-black duration-500 hover:bg-[#e9b48f] bg-[#F78C40] text-white"
                                                     variant="outline"
                                                 >
                                                     Create Success Story{" "}
@@ -85,10 +85,10 @@ const AllClientFeedback = () => {
                                             </AlertDialogTrigger>
 
                                             <AlertDialogContent className="max-w-4xl">
-                                                <CreateSuccessStory />
+                                                <CreateSuccessStory setReload={setReload} />
 
                                                 <AlertDialogFooter>
-                                                    <AlertDialogCancel className="hover:bg-green-600 hover:text-white">
+                                                    <AlertDialogCancel className="bg-blue-500 hover:bg-blue-300 text-white">
                                                         Close
                                                     </AlertDialogCancel>
                                                 </AlertDialogFooter>
@@ -107,7 +107,7 @@ const AllClientFeedback = () => {
                                 </div>
                             ) : (
                                 <table className="w-full table-auto">
-                                    <thead className="bg-gradient-to-r from-green-400 to-green-700 text-white">
+                                    <thead className="bg-gradient-to-r from-[#F78C40] to-[#F78C40] text-white">
                                         <tr className="text-left">
                                             <th className="px-4 py-2">No</th>
                                             <th className="py-2 pl-8">Company Name</th>
@@ -121,7 +121,7 @@ const AllClientFeedback = () => {
                                         {successStory.length > 0 ? (
                                             successStory?.map((story, index) => (
                                                 <SingleSuccessStory
-                                                    key={successStory?._id}
+                                                    key={story?._id}
                                                     index={index}
                                                     successStoryData={story}
                                                     setReload={setReload}
@@ -139,6 +139,7 @@ const AllClientFeedback = () => {
                                 <PaginationBlog data={{ page, limit, totalPage }} />
                             </div>
                         )}
+
                     </div>
                 </div>
             </div>

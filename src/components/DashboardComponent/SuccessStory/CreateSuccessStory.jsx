@@ -8,7 +8,7 @@ import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const CreateSuccessStory = () => {
+const CreateSuccessStory = ({ setReload }) => {
     const [imageFile, setImageFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -92,6 +92,7 @@ const CreateSuccessStory = () => {
                     Image: null,
                 });
                 setImageFile(null);
+                setReload((prev) => prev + 1);
             } else {
                 throw new Error(data.error || "Failed to submit success story data");
             }
@@ -216,7 +217,7 @@ const CreateSuccessStory = () => {
                         <div className="mt-6">
                             <Button
                                 type="submit"
-                                className="w-full rounded-sm bg-secondary p-2 px-4 font-semibold hover:text-white text-black hover:bg-black"
+                                className="w-full rounded-sm bg-secondary p-2 px-4 font-semibold text-white hover:text-black bg-[#F78C40]  hover:bg-[#e7b794]"
                                 disabled={loading}
                             >
                                 {loading ? "Submitting..." : "Submit"}
