@@ -138,7 +138,7 @@ const AllSuccessStory = () => {
                                             <th className="px-4 py-2">No</th>
                                             <th className="py-2 pl-8">Company Name</th>
                                             <th className="py-2 pl-16">Project Name</th>
-                                            <th className="py-2 pr-4">Success Story</th>
+                                            <th className="py-2 pr-4">Details</th>
                                             <th className="px-4 pl-6">Actions</th>
                                         </tr>
                                     </thead>
