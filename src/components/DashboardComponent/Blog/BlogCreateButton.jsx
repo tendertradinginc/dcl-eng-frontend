@@ -123,8 +123,8 @@ const BlogCreateButton = ({ setReload }) => {
           {loading ? (
             <Button
               disabled
-              variant="tti"
-              className="w-full items-center gap-2.5"
+           
+              className="w-full items-center gap-2.5 "
             >
               Processing
               <span className="animate-spin">
@@ -132,7 +132,7 @@ const BlogCreateButton = ({ setReload }) => {
               </span>
             </Button>
           ) : (
-            <Button type="submit" variant="dashboard">
+            <Button type="submit" className="w-full" >
               Submit
             </Button>
           )}

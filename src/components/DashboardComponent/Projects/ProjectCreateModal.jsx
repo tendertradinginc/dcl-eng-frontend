@@ -165,7 +165,7 @@ const ProjectCreateModal = ({ setReload }) => {
           {loading ? (
             <Button
               disabled
-              variant="tti"
+             
               className="w-full items-center gap-2.5"
             >
               Processing
@@ -176,7 +176,7 @@ const ProjectCreateModal = ({ setReload }) => {
           ) : (
             <Button
               type="submit"
-              className="mt-2 w-full rounded-sm bg-si-primary p-1 px-3 font-semibold "
+              className="mt-2 w-full rounded-sm  p-1 px-3 font-semibold "
             >
               Submit
             </Button>
