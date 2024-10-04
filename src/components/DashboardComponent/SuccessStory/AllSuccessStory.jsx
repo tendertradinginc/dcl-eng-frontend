@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -8,7 +9,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-
+import { Input } from "@/components/ui/input"; // Import Input component
 import PaginationBlog from "@/components/shared/pagination/PaginationShadcn";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -18,9 +19,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import CreateSuccessStory from "./CreateSuccessStory";
 import SingleSuccessStory from "./SingleSuccessStory";
 
-
-
-const AllClientFeedback = () => {
+const AllSuccessStory = () => {
     const searchParams = useSearchParams();
     const [successStory, setSuccessStory] = useState([]);
     const [page, setPage] = useState(searchParams.get("page") || 1);
@@ -28,9 +27,9 @@ const AllClientFeedback = () => {
     const [totalSuccessStory, setTotalSuccessStory] = useState(0);
     const [reload, setReload] = useState(0);
     const [loading, setLoading] = useState(true);
-
+    const [searchQuery, setSearchQuery] = useState("");
     useEffect(() => {
-        const fetchClientFeedback = async () => {
+        const fetchSuccessStory = async () => {
             setLoading(true);
             try {
                 const response = await fetch(
@@ -46,15 +45,34 @@ const AllClientFeedback = () => {
                 setLoading(false);
             }
         };
-        fetchClientFeedback();
+        fetchSuccessStory();
     }, [reload, page, limit]);
 
     const totalPage = Math.ceil(totalSuccessStory / limit);
 
+    const handleSearch = (e) => {
+        const newSearchTerm = e.target.value;
+        setSearchQuery(newSearchTerm);
+        setPage(1); // Reset to page 1 when a new search is performed
+        updateURL(1, limit, newSearchTerm); // Update the URL with new search term
+    };
 
+    const updateURL = (newPage, newLimit, newSearchTerm) => {
+        const params = new URLSearchParams();
+        params.set("page", newPage);
+        params.set("limit", newLimit);
+        if (newSearchTerm) {
+            params.set("search", newSearchTerm);
+        }
+        window.history.replaceState({}, '', `?${params.toString()}`); // Update the URL without reloading
+    };
 
-    // loading skeleton
-    // const skeleton = new Array(10).fill(Math.random());
+    // Filtered success stories based on search query
+    const filteredStories = successStory.filter(story =>
+        story.companyName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        story.projectName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        story.shortDescription.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div>
@@ -70,11 +88,19 @@ const AllClientFeedback = () => {
                                     Success Story List
                                 </h2>
                                 <div className="mt-4 flex items-center justify-between px-2">
+                                    {/* Search Input */}
+                                    <Input
+                                        type="text"
+                                        placeholder="Search..."
+                                        value={searchQuery}
+                                        onChange={handleSearch}
+                                        className="mr-4 w-64"
+                                    />
                                     <div>
                                         <AlertDialog>
                                             <AlertDialogTrigger asChild>
                                                 <Button
-                                                    className="cursor-pointer rounded-lg border bg-secondary px-3 py-1 text-base font-semibold  hover:text-black duration-500 hover:bg-[#e9b48f] bg-[#F78C40] text-white"
+                                                    className="cursor-pointer rounded-lg border  px-3 py-1 text-base font-semibold hover:text-white duration-500 hover:bg-[#F78C40] text-black"
                                                     variant="outline"
                                                 >
                                                     Create Success Story{" "}
@@ -112,14 +138,14 @@ const AllClientFeedback = () => {
                                             <th className="px-4 py-2">No</th>
                                             <th className="py-2 pl-8">Company Name</th>
                                             <th className="py-2 pl-16">Project Name</th>
-                                            <th className="py-2  pr-4">Success Story</th>
+                                            <th className="py-2 pr-4">Success Story</th>
                                             <th className="px-4 pl-6">Actions</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        {successStory.length > 0 ? (
-                                            successStory?.map((story, index) => (
+                                        {filteredStories.length > 0 ? (
+                                            filteredStories.map((story, index) => (
                                                 <SingleSuccessStory
                                                     key={story?._id}
                                                     index={index}
@@ -128,7 +154,7 @@ const AllClientFeedback = () => {
                                                 />
                                             ))
                                         ) : (
-                                            <p className="text center">No Client Feedback Available.</p>
+                                            <p className="text-center">No Client Feedback Available.</p>
                                         )}
                                     </tbody>
                                 </table>
@@ -139,7 +165,6 @@ const AllClientFeedback = () => {
                                 <PaginationBlog data={{ page, limit, totalPage }} />
                             </div>
                         )}
-
                     </div>
                 </div>
             </div>
@@ -147,4 +172,5 @@ const AllClientFeedback = () => {
     );
 };
 
-export default AllClientFeedback;
+export default AllSuccessStory;
+
