@@ -43,12 +43,12 @@ const ServicesSection = () => {
 
       <div>
         <Button
-          className="group  duration-300 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 hover:bg-[#F78C40] hover:border-[#F78C40]"
+          className="group  duration-400 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 hover:bg-[#F78C40] hover:border-[#F78C40]"
           variant="tti"
         >
           Explore Our Prujects{" "}
-          <div className="p-2 rounded-full duration-300  bg-[#0A2F4D] my-0.5 group-hover:bg-white">
-            <FaArrowRightLong className="text-lg duration-300 group-hover:text-[#0A2F4D]  text-white -rotate-45" />
+          <div className="p-2 rounded-full duration-400  bg-[#0A2F4D] my-0.5 group-hover:bg-white">
+            <FaArrowRightLong className="text-lg duration-400 group-hover:text-[#0A2F4D]  text-white -rotate-45" />
           </div>
         </Button>
       </div>
