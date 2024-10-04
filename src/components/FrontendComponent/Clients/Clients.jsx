@@ -26,7 +26,7 @@ const Clients = async () => {
               src={item.image}
               height={200}
               width={200}
-              className="w-auto h-16  md:h-20 "
+              className="w-auto h-16 object-cover  md:h-20 "
               alt="Client Image"
               loader={customLoader}
             />
