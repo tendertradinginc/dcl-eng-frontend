@@ -21,8 +21,7 @@ const ProjectTable = () => {
   const { projects,  setReload, projectsCount, loading } = useAllProjects(currentPage, pageLimit, searchValue);
   
 
-  const totalPage = Math.ceil(projectsCount / pageLimit);
-  console.log(projects)
+
 
   return (
     <div className="min-h-[80vh]">
