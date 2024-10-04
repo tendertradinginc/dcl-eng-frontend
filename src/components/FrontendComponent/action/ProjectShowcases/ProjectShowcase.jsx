@@ -1,6 +1,5 @@
 "use client";
 
-import MaxWidthWrapper from '@/components/custom/MaxWidthWrapper';
 import Link from 'next/link';
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -22,20 +21,21 @@ const ProjectShowcases = () => {
             <div className='mb-10 flex justify-center'>
                 <Tabs defaultValue="Construction" className="w-full">
                     {/* Rounded TabsList */}
-                    <TabsList className="flex justify-center rounded-full bg-gray-100 border p-2 py-6 gap-6 max-w-xl mx-auto">
-                        <TabsTrigger value="Construction" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                    <TabsList className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-2 rounded-full bg-gray-100 border  gap-4 max-w-2xl h-14 mx-auto">
+                        <TabsTrigger value="Construction" className="rounded-full px-3 py-3 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
                             All Projects
                         </TabsTrigger>
-                        <TabsTrigger value="Commercial" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                        <TabsTrigger value="Commercial" className="rounded-full px-3 py-3  text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white overflow-hidden">
                             Commercial
                         </TabsTrigger>
-                        <TabsTrigger value="Medical" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                        <TabsTrigger value="Medical" className="rounded-full px-3 py-3  text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
                             New Build
                         </TabsTrigger>
-                        <TabsTrigger value="Roads" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                        <TabsTrigger value="Roads" className="rounded-full px-3 py-3 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
                             Renovation
                         </TabsTrigger>
                     </TabsList>
+
 
                     {/* Content for All Projects */}
                     <TabsContent value="Construction" className="mt-16">
@@ -289,7 +289,7 @@ const ProjectShowcases = () => {
                     </TabsContent>
 
                     {/* Content for Commercial */}
-                    <TabsContent value="Commercial">
+                    <TabsContent value="Commercial" className="mt-16">
                         {/* Commercial Card */}
                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
                             {/* Card 1 */}
@@ -386,7 +386,7 @@ const ProjectShowcases = () => {
                     </TabsContent>
 
                     {/* Content for Medical */}
-                    <TabsContent value="Medical">
+                    <TabsContent value="Medical" className="mt-16">
                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
                             {/* Medical Card */}
 
@@ -453,7 +453,7 @@ const ProjectShowcases = () => {
                     </TabsContent>
 
                     {/* Content for Roads */}
-                    <TabsContent value="Roads">
+                    <TabsContent value="Roads" className="mt-16">
                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
                             {/* Roads Card */}
                             <Card className="relative w-full bg-white shadow-lg  overflow-hidden group rounded-none">
