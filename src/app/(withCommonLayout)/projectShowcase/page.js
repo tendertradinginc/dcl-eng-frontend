@@ -7,7 +7,7 @@ export default function page() {
 
     return (
         <div className="mt-16">
-            <PageBanner title="ABOUT US" banner="https://i.postimg.cc/15chdz9x/Frame-76591.png" />
+            <PageBanner title="PROJECTS SHOWCASE" banner="https://i.postimg.cc/15chdz9x/Frame-76591.png" />
             <div className="my-20">
 
                 <SectionHeadingCenter
