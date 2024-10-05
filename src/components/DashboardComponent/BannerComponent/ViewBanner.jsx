@@ -14,7 +14,7 @@ import { customLoader } from "@/utils/customLoader";
 import Image from "next/image";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 
-const ViewBlog = ({ data }) => {
+const ViewBanner = ({ data }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -27,16 +27,22 @@ const ViewBlog = ({ data }) => {
             height={400}
             width={400}
             className="h-64 border shadow-md"
-            src={data?.image}
+            src={data?.backgroundImage}
             alt="updated blog Image"
           />
           <AlertDialogTitle className="my-5 text-2xl font-semibold text-si-primary">
-            {data?.title}
+            {data?.title} {data?.colorWord} {data?.lastTitle}
           </AlertDialogTitle>
-          <AlertDialogDescription>{data?.description}</AlertDialogDescription>
+          <AlertDialogDescription>
+            <p>{data?.subtitle}</p>
+            <p className="my-2">
+              Button: {data?.buttonText}-- {data?.buttonLink}
+            </p>
+            <p>{data?.location}</p>
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-si-primary text-white">
+          <AlertDialogCancel className="bg-blue-950 hover:bg-blue-800 text-white hover:text-white">
             {" "}
             Cancel
           </AlertDialogCancel>
@@ -46,4 +52,4 @@ const ViewBlog = ({ data }) => {
   );
 };
 
-export default ViewBlog;
+export default ViewBanner;
