@@ -5,11 +5,11 @@ import ViewMessage from "./ViewMessage";
 const SingleMessage = ({ data, index, setReload, handelReadMessage }) => {
   return (
     <tr className={` ${index % 2 === 1 ? "bg-[#f2f2f2]" : ""}`}>
-      <td className="px-4 py-1">{index + 1}</td>
-      <td className="px-4 py-1 text-blue-800 ">{data?.name}</td>
-      <td className="px-4 py-1 text-gray-700 ">{data?.email}</td>
-      <td className="px-4 py-1 text-gray-700 ">{data?.phone}</td>
-      <td className="px-4 py-1 text-gray-700 ">
+      <td className="px-1 py-1">{index + 1}</td>
+      <td className="px-1 py-1 text-blue-800 ">{data?.name}</td>
+      <td className="px-1 py-1 text-gray-700 ">{data?.email}</td>
+      <td className="px-1 py-1 text-gray-700 ">{data?.phone}</td>
+      <td className="px-1 py-1 text-gray-700 ">
         <ViewMessage
           data={data}
           handelReadMessage={handelReadMessage}
