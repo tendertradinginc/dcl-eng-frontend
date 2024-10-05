@@ -17,6 +17,7 @@ import { CgSpinnerAlt } from "react-icons/cg";
 import { FaPlusCircle } from "react-icons/fa";
 import CreateClient from "./CreateClient";
 import SingleClient from "./SingleClient";
+import { Input } from "@/components/ui/input";
 
 const AllClients = () => {
   const searchParams = useSearchParams();
@@ -26,6 +27,7 @@ const AllClients = () => {
   const [totalClient, setTotalClient] = useState(0);
   const [reload, setReload] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -50,6 +52,39 @@ const AllClients = () => {
   const totalPage = Math.ceil(totalClient / limit);
 
 
+  const handleSearch = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchQuery(newSearchTerm);
+    setPage(1); // Reset to page 1 when a new search is performed
+    updateURL(1, limit, newSearchTerm); // Update the URL with new search term
+  };
+
+
+  // Update the URL with the search term
+  const updateURL = (newPage, newLimit, newSearchTerm) => {
+    const params = new URLSearchParams();
+    params.set("page", newPage);
+    params.set("limit", newLimit);
+    if (newSearchTerm) {
+      params.set("search", newSearchTerm);
+    }
+    window.history.replaceState({}, '', `?${params.toString()}`); // Update the URL without reloading
+  };
+
+
+  // const filteredClients = clients.filter(client =>
+  //   client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //   client.description.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+
+  const filteredClients = clients.filter(client =>
+    (client.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    (client.description.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
+
+
   // loading skeleton
   const skeleton = new Array(10).fill(Math.random());
 
@@ -66,7 +101,16 @@ const AllClients = () => {
                   <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
                   Clients List
                 </h2>
+
                 <div className="mt-4 flex items-center justify-between px-2">
+                  {/* Search Input */}
+                  <Input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    className="mr-4 w-48"
+                  />
                   <div>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
@@ -115,10 +159,10 @@ const AllClients = () => {
                   </thead>
 
                   <tbody>
-                    {clients.length > 0 ? (
-                      clients?.map((client, index) => (
+                    {filteredClients.length > 0 ? (
+                      filteredClients?.map((client, index) => (
                         <SingleClient
-                          key={clients?._id}
+                          key={client?._id}
                           index={index}
                           clientData={client}
                           setReload={setReload}
