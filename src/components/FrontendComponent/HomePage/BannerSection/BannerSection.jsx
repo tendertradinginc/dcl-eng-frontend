@@ -9,8 +9,7 @@ const sliderData = [
       "Focusing on medium to large-scale commercial construction projects...",
     backgroundImage: "/slider2.jpeg",
     buttonText: "Explore Our Project",
-    link: "/projects",
-    buttonText: "Discover More",
+    buttonLink: "/projects",
     location: "Airport terminal,Dhaka ",
   },
   {
@@ -22,7 +21,7 @@ const sliderData = [
     backgroundImage: "slider1.jpg",
 
     buttonText: "Discover More",
-    link: "/services",
+    buttonLink: "/services",
     location: "Downtown, Dhaka",
   },
   {
@@ -53,7 +52,7 @@ const sliderData = [
 const BannerSection = () => {
   return (
     <div>
-      <SliderHero slides={sliderData} />
+      <SliderHero />
     </div>
   );
 };

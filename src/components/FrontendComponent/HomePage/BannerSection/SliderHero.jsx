@@ -8,13 +8,32 @@ import { VscStarFull } from "react-icons/vsc";
 
 import { SlLocationPin } from "react-icons/sl";
 
-const CustomSlider = ({ slides }) => {
+const CustomSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState(0);
   const [currentTranslate, setCurrentTranslate] = useState(0);
   const sliderRef = useRef(null);
 
+  const [slides, setSlider] = useState([]);
+
+  useEffect(() => {
+    const result = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `http://localhost:5000/api/v1/homepage/banner`
+        );
+        const data = await response.json();
+        console.log(data?.data);
+        setSlider(data?.data?.result);
+      } catch (error) {
+        console.error("Error fetching :", error);
+      }
+    };
+    result();
+  }, []);
+  console.log(slides);
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
@@ -111,7 +130,7 @@ const CustomSlider = ({ slides }) => {
                     {slide?.subtitle}
                   </p>
                   <Link
-                    href={slide?.link}
+                    href={slide?.buttonLink}
                     className="flex items-center pl-6 border-2 border-white hover:border-[#F97316] rounded-full text-white hover:bg-[#F97316] hover:text-white text-md font-semibold uppercase transition-colors duration-300 group"
                   >
                     {slide?.buttonText}
