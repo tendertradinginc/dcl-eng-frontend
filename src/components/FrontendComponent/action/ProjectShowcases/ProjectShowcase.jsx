@@ -3,14 +3,49 @@
 import Link from 'next/link';
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from 'react';
 import Image from 'next/image';
 import { customLoader } from '@/utils/customLoader';
 import { MdArrowOutward } from 'react-icons/md';
+import PaginationBlog from '@/components/shared/pagination/PaginationShadcn';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from "react";
+
 
 const ProjectShowcases = () => {
+    const searchParams = useSearchParams();
+    // const [projectShowcase, setProjectShowcase] = useState([]);
+    const [page, setPage] = useState(searchParams.get("page") || 1);
+    const [limit, setLimit] = useState(searchParams.get("limit") || 5);
+    // const [totalProjectShowcase, setTotalProjectShowcase] = useState(0);
+    // const [reload, setReload] = useState(0);
     const [loading, setLoading] = useState(true);
 
+
+
+
+    // useEffect(() => {
+    //     const fetchProjectShowcase = async () => {
+    //         setLoading(true);
+    //         try {
+
+    //             const response = await fetch(
+    //                 `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}`
+    //             );
+    //             const data = await response.json();
+
+
+    //             setProjectShowcase(data?.data?.allProjects);
+    //             setTotalProjectShowcase(data?.data?.totlaProjects);
+    //         } catch (error) {
+    //             console.error("Error fetching project showcase:", error);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
+    //     fetchProjectShowcase();
+    // }, [reload, page, limit]);
+
+    // const totalPage = Math.ceil(totalProjectShowcase / limit);
 
 
     return (
@@ -60,7 +95,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition-transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition-transform duration-700 group-hover:-translate-y-6">
                                                 Commercial
                                             </p>
                                         </Link>
@@ -92,7 +127,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -122,7 +157,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 medical
                                             </p>
                                         </Link>
@@ -153,7 +188,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 roads
                                             </p>
                                         </Link>
@@ -183,7 +218,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -213,7 +248,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -243,7 +278,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -274,7 +309,7 @@ const ProjectShowcases = () => {
 
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -312,7 +347,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -342,7 +377,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -372,7 +407,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -409,7 +444,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -439,7 +474,7 @@ const ProjectShowcases = () => {
                                         </h4>
 
                                         <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
                                             </p>
                                         </Link>
@@ -450,6 +485,37 @@ const ProjectShowcases = () => {
                     </TabsContent>
                 </Tabs>
             </div>
+
+
+
+            {/* <div className="grid lg:grid-cols-2 grid-cols-1 w-full mx-auto">
+                {loading ? (
+                    <div className="flex min-h-[50vh] items-center justify-center">
+                        <span className="animate-spin text-[#F78C40]">
+                            <CgSpinnerAlt className="h-10 w-10" />
+                        </span>
+                    </div>
+                )
+                    : projectShowcase.length > 0 ? (
+                        projectShowcase?.map((project, index) => (
+                            <ProjectShowcaseCard
+                                key={project?._id}
+                                index={index}
+                                projectShowcaseData={project}
+                                setReload={setReload}
+                            />
+                        )))
+                        : (
+                            <p className="text center">No Project Showcase Available.</p>
+                        )}
+            </div>
+            {!loading && (
+                <div className="mt-8">
+                    <PaginationBlog data={{ page, limit, totalPage }} />
+                </div>
+            )} */}
+
+
         </div>
     );
 };
