@@ -139,7 +139,7 @@ const EditClientModal = ({ data, setReload }) => {
 
             <div className="">
               <div
-                className={`flex h-10 items-center justify-center rounded font-semibold  hover:text-white text-black ${isDisbaled ? "bg-secondary" : "bg-black"
+                className={`flex h-10 items-center justify-center rounded font-semibold  hover:text-white text-black ${isDisbaled ? "bg-secondary" : "bg-[#F78C40]"
                   }`}
               >
                 <button className=" ">
@@ -169,7 +169,7 @@ const EditClientModal = ({ data, setReload }) => {
         <AlertDialogFooter>
           <AlertDialogCancel
             onClick={() => setIsOpen(false)}
-            className="hover:bg-si-primary hover:text-white"
+            className="bg-blue-700 hover:bg-blue-300 text-white"
           >
             Close
           </AlertDialogCancel>

@@ -17,7 +17,7 @@ const SuccessStoryCard = ({ successStoryData, index, setReload }) => {
     const isEven = index % 2 === 0; // Check if the index is even
 
     return (
-        <div className="flex flex-wrap w-full relative z-10 bg-white mb-4">
+        <div className="flex flex-wrap w-full relative z-10 bg-secondary mb-4">
             {/* Image Div */}
             <div className={`w-full md:w-3/5 p-4 flex flex-col ${isEven ? '' : 'lg:order-last'}`}>
                 <div className="relative h-full border-[6px] border-orange-500 p-2">
@@ -32,7 +32,7 @@ const SuccessStoryCard = ({ successStoryData, index, setReload }) => {
                 </div>
 
                 {/* Location and Handover Date */}
-                <div className="w-full flex lg:flex-row flex-col justify-between text-start bg-white bg-opacity-80 p-2 mt-2">
+                <div className="w-full flex lg:flex-row flex-col justify-between text-start bg-secondary bg-opacity-80 p-2 mt-2">
                     <p className="text-sm font-semibold flex items-center">
                         <FaMapMarkerAlt className="mr-2 text-orange-500" />
                         Location: {location}

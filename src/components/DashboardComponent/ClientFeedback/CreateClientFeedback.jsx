@@ -9,7 +9,7 @@ import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const CreateClientFeedback = () => {
+const CreateClientFeedback = ({ setReload }) => {
     const [imageFile, setImageFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -83,6 +83,7 @@ const CreateClientFeedback = () => {
                     Image: null,
                 });
                 setImageFile(null);
+                setReload((prev) => prev + 1);
             } else {
                 throw new Error(data.error || "Failed to submit feedback data");
             }
@@ -151,7 +152,7 @@ const CreateClientFeedback = () => {
 
                         <Button
                             type="submit"
-                            className="mt-2 w-full rounded-sm bg-secondary p-1 px-3 font-semibold hover:text-white text-black hover:bg-black"
+                            className="mt-2 w-full rounded-sm bg-[#F78C40] p-1 px-3 font-semibold hover:text-black text-white hover:bg-[#f0b991]"
                             disabled={loading}
                         >
                             {loading ? "Submitting..." : "Submit"}

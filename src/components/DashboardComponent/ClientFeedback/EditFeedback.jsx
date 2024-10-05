@@ -156,7 +156,7 @@ const EditFeedback = ({ data, setReload }) => {
                             <button
                                 disabled={isDisabled || loading}
                                 type="submit"
-                                className={`flex h-10 items-center justify-center rounded font-semibold text-black hover:text-white ${isDisabled ? "bg-secondary" : "bg-black"}`}
+                                className={`flex h-10 items-center justify-center rounded font-semibold text-white hover:text-black ${isDisabled ? "bg-secondary" : "bg-[#F78C40]"}`}
                             >
                                 {loading ? (
                                     <Image
@@ -168,7 +168,7 @@ const EditFeedback = ({ data, setReload }) => {
                                         className="mx-auto w-8 text-center"
                                     />
                                 ) : (
-                                    <span className="px-8 text-sm bg-black text-white py-1 rounded-md">Submit</span>
+                                    <span className="px-8 text-sm bg-[#F78C40] hover:bg-[#f0ac7c] hover:text-black text-white py-1 rounded-md">Submit</span>
                                 )}
                             </button>
                         </div>
@@ -178,7 +178,7 @@ const EditFeedback = ({ data, setReload }) => {
                 <AlertDialogFooter>
                     <AlertDialogCancel
                         onClick={() => setIsOpen(false)}
-                        className="hover:bg-black hover:text-white"
+                        className="bg-blue-700 hover:bg-blue-300 text-white"
                     >
                         Close
                     </AlertDialogCancel>

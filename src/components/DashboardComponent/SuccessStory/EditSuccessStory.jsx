@@ -242,7 +242,7 @@ const EditSuccessStory = ({ data, setReload }) => {
                                         className="mx-auto w-8 text-center"
                                     />
                                 ) : (
-                                    <span className="px-8 text-sm bg-black text-white py-1 rounded-md">Submit</span>
+                                    <span className="px-8 text-sm bg-[#F78C40] text-white py-1 rounded-md">Submit</span>
                                 )}
                             </button>
                         </div>
@@ -252,7 +252,7 @@ const EditSuccessStory = ({ data, setReload }) => {
                 <AlertDialogFooter>
                     <AlertDialogCancel
                         onClick={() => setIsOpen(false)}
-                        className="hover:bg-black hover:text-white"
+                        className="hover:bg-blue-300 bg-blue-700 hover:text-white"
                     >
                         Close
                     </AlertDialogCancel>

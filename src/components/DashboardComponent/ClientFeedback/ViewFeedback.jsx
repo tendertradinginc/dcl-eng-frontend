@@ -24,7 +24,7 @@ const ViewFeedback = ({ data }) => {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <button className=" text-black font-bold py-1 px-4 rounded">
+                <button className=" bg-[#F78C40] hover:bg-[#eeb993] text-black font-bold py-1 px-4 rounded-full">
                     View
                 </button>
             </AlertDialogTrigger>
@@ -52,8 +52,8 @@ const ViewFeedback = ({ data }) => {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel className="bg-green-600 text-white">
-                        Cancel
+                    <AlertDialogCancel className="bg-blue-700 hover:bg-blue-300 text-white">
+                        Close
                     </AlertDialogCancel>
                 </AlertDialogFooter>
             </AlertDialogContent>
