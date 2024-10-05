@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from 'react';
 import Image from 'next/image';
-import { AiOutlineArrowRight } from 'react-icons/ai';
 import { customLoader } from '@/utils/customLoader';
 import { MdArrowOutward } from 'react-icons/md';
 
@@ -21,26 +20,24 @@ const ProjectShowcases = () => {
             <div className='mb-10 flex justify-center'>
                 <Tabs defaultValue="Construction" className="w-full">
                     {/* Rounded TabsList */}
-                    <TabsList className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-2 rounded-full bg-gray-100 border  gap-4 max-w-2xl h-14 mx-auto">
-                        <TabsTrigger value="Construction" className="rounded-full px-3 py-3 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
-                            All Projects
+                    <TabsList className="flex justify-center space-x-3 rounded-full bg-gray-100 border max-w-lg h-14 mx-auto px-4">
+
+                        <TabsTrigger value="Commercial" className="rounded-full px-4 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                            Upcoming Projects
                         </TabsTrigger>
-                        <TabsTrigger value="Commercial" className="rounded-full px-3 py-3  text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white overflow-hidden">
-                            Commercial
+                        <TabsTrigger value="Construction" className="rounded-full px-4 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                            Completed Projects
                         </TabsTrigger>
-                        <TabsTrigger value="Medical" className="rounded-full px-3 py-3  text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
-                            New Build
-                        </TabsTrigger>
-                        <TabsTrigger value="Roads" className="rounded-full px-3 py-3 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
-                            Renovation
+                        <TabsTrigger value="Medical" className="rounded-full px-4 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white">
+                            Ongoing Projects
                         </TabsTrigger>
                     </TabsList>
 
 
-                    {/* Content for All Projects */}
+                    {/*  Completed Projects */}
                     <TabsContent value="Construction" className="mt-16">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            {/* Construction (All Projects) Card */}
+                            {/*  Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -72,7 +69,7 @@ const ProjectShowcases = () => {
                             </Card>
 
 
-                            {/* Commercial Card */}
+                            {/*  Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -103,7 +100,7 @@ const ProjectShowcases = () => {
                                 </div>
                             </Card>
 
-                            {/* Medical Card */}
+                            {/* Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg  overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -133,7 +130,7 @@ const ProjectShowcases = () => {
                                 </div>
                             </Card>
 
-                            {/* Roads Card */}
+                            {/* Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg  overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -164,7 +161,7 @@ const ProjectShowcases = () => {
                                 </div>
                             </Card>
 
-                            {/* commercial-1 Card */}
+                            {/*  Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -194,7 +191,7 @@ const ProjectShowcases = () => {
                                 </div>
                             </Card>
 
-                            {/* commercial-2 Card */}
+                            {/*  Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -224,7 +221,7 @@ const ProjectShowcases = () => {
                                 </div>
                             </Card>
 
-                            {/* commercial-3 Card */}
+                            {/*  Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -253,7 +250,7 @@ const ProjectShowcases = () => {
                                     </div>
                                 </div>
                             </Card>
-                            {/* commercial-4 Card */}
+                            {/*  Completed Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -288,9 +285,9 @@ const ProjectShowcases = () => {
                         </div>
                     </TabsContent>
 
-                    {/* Content for Commercial */}
+                    {/* Upcoming Projects */}
                     <TabsContent value="Commercial" className="mt-16">
-                        {/* Commercial Card */}
+                        {/* Upcoming Projects Card */}
                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
                             {/* Card 1 */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
@@ -385,12 +382,12 @@ const ProjectShowcases = () => {
                         </div>
                     </TabsContent>
 
-                    {/* Content for Medical */}
+                    {/*  Ongoing Projects */}
                     <TabsContent value="Medical" className="mt-16">
                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-                            {/* Medical Card */}
+                            {/* Ongoing Projects Card */}
 
-                            {/* commercial-1 Card */}
+                            {/* Ongoing Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -420,7 +417,7 @@ const ProjectShowcases = () => {
                                 </div>
                             </Card>
 
-                            {/* commercial-2 Card */}
+                            {/* Ongoing Projects Card */}
                             <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
                                 <div className="relative w-full aspect-square">
                                     <Image
@@ -444,41 +441,6 @@ const ProjectShowcases = () => {
                                         <Link href="#">
                                             <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
                                                 commercial
-                                            </p>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Card>
-                        </div>
-                    </TabsContent>
-
-                    {/* Content for Roads */}
-                    <TabsContent value="Roads" className="mt-16">
-                        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-                            {/* Roads Card */}
-                            <Card className="relative w-full bg-white shadow-lg  overflow-hidden group rounded-none">
-                                <div className="relative w-full aspect-square">
-                                    <Image
-                                        src="https://i.postimg.cc/Gm3w6Mdd/Frame-76593.png"
-                                        alt="Medical"
-                                        layout="fill"
-                                        objectFit="cover"
-                                        loader={customLoader}
-                                        className="transition-opacity duration-300 group-hover:opacity-80"
-                                    />
-                                    <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                        <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
-                                            Medical Facilities
-                                            <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
-                                        </h2>
-                                        {/* Hidden by default and shown on hover */}
-                                        <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
-                                            We maintain this by ensuring transparency and professional conduct in every aspect of our work
-                                        </h4>
-
-                                        <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                medical
                                             </p>
                                         </Link>
                                     </div>

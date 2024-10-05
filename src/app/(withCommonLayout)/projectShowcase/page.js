@@ -9,19 +9,6 @@ export default function page() {
         <div className="mt-16">
             <PageBanner title="ABOUT US" banner="https://i.postimg.cc/15chdz9x/Frame-76591.png" />
             <div className="my-20">
-                {/* <SectionHeadingCenter
-                    imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
-                    title={
-                        <>
-                            PROJECTS
-                            <span className="border-b-4 ml-2 border-[#F78C40]">
-                                SHOWCASE
-                            </span>
-                        </>
-                    }
-                    subTitle="Show our project"
-                /> */}
-
 
                 <SectionHeadingCenter
                     imageUrl="https://i.postimg.cc/q7L1JF7N/SHOWCASE.png"
