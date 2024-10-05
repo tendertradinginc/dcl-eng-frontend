@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
-export default function UpdateCategoryForm({ categoryId }) {
+export default function UpdateCategoryForm({ categoryId, setReload }) {
   const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -63,14 +63,16 @@ export default function UpdateCategoryForm({ categoryId }) {
         formData
       );
 
-      if (response.data.success) {
-        toast.success("Category updated successfully!");
-      } else {
-        toast.error("Failed to update category. Please try again.");
-      }
+      console.log("Form submitted:", response.data);
+      toast.success("Category updated successfully!");
+      setReload((prev) => prev + 1);
     } catch (error) {
-      console.error("Failed to update category:", error);
-      toast.error("Failed to update category. Please try again.");
+      console.error("Failed to update category:", error.response || error);
+      toast.error(
+        `Failed to update category: ${
+          error.response?.data?.message || error.message
+        }`
+      );
     }
   };
 

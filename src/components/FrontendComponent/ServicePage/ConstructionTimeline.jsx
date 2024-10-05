@@ -94,7 +94,7 @@ export default function ConstructionTimeline() {
         <div className="md:w-1/2 flex items-center">
           <div className="w-full h-full relative">
             <Image
-              src="https://picsum.photos/id/61/600/600"
+              src="/servicePage2.jpg"
               alt="Construction site with excavator"
               layout="fill"
               objectFit="cover"

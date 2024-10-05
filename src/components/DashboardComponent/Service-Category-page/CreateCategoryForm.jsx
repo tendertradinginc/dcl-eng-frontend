@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export default function CreateCategoryForm() {
+export default function CreateCategoryForm({ setReload }) {
   const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -49,7 +49,7 @@ export default function CreateCategoryForm() {
       console.log("Form submitted:", response.data);
 
       toast.success("Category created successfully!");
-
+      setReload((prev) => prev + 1);
       setFormData({ name: "", img: "" });
     } catch (error) {
       console.error("Failed to submit form:", error);

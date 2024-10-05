@@ -1,13 +1,15 @@
 import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 
-export default function SectionBanner({ title, breadcrumbs }) {
+export default function SectionBanner({ title, breadcrumbs, imgUrl }) {
   return (
-    <div className="relative h-[300px] w-full overflow-hidden">
+    <div className="relative h-[400px] w-full overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://picsum.photos/id/43/1000/300')",
+          backgroundImage: `url(${
+            imgUrl || "https://picsum.photos/id/43/1000/300"
+          })`,
         }}
       />
       <div className="absolute inset-0 bg-black bg-opacity-50" />

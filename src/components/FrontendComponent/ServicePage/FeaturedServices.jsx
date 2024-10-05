@@ -9,7 +9,7 @@ export default function FeaturedServices() {
     <section className="relative bg-white text-white py-16 overflow-hidden">
       <div className="absolute inset-0 z-0 h-1/2">
         <Image
-          src="https://picsum.photos/id/1/1600/600"
+          src="/servicePage3.jpg"
           alt="Background"
           layout="fill"
           objectFit="cover"
@@ -27,7 +27,7 @@ export default function FeaturedServices() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 -mb-32 lg:px-10">
           <div className="relative overflow-hidden shadow-lg">
             <Image
-              src="https://picsum.photos/id/1/600/600"
+              src="/servicePage4.jpg"
               alt="Architecture & Building"
               width={600}
               height={600}
@@ -39,7 +39,7 @@ export default function FeaturedServices() {
           </div>
           <div className="relative overflow-hidden shadow-lg">
             <Image
-              src="https://picsum.photos/id/4/600/600"
+              src="/servicePage5.jpg"
               alt="Steel Structure"
               width={600}
               height={600}
@@ -55,7 +55,7 @@ export default function FeaturedServices() {
           </div>
           <div className="relative overflow-hidden shadow-lg">
             <Image
-              src="https://picsum.photos/id/3/600/600"
+              src="/servicePage6.jpg"
               alt="Architecture & Building"
               width={600}
               height={600}

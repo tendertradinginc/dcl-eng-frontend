@@ -12,6 +12,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 
 export default function page({ params }) {
   // Decode the category name
@@ -33,7 +34,11 @@ export default function page({ params }) {
   ];
   return (
     <div className="mt-16">
-      <SectionBanner title="OUR SERVICES" breadcrumbs={breadcrumbs} />
+      <SectionBanner
+        title="OUR SERVICES"
+        breadcrumbs={breadcrumbs}
+        imgUrl="/servicePageBanner.jpg"
+      />
 
       <SectionHeadingCenter
         imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
@@ -42,7 +47,7 @@ export default function page({ params }) {
         className="my-20"
       />
 
-      <div className="container mx-auto px-4 lg:px-10 pb-20">
+      <MaxWidthWrapper className="my-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {Array.from({ length: 12 }, (_, index) => (
             <ServiceCard key={index} />
@@ -76,7 +81,7 @@ export default function page({ params }) {
             </PaginationContent>
           </Pagination>
         </div>
-      </div>
+      </MaxWidthWrapper>
     </div>
   );
 }
