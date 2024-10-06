@@ -27,7 +27,7 @@ const Contact = () => {
         ></SectionTitle>
 
         <div className="text-5xl font-bold mb-2 text-center">
-          <h2> WE'D LOVE TO HEAR FROM</h2>
+          <h2> {`WE'D`} LOVE TO HEAR FROM</h2>
           <div className="inline-block mt-2">
             <span className="">YOU</span>
             <hr className="border-t-8 border-t-[#F78C40] mt-[-8px]" />

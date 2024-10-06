@@ -15,12 +15,12 @@ const ProjectShowcase = async () => {
   return (
     <MaxWidthWrapper>
       <div className="pb-8 ">
-      <SectionHeadingCenter
-        imageUrl="https://i.postimg.cc/q7L1JF7N/SHOWCASE.png"
-        subTitle="Explore Features"
-        title="Project Showcase"
-        description=""
-      />
+        <SectionHeadingCenter
+          imageUrl="https://i.postimg.cc/q7L1JF7N/SHOWCASE.png"
+          subTitle="Explore Features"
+          title="Project Showcase"
+          description=""
+        />
       </div>
       <div className=" mb-20 ">
         <Tabs defaultValue="Upcoming" className="">
@@ -45,10 +45,14 @@ const ProjectShowcase = async () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="Upcoming">
-          <ProjectSlide />
+            <ProjectSlide />
           </TabsContent>
-          <TabsContent value="Completed"><ProjectSlide /></TabsContent>
-          <TabsContent value="ongoing"><ProjectSlide /></TabsContent>
+          <TabsContent value="Completed">
+            <ProjectSlide />
+          </TabsContent>
+          <TabsContent value="ongoing">
+            <ProjectSlide />
+          </TabsContent>
         </Tabs>
         {/* <ProjectSlide />  */}
       </div>

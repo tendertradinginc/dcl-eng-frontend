@@ -20,7 +20,7 @@ import { toast } from "sonner";
 
 const ProjectCreateModal = ({ setReload }) => {
   const [imageFile, setImageFile] = useState(null);
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -50,9 +50,7 @@ const ProjectCreateModal = ({ setReload }) => {
     const toastId = toast.loading("loading...");
     const imageUrl = await uploadImageToImgBB(imageFile);
     try {
-      
       const projectData = { ...formData, image: imageUrl, category };
-   
 
       const response = await fetch(
         "http://localhost:5000/api/v1/projects/create-project",
@@ -75,12 +73,12 @@ const ProjectCreateModal = ({ setReload }) => {
     } catch (error) {
       toast.error(error.message || "An unexpected error occurred");
       console.error("Error:", error);
-      console.log( {...formData, category})
+      console.log({ ...formData, category });
       toast.error(error?.message);
     } finally {
       toast.dismiss(toastId);
       setLoading(false);
-      console.log({ ...formData, image: imageUrl, category })
+      console.log({ ...formData, image: imageUrl, category });
     }
   };
 
@@ -139,35 +137,34 @@ const ProjectCreateModal = ({ setReload }) => {
               onChange={handleImageUpload}
             />
           </div>
-         
-         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-         <div className="mb-4">
-            <Label className="mb-2 block">Category</Label>
-            <select onChange={(e)=>setCategory(e.target.value)} className="border w-full p-2 rounded-md">
-              <option value="up-coming">Up-Coming</option>
-              <option value="on-going">On-Going</option>
-              <option value="completed">Completed</option>
-            </select>
-          </div>
 
-          <div className="mb-4">
-            <Label className="mb-2 block">Location</Label>
-            <Input
-              type="text"
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-              required
-            />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div className="mb-4">
+              <Label className="mb-2 block">Category</Label>
+              <select
+                onChange={(e) => setCategory(e.target.value)}
+                className="border w-full p-2 rounded-md"
+              >
+                <option value="up-coming">Up-Coming</option>
+                <option value="on-going">On-Going</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+
+            <div className="mb-4">
+              <Label className="mb-2 block">Location</Label>
+              <Input
+                type="text"
+                name="location"
+                value={formData.location}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
           </div>
-         </div>
 
           {loading ? (
-            <Button
-              disabled
-             
-              className="w-full items-center gap-2.5"
-            >
+            <Button disabled className="w-full items-center gap-2.5">
               Processing
               <span className="animate-spin">
                 <CgSpinnerTwoAlt size={18} />
@@ -183,7 +180,9 @@ const ProjectCreateModal = ({ setReload }) => {
           )}
         </form>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={() => setIsOpen(false)}>Cancel</AlertDialogCancel>
+          <AlertDialogCancel onClick={() => setIsOpen(false)}>
+            Cancel
+          </AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
