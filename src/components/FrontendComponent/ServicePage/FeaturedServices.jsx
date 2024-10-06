@@ -66,7 +66,7 @@ export default function FeaturedServices() {
                     <p className="text-sm mb-4">{service.shortDescription}</p>
                   )}
                   <Link
-                    href={`/services/${service?.name}`}
+                    href={`/services/${service?.name}?page=1&limit=12`}
                     className="flex justify-center"
                   >
                     <Button
