@@ -57,21 +57,24 @@ export default function FeaturedServices() {
                 objectFit="cover"
                 className="object-cover w-full h-full"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-end p-6 text-center">
-                <h3 className="text-2xl font-bold">
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-end text-center p-6">
+                <h3 className="text-2xl font-bold mb-4 transition-transform duration-300 ease-in-out group-hover:-translate-y-24">
                   {service.name.toUpperCase()}
                 </h3>
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
                   {service.shortDescription && (
                     <p className="text-sm mb-4">{service.shortDescription}</p>
                   )}
-                  <Link href={`/service/${service?.name}`}>
+                  <Link
+                    href={`/service/${service?.name}`}
+                    className="flex justify-center"
+                  >
                     <Button
                       className="duration-200 py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center border-2 border-white flex text-white font-semibold text-base"
                       variant="tti"
                     >
                       View More Services
-                      <div className=" p-2.5 rounded-full bg-white">
+                      <div className="p-2.5 rounded-full bg-white">
                         <FaArrowRightLong className="text-lg text-black -rotate-45" />
                       </div>
                     </Button>
