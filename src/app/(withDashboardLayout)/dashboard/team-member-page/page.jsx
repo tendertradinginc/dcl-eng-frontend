@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useDebounce } from "use-debounce";
-import { AiOutlineTeam } from "react-icons/ai";
-import { FaPlusCircle } from "react-icons/fa";
+import CreateTeamMemberForm from "@/components/DashboardComponent/TeamMembers/CreateTeamMemberForm";
+import UpdateTeamMemberForm from "@/components/DashboardComponent/TeamMembers/UpdateTeamMemberForm";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,22 +13,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import Image from "next/image";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Pencil, Trash2 } from "lucide-react";
-import { toast } from "sonner";
-import axios from "axios";
-import { Input } from "@/components/ui/input";
-import { useRouter, useSearchParams } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import CreateTeamMemberForm from "@/components/DashboardComponent/TeamMembers/CreateTeamMemberForm";
-import UpdateTeamMemberForm from "@/components/DashboardComponent/TeamMembers/UpdateTeamMemberForm";
+import axios from "axios";
+import { Pencil, Trash2 } from "lucide-react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { AiOutlineTeam } from "react-icons/ai";
+import { FaPlusCircle } from "react-icons/fa";
+import { toast } from "sonner";
+import { useDebounce } from "use-debounce";
 
 const Page = () => {
   const router = useRouter();

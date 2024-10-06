@@ -8,32 +8,13 @@ import { SlLocationPin } from "react-icons/sl";
 import { VscStarFull } from "react-icons/vsc";
 import SkeletonSlide from "./SkeletonSlide";
 
-const CustomSlider = () => {
+const CustomSlider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState(0);
   const [loading, setLoading] = useState(false);
   const [currentTranslate, setCurrentTranslate] = useState(0);
   const sliderRef = useRef(null);
-  const [slides, setSlides] = useState([]);
-  useEffect(() => {
-    const fetchSlides = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `http://localhost:5000/api/v1/homepage/banner`
-        );
-        const data = await response.json();
-        setSlides(data?.data || []);
-      } catch (error) {
-        console.error("Error fetching slides:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSlides();
-  }, []);
 
   useEffect(() => {
     if (slides.length > 0) {
@@ -116,7 +97,7 @@ const CustomSlider = () => {
                       <h1 className="text-3xl lg:text-6xl font-bold uppercase">
                         {slide?.title}
                         <span
-                          className="text-transparent stroke-2 stroke-[#F97316] outline-0 ml-2 "
+                          className="text-transparent stroke-2 stroke-[#F97316] outline-0 ml-2"
                           style={{
                             WebkitTextStroke: "2px #F97316",
                             WebkitTextFillColor: "transparent",
@@ -128,7 +109,7 @@ const CustomSlider = () => {
                           {slide?.lastTitle}
                         </span>
                       </h1>
-                      <p className="my-4  lg:my-16 w-11/12 md:w-2/3 text-lg font-medium">
+                      <p className="my-4 lg:my-16 w-11/12 md:w-2/3 text-lg font-medium">
                         {slide?.subtitle}
                       </p>
                       <Link
@@ -151,24 +132,25 @@ const CustomSlider = () => {
                           </p>
                         )}
                       </div>
-                      <div className="hidden md:flex items-center gap-4 ">
+                      <div className="hidden md:flex items-center gap-4">
                         <div>
                           <Image
                             alt="our vision image"
                             height={40}
                             width={40}
                             src="/slider12.png"
-                          ></Image>
+                          />
                         </div>
-                        <div className="">
+                        <div>
                           <p className="flex items-center gap-2 text-xl">
-                            <VscStarFull className="text-[#F97316]" />
-                            <VscStarFull className="text-[#F97316]" />
-                            <VscStarFull className="text-[#F97316]" />
-                            <VscStarFull className="text-[#F97316]" />
-                            <VscStarFull className="text-[#F97316]" />
+                            {Array.from({ length: 5 }, (_, index) => (
+                              <VscStarFull
+                                key={index}
+                                className="text-[#F97316]"
+                              />
+                            ))}
                           </p>
-                          <p className="text-white mt-2 ">
+                          <p className="text-white mt-2">
                             Trusted By 500+ Companies
                           </p>
                         </div>
@@ -181,18 +163,18 @@ const CustomSlider = () => {
 
         <button
           onClick={prevSlide}
-          className="absolute hidden top-1/2 z-50 left-5 transform -translate-y-1/2 text-white text-3xl  border border-transparent hover:border duration-200 hover:border-white  bg-opacity-50 px-1  rounded-full hover:bg-opacity-80"
+          className="absolute hidden top-1/2 z-50 left-5 transform -translate-y-1/2 text-white text-3xl border border-transparent hover:border duration-200 hover:border-white bg-opacity-50 px-1 rounded-full hover:bg-opacity-80"
         >
           &#8592;
         </button>
         <button
           onClick={nextSlide}
-          className="hidden absolute top-1/2 z-50 right-5 transform -translate-y-1/2 text-white text-3xl border border-transparent hover:border duration-200 hover:border-white bg-opacity-50 px-1  rounded-full hover:bg-opacity-80"
+          className="hidden absolute top-1/2 z-50 right-5 transform -translate-y-1/2 text-white text-3xl border border-transparent hover:border duration-200 hover:border-white bg-opacity-50 px-1 rounded-full hover:bg-opacity-80"
         >
           &#8594;
         </button>
         <div className="absolute bottom-5 w-full flex justify-center space-x-2 z-50">
-          {slides.map((_, index) => (
+          {slides?.map((_, index) => (
             <div
               key={index}
               onClick={() => setCurrentIndex(index)}

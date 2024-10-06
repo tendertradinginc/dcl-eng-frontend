@@ -51,7 +51,7 @@ const BlogUpdate = ({ data, setReload }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(updatedBlog),
-        },
+        }
       );
 
       if (response.ok) {

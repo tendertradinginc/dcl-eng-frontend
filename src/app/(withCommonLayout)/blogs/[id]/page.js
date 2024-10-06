@@ -1,15 +1,11 @@
-
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import { customLoader } from "@/utils/customLoader";
 import Image from "next/image";
 
 const page = async ({ params }) => {
-  const res = await fetch(
-    `http://localhost:5000/api/v1/blogs/${params?.id}`,
-    {
-      cache: "no-store",
-    },
-  );
+  const res = await fetch(`http://localhost:5000/api/v1/blogs/${params?.id}`, {
+    cache: "no-store",
+  });
   const data = await res.json();
   const blog = data?.data;
 
@@ -58,7 +54,6 @@ const page = async ({ params }) => {
                 <p className="whitespace-break-spaces text-[#454545] text-justify text-lg font-medium">
                   {blog?.description}
                 </p>
-                
               </div>
             </div>
           </div>

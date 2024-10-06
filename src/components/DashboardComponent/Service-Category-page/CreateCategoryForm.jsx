@@ -1,10 +1,10 @@
 "use client";
 
-import axios from "axios";
-import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { uploadImageToImgBB } from "@/utils/imageUpload";
+import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";

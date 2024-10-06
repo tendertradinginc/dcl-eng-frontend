@@ -1,11 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useDebounce } from "use-debounce";
-import axios from "axios";
-import { useRouter, useSearchParams } from "next/navigation";
-import { toast } from "sonner";
-import Image from "next/image";
 import CreateCategoryForm from "@/components/DashboardComponent/Service-Category-page/CreateCategoryForm";
 import UpdateCategoryForm from "@/components/DashboardComponent/Service-Category-page/UpdateCategoryForm";
 import { Button } from "@/components/ui/button";
@@ -18,18 +12,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { AiFillDatabase } from "react-icons/ai";
-import { FaPlusCircle } from "react-icons/fa";
-import { Input } from "@/components/ui/input";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { CaretDownIcon, Pencil1Icon } from "@radix-ui/react-icons";
+import axios from "axios";
 import { Trash2 } from "lucide-react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { AiFillDatabase } from "react-icons/ai";
+import { FaPlusCircle } from "react-icons/fa";
+import { toast } from "sonner";
+import { useDebounce } from "use-debounce";
 
 const Page = () => {
   const router = useRouter();
