@@ -173,7 +173,7 @@ const ProjectUpdate = ({ data, setReload }) => {
               <Input
                 value={updatedLocation}
                 onChange={(e) => {
-                    setUpdatedLocation(e.target.value);
+                  setUpdatedLocation(e.target.value);
                   setIsdisabled(false);
                 }}
                 type="text"

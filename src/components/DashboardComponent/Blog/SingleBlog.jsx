@@ -1,10 +1,8 @@
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
-import { CiEdit } from "react-icons/ci";
-import { MdDeleteOutline } from "react-icons/md";
 import BlogUpdate from "./BlogUpdate";
 // import DeleteBlog from "./DeleteBlog";
-import ViewBlog from "./ViewBlog";
 import DeleteDataModal from "@/components/shared/DeleteDataModal/DeleteDataModal";
+import ViewBlog from "./ViewBlog";
 
 const SingleBlog = ({ data, index, setReload }) => {
   const { title } = data;
@@ -15,9 +13,12 @@ const SingleBlog = ({ data, index, setReload }) => {
 
       <td className="space-x-3 md:px-4">
         <AlertDialog className="flex gap-3">
-          <ViewBlog data={data}/>
+          <ViewBlog data={data} />
           <BlogUpdate setReload={setReload} data={data} />
-        <DeleteDataModal setReload={setReload} url={`http://localhost:5000/api/v1/blogs/${data?._id}`} />
+          <DeleteDataModal
+            setReload={setReload}
+            url={`http://localhost:5000/api/v1/blogs/${data?._id}`}
+          />
         </AlertDialog>
       </td>
     </tr>
