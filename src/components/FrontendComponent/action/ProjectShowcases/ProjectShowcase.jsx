@@ -71,7 +71,7 @@ const ProjectShowcases = () => {
                                             <h4 className="my-2 text-white transition-transform duration-700 group-hover:-translate-y-6 group-hover:opacity-100 opacity-0">
                                                 {project.description}
                                             </h4>
-                                            <Link href="#">
+                                            <Link href={`/projectShowcase/${project._id}`}>
                                                 <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full transition-all duration-700 group-hover:-translate-y-6 hover:bg-[#F78C40]">
                                                     Commercial
                                                 </p>
@@ -105,7 +105,7 @@ const ProjectShowcases = () => {
                                             <h4 className="my-2 text-white transition-transform duration-700 group-hover:-translate-y-6 group-hover:opacity-100 opacity-0">
                                                 {project.description}
                                             </h4>
-                                            <Link href="#">
+                                            <Link href={`/projectShowcase/${project._id}`}>
                                                 <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full transition-all duration-700 group-hover:-translate-y-6 hover:bg-[#F78C40]">
                                                     Commercial
                                                 </p>
@@ -139,7 +139,7 @@ const ProjectShowcases = () => {
                                             <h4 className="my-2 text-white transition-transform duration-700 group-hover:-translate-y-6 group-hover:opacity-100 opacity-0">
                                                 {project.description}
                                             </h4>
-                                            <Link href="#">
+                                            <Link href={`/projectShowcase/${project._id}`}>
                                                 <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full transition-all duration-700 group-hover:-translate-y-6 hover:bg-[#F78C40]">
                                                     Commercial
                                                 </p>
