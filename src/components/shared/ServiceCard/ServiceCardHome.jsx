@@ -6,8 +6,10 @@ import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 import { useState } from "react";
+import { customLoader } from "@/utils/customLoader";
 
-const ServiceCardHome = ({ title, description, imageUrl }) => {
+const ServiceCardHome = ({ data }) => {
+  const {name, shortDescription, image, category} = data
   const [isShow, setIsShow] = useState(false);
  
   return (
@@ -26,17 +28,18 @@ const ServiceCardHome = ({ title, description, imageUrl }) => {
         <div className="relative">
           <Image
             alt="slider image"
-            src={imageUrl}
+            src={image}
             height={500}
             width={427}
-            className="h-[500px] "
+            loader={customLoader}
+            className="h-[500px] w-full object-cover "
           />
           <div
             className={`absolute bottom-0 p-10 pb-7 ${
               isShow ? "hidden" : "block"
             }`}
           >
-            <h1 className="text-white font-semibold text-2xl">{title}</h1>
+            <h1 className="text-white font-semibold text-2xl">{name}</h1>
           </div>
         </div>
       </CardContent>
@@ -45,10 +48,10 @@ const ServiceCardHome = ({ title, description, imageUrl }) => {
           isShow ? "h-full  opacity-100 " : "h-0 duration-1000 opacity-0 "
         }`}
       >
-        <div className={`p-10 pb-7 ${isShow ? "block" : "hidden"}`}>
-          <h1 className="text-white font-semibold text-2xl ">{title}</h1>
-          <p className="text-[#EFEFEF] text-sm py-2 mb-4">{description}</p>
-          <Link className="block" href={`/tenders/`}>
+        <div className={`p-10 pb-7 text-center ${isShow ? "block" : "hidden"}`}>
+          <h1 className="text-white font-semibold text-2xl ">{name}</h1>
+          <p className="text-[#EFEFEF] text-sm my-2 mb-4 line-clamp-2">{shortDescription}</p>
+          <Link className="block" href={`/services/road-construction/${category}`}>
             <Button
               className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center   border-2  text-white flex "
               variant="tti"

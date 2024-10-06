@@ -3,9 +3,14 @@ import SectionHeadingCenter from "@/components/shared/SectionHeading/SectionHead
 import ServiceCard from "@/components/shared/ServiceCard/ServiceCard";
 import ServiceCardHome from "@/components/shared/ServiceCard/ServiceCardHome";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const ServicesSection = () => {
+const ServicesSection = async () => {
+  const res = await fetch('http://localhost:5000/api/v1/service')
+  const data = await res.json()
+  const services = data?.data
+  
   return (
     <MaxWidthWrapper className="my-20">
       <SectionHeadingCenter
@@ -26,31 +31,29 @@ const ServicesSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20">
         {services?.map((item, idx) => (
-          // <ServiceCard
-          //   imageUrl={item?.image}
-          //   title={item?.title}
-          //   description={item?.description}
-          //   key={idx}
-          // />
           <ServiceCardHome
-            imageUrl={item?.image}
+          data={item}
+            image={item?.image}
             title={item?.title}
-            description={item?.description}
+            description={item?.shortDescription}
             key={idx}
           />
         ))}
       </div>
 
       <div>
-        <Button
-          className="group  duration-400 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 hover:bg-[#F78C40] hover:border-[#F78C40]"
-          variant="tti"
-        >
-          Explore Our Prujects{" "}
-          <div className="p-2 rounded-full duration-400  bg-[#0A2F4D] my-0.5 group-hover:bg-white">
-            <FaArrowRightLong className="text-lg duration-400 group-hover:text-[#0A2F4D]  text-white -rotate-45" />
-          </div>
-        </Button>
+        <Link href="/services">
+          {" "}
+          <Button
+            className="group  duration-300 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center  border-2 border-[#0A2F4D] flex text-[#0A2F4D] font-semibold text-base border-r-0 hover:text-white hover:bg-[#F78C40] hover:border-[#F78C40]"
+            variant="tti"
+          >
+            Explore Our Prujects{" "}
+            <div className="p-2 rounded-full duration-300  bg-[#0A2F4D] my-0.5 group-hover:bg-white hover:text-white">
+              <FaArrowRightLong className="text-lg duration-300 group-hover:text-[#F78C40]  text-white -rotate-45" />
+            </div>
+          </Button>
+        </Link>
       </div>
     </MaxWidthWrapper>
   );
@@ -58,41 +61,4 @@ const ServicesSection = () => {
 
 export default ServicesSection;
 
-const services = [
-  {
-    image: "https://i.postimg.cc/FsyHDtsd/Component-1-1.png",
-    title: "ARCHITECTURE & BUILDING",
-    description:
-      "We maintain this by ensuring transparency and professional conduct in every aspect of our work.",
-  },
-  {
-    image: "https://i.postimg.cc/0Nb6ttBT/Component-1-4.png",
-    title: "STEEL STRUCTURE",
-    description:
-      "We maintain this by ensuring transparency and professional conduct in every aspect of our work.",
-  },
-  {
-    image: "https://i.postimg.cc/fy5gRTfS/Component-1-2.png",
-    title: "ARCHITECTURE & BUILDING",
-    description:
-      "We maintain this by ensuring transparency and professional conduct in every aspect of our work.",
-  },
-  {
-    image: "https://i.postimg.cc/T1r5Vp4h/Component-1-3.png",
-    title: "ARCHITECTURE & BUILDING",
-    description:
-      "We maintain this by ensuring transparency and professional conduct in every aspect of our work.",
-  },
-  {
-    image: "https://i.postimg.cc/25M1gQpV/Component-1-5.png",
-    title: "ARCHITECTURE & BUILDING",
-    description:
-      "We maintain this by ensuring transparency and professional conduct in every aspect of our work.",
-  },
-  {
-    image: "https://i.postimg.cc/WpMdfq51/Component-1-6.png",
-    title: "ARCHITECTURE & BUILDING",
-    description:
-      "We maintain this by ensuring transparency and professional conduct in every aspect of our work.",
-  },
-];
+

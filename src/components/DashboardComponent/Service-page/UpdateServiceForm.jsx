@@ -80,7 +80,7 @@ export default function UpdateServiceForm({ serviceId, setReload }) {
 
       console.log("Form submitted:", response.data);
       toast.success("Service updated successfully!");
-      setReload(true);
+      setReload(prev => prev+1);
     } catch (error) {
       console.error("Failed to update service:", error.response || error);
       toast.error(
