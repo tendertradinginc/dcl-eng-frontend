@@ -8,12 +8,15 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function CreateCategoryForm({ setReload }) {
   const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     img: "",
+    featuredStatus: false,
+    shortDescription: "", // Add this line
   });
 
   // Image upload handler
@@ -35,7 +38,8 @@ export default function CreateCategoryForm({ setReload }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.img) {
+    if (!formData.name || !formData.img || !formData.shortDescription) {
+      // Update this line
       toast.error("Please provide all required fields.");
       return;
     }
@@ -50,7 +54,12 @@ export default function CreateCategoryForm({ setReload }) {
 
       toast.success("Category created successfully!");
       setReload((prev) => prev + 1);
-      setFormData({ name: "", img: "" });
+      setFormData({
+        name: "",
+        img: "",
+        featuredStatus: false,
+        shortDescription: "",
+      });
     } catch (error) {
       console.error("Failed to submit form:", error);
       toast.error("Failed to create category. Please try again.");
@@ -67,6 +76,18 @@ export default function CreateCategoryForm({ setReload }) {
             placeholder="Enter category name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="short-description">Short Description</Label>
+          <Input
+            name="short-description"
+            placeholder="Enter short description"
+            value={formData.shortDescription}
+            onChange={(e) =>
+              setFormData({ ...formData, shortDescription: e.target.value })
+            }
           />
         </div>
 
@@ -90,6 +111,17 @@ export default function CreateCategoryForm({ setReload }) {
             className="size-40"
           />
         )}
+
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="featured-status"
+            checked={formData.featuredStatus}
+            onCheckedChange={(checked) =>
+              setFormData({ ...formData, featuredStatus: checked })
+            }
+          />
+          <Label htmlFor="featured-status">Featured Status</Label>
+        </div>
 
         <Button type="submit" disabled={uploading}>
           Submit

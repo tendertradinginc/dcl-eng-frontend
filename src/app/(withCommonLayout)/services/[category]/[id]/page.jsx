@@ -11,9 +11,22 @@ import {
 import { Mail, MessageCircleMore, Phone } from "lucide-react";
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 
-export default function page({ params }) {
+// Add this function for data fetching
+async function getServiceById(id) {
+  const response = await fetch(`http://localhost:5000/api/v1/service/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch service data");
+  }
+  const data = await response.json();
+  return data.data;
+}
+
+export default async function Page({ params }) {
   // Decode the id name
   const decodedId = decodeURIComponent(params.id);
+
+  // Fetch service data
+  const serviceData = await getServiceById(decodedId);
 
   const breadcrumbs = [
     {
@@ -25,11 +38,13 @@ export default function page({ params }) {
       url: "/services",
     },
     {
-      label: "Road Construction",
-      url: `/services/road-construction`,
+      label: serviceData.category,
+      url: `/services/${serviceData.category
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`,
     },
     {
-      label: decodedId,
+      label: serviceData.name,
       url: `/services/${decodedId}`,
     },
   ];
@@ -49,8 +64,8 @@ export default function page({ params }) {
 
       <SectionHeadingCenter
         imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
-        title={<span className="capitalize">{decodedId}</span>}
-        subTitle="Category Name"
+        title={<span className="capitalize">{serviceData.name}</span>}
+        subTitle={serviceData.category}
         className="my-20"
       />
 
@@ -59,8 +74,8 @@ export default function page({ params }) {
         <div className="flex flex-col md:flex-row items-start gap-8">
           <div className="md:w-1/2">
             <Image
-              src="/serviceDetailsPage1.jpg"
-              alt="Construction equipment"
+              src={serviceData.image}
+              alt={serviceData.name}
               width={500}
               height={300}
               layout="responsive"
@@ -69,32 +84,9 @@ export default function page({ params }) {
           </div>
           <div className="md:w-1/2">
             <h2 className="text-3xl font-bold mb-4">
-              We offer commitment at all levels of building project, from
-              construction to management services.
+              {serviceData.shortDescription}
             </h2>
-            <p className="text-gray-600 mb-4">
-              Lorem ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. Lorem
-              ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <p className="text-gray-600 mb-4">
-              Lorem Ipsum has been the industry&apos;s standard dummy text ever
-              since the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book. It has survived not
-              only five centuries, but also the leap into electronic
-              typesetting, remaining essentially unchanged.
-            </p>
-            <p className="text-gray-600">
-              It has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
+            <p className="text-gray-600 mb-4">{serviceData.fullDescription}</p>
           </div>
         </div>
       </MaxWidthWrapper>
@@ -152,14 +144,14 @@ export default function page({ params }) {
             <h2 className="text-3xl font-bold mb-8">
               Frequently asked question
             </h2>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {faqItems.map((item, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index + 1}`}
                   className="border"
                 >
-                  <AccordionTrigger className="text-lg font-semibold px-4 py-2">
+                  <AccordionTrigger className="text-lg font-semibold px-4 py-4">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-base px-4 py-2">

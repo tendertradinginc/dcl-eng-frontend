@@ -10,6 +10,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
+import { CategoryCombobox } from "@/components/shared/CategoryCombobox/CategoryCombobox";
 
 export default function CreateServiceForm({ setReload }) {
   const [uploading, setUploading] = useState(false);
@@ -124,15 +125,11 @@ export default function CreateServiceForm({ setReload }) {
           />
         )}
 
-        <div className="space-y-2">
+        <div className="space-x-2">
           <Label htmlFor="service-category">Category</Label>
-          <Input
-            name="service-category"
-            placeholder="Enter service category"
-            value={formData.category}
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
+          <CategoryCombobox
+            category={formData.category}
+            setCategory={(category) => setFormData({ ...formData, category })}
           />
         </div>
 
