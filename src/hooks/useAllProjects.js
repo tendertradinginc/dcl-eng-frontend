@@ -11,7 +11,7 @@ const useAllProjects = (page, limit, searchValue) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}&search=${searchValue}`
+          `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}&searchValue=${searchValue}`
         );
         const data = await response.json();
         setProjects(data?.data?.allProjects);
