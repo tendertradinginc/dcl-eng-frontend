@@ -139,8 +139,9 @@ const EditClientModal = ({ data, setReload }) => {
 
             <div className="">
               <div
-                className={`flex h-10 items-center justify-center rounded font-semibold  hover:text-white text-black ${isDisbaled ? "bg-secondary" : "bg-[#F78C40]"
-                  }`}
+                className={`flex h-10 items-center justify-center rounded font-semibold  hover:text-white text-black ${
+                  isDisbaled ? "bg-secondary" : "bg-[#F78C40]"
+                }`}
               >
                 <button className=" ">
                   <Image
@@ -149,8 +150,9 @@ const EditClientModal = ({ data, setReload }) => {
                     alt="client"
                     height="56"
                     width="30"
-                    className={`mx-auto w-8 text-center ${!loading && "hidden"
-                      }`}
+                    className={`mx-auto w-8 text-center ${
+                      !loading && "hidden"
+                    }`}
                   />
                 </button>
 

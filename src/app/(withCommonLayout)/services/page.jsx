@@ -19,23 +19,31 @@ export default function page() {
 
   return (
     <div className="mt-16">
-      <SectionBanner title="OUR SERVICES" breadcrumbs={breadcrumbs} />
-      <div className="my-20">
-        <SectionHeadingCenter
-          imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
-          title={
-            <>
-              PROVIDING SOLUTIONS FOR CONSTRUCTION,
-              <br />
-              <span className="border-b-4 border-[#F78C40]">
-                MANAGEMENT, AND RESTORATION.
-              </span>
-            </>
-          }
-          subTitle="What we do"
-        />
+      <SectionBanner
+        title="OUR SERVICES"
+        breadcrumbs={breadcrumbs}
+        imgUrl="/servicePageBanner.jpg"
+      />
+      <div className="mb-20 relative">
+        <div className="absolute inset-0 bg-[url('/servicePageBg.png')] bg-cover bg-center bg-no-repeat opacity-20 z-0"></div>
+        <div className="relative z-10 py-20">
+          <SectionHeadingCenter
+            imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
+            title={
+              <>
+                PROVIDING SOLUTIONS FOR CONSTRUCTION,
+                <br />
+                <span className="border-b-4 border-[#F78C40]">
+                  MANAGEMENT, AND RESTORATION.
+                </span>
+              </>
+            }
+            subTitle="What we do"
+            className="text-black"
+          />
 
-        <ServiceCategory />
+          <ServiceCategory />
+        </div>
       </div>
       <div className="mb-20">
         <SectionHeadingCenter

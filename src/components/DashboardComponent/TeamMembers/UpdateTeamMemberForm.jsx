@@ -1,13 +1,13 @@
 "use client";
 
-import axios from "axios";
-import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { uploadImageToImgBB } from "@/utils/imageUpload";
+import axios from "axios";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export default function UpdateTeamMemberForm({ memberId, setReload }) {
@@ -76,7 +76,7 @@ export default function UpdateTeamMemberForm({ memberId, setReload }) {
 
       console.log("Form submitted:", response.data);
       toast.success("Team member updated successfully!");
-      setReload(true);
+      setReload((prev) => prev + 1);
     } catch (error) {
       console.error("Failed to update team member:", error.response || error);
       toast.error(

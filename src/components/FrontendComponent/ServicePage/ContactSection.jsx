@@ -19,13 +19,13 @@ export default function ContactSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://picsum.photos/id/1/1600/900"
+          src="/servicePage7.jpg"
           alt="Background"
           layout="fill"
           objectFit="cover"
           quality={100}
         />
-        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
       {/* Content */}

@@ -1,4 +1,5 @@
 import SideNavbar from "@/components/DashboardComponent/sidebar/SideNavbar";
+import { Suspense } from "react";
 
 export default function AdminLayout({ children }) {
   return (
@@ -7,7 +8,9 @@ export default function AdminLayout({ children }) {
         <SideNavbar></SideNavbar>
       </div>
       <div className="col-span-12 md:col-span-10">
-        <div className="mx-auto">{children}</div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="mx-auto">{children}</div>
+        </Suspense>
       </div>
     </div>
   );

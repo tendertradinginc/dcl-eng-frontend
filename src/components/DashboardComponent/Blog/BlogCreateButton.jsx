@@ -121,18 +121,14 @@ const BlogCreateButton = ({ setReload }) => {
           </div>
 
           {loading ? (
-            <Button
-              disabled
-              variant="tti"
-              className="w-full items-center gap-2.5"
-            >
+            <Button disabled className="w-full items-center gap-2.5 ">
               Processing
               <span className="animate-spin">
                 <CgSpinnerTwoAlt size={18} />
               </span>
             </Button>
           ) : (
-            <Button type="submit" variant="dashboard">
+            <Button type="submit" className="w-full">
               Submit
             </Button>
           )}

@@ -7,6 +7,7 @@ const SectionHeadingCenter = ({
   title,
   description,
   className,
+  descriptionClassname,
 }) => {
   return (
     <div className={cn("", className)}>
@@ -17,7 +18,7 @@ const SectionHeadingCenter = ({
               alt="our vision imave"
               height={64}
               width={386}
-              className="mx-auto w-auto"
+              className="mx-auto w-80 md:w-auto"
               src={imageUrl}
             ></Image>
           </div>
@@ -30,7 +31,12 @@ const SectionHeadingCenter = ({
           <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
         </div>
         <h1 className="text-4xl font-bold mt-4 mb-8 text-center ">{title}</h1>
-        <p className="text-[#454545] max-w-4xl text-center mx-auto text-xl">
+        <p
+          className={cn(
+            "text-[#454545] max-w-4xl text-center mx-auto text-xl",
+            descriptionClassname
+          )}
+        >
           {description}
         </p>
       </div>

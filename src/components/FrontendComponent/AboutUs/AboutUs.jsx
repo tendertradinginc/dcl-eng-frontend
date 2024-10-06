@@ -7,7 +7,7 @@ const AboutUs = () => {
     <div className="grid lg:grid-cols-2  mt-10 py-20">
       <div className="mt-5 md:mt-10 lg:mt-0">
         <SectionHeadingLeft
-          imageUrl="https://i.postimg.cc/65SSjyX9/ABOUT-US.png"
+          imageUrl="https://i.postimg.cc/KzQMB01z/about-us-banner-1.png"
           subTitle="SINCE FROM 2000"
           title={
             <>

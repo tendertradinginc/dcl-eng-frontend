@@ -11,12 +11,12 @@ const useAllblogs = (page, limit, searchValue) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/v1/blogs?page=${page}&limit=${limit}`
+          `http://localhost:5000/api/v1/blogs?page=${page}&limit=${limit}&searchValue=${searchValue}`
         );
         const data = await response.json();
         setBlogs(data?.data?.allBlogs);
         setBlogsCount(data?.data?.totlaBlogs);
-        console.log({blogs, blogsCount})
+        console.log({ blogs, blogsCount });
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {

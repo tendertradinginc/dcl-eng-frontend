@@ -2,15 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 body {
- 
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #F1F4FB;
-
+  background-color: #f1f4fb;
+}
+.active-slide .icon-class {
+  color: #dae724; /* your selected color */
 }
 
 @layer utilities {
@@ -18,9 +15,30 @@ body {
     text-wrap: balance;
   }
 }
+.swiper-pagination-bullet-active {
+  color: #ff6600;
+  background: #ff6600!important;
+  width: 50.4px!important;
+}
 
 @layer base {
   :root {
+    
+    /* --swiper-pagination-color: #f78c40; */
+    --swiper-pagination-bullet-size: 8px;
+    --swiper-pagination-bullet-border-radius: 50px;
+    --swiper-pagination-bullet-width: 8.4px;
+    --swiper-pagination-bullet-height: 8px;
+    --swiper-pagination-bullet-inactive-color: #000;
+  
+    --swiper-pagination-bullet-active-width:50px!important;
+    --swiper-pagination-bullet-inactive-opacity: 0.2;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 4px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+
+
+
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
@@ -47,6 +65,9 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
+  
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;

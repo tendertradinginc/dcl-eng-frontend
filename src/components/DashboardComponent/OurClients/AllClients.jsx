@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import PaginationBlog from "@/components/shared/pagination/PaginationShadcn";
+import { Input } from "@/components/ui/input";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
@@ -17,7 +18,6 @@ import { CgSpinnerAlt } from "react-icons/cg";
 import { FaPlusCircle } from "react-icons/fa";
 import CreateClient from "./CreateClient";
 import SingleClient from "./SingleClient";
-import { Input } from "@/components/ui/input";
 
 const AllClients = () => {
   const searchParams = useSearchParams();
@@ -51,14 +51,12 @@ const AllClients = () => {
 
   const totalPage = Math.ceil(totalClient / limit);
 
-
   const handleSearch = (e) => {
     const newSearchTerm = e.target.value;
     setSearchQuery(newSearchTerm);
     setPage(1); // Reset to page 1 when a new search is performed
     updateURL(1, limit, newSearchTerm); // Update the URL with new search term
   };
-
 
   // Update the URL with the search term
   const updateURL = (newPage, newLimit, newSearchTerm) => {
@@ -68,22 +66,19 @@ const AllClients = () => {
     if (newSearchTerm) {
       params.set("search", newSearchTerm);
     }
-    window.history.replaceState({}, '', `?${params.toString()}`); // Update the URL without reloading
+    window.history.replaceState({}, "", `?${params.toString()}`); // Update the URL without reloading
   };
-
 
   // const filteredClients = clients.filter(client =>
   //   client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
   //   client.description.toLowerCase().includes(searchQuery.toLowerCase())
   // );
 
-
-  const filteredClients = clients.filter(client =>
-    (client.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
-    (client.description.toLowerCase().includes(searchQuery.toLowerCase()))
+  const filteredClients = clients.filter(
+    (client) =>
+      client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      client.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-
 
   // loading skeleton
   const skeleton = new Array(10).fill(Math.random());

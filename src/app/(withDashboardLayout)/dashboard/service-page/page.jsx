@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useDebounce } from "use-debounce";
-import { AiFillDatabase } from "react-icons/ai";
-import { FaPlusCircle } from "react-icons/fa";
+import CreateServiceForm from "@/components/DashboardComponent/Service-page/CreateServiceForm";
+import UpdateServiceForm from "@/components/DashboardComponent/Service-page/UpdateServiceForm";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,28 +13,30 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import Image from "next/image";
-import CreateServiceForm from "@/components/DashboardComponent/Service-page/CreateServiceForm";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Pencil, Trash2 } from "lucide-react";
-import UpdateServiceForm from "@/components/DashboardComponent/Service-page/UpdateServiceForm";
-import { toast } from "sonner";
-import axios from "axios";
-import { Input } from "@/components/ui/input";
-import { useRouter, useSearchParams } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { CaretDownIcon } from "@radix-ui/react-icons";
+import axios from "axios";
+import { Pencil, Trash2 } from "lucide-react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { AiFillDatabase } from "react-icons/ai";
+import { FaPlusCircle } from "react-icons/fa";
+import { toast } from "sonner";
+import { useDebounce } from "use-debounce";
 
 const Page = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
-  const [reload, setReload] = useState(false);
+  const [reload, setReload] = useState(0);
   const [data, setData] = useState(null);
   const [metadata, setMetadata] = useState(null);
 

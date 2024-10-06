@@ -1,19 +1,22 @@
 "use client";
 
-import axios from "axios";
-import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { uploadImageToImgBB } from "@/utils/imageUpload";
+import axios from "axios";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
 
-export default function UpdateCategoryForm({ categoryId }) {
+export default function UpdateCategoryForm({ categoryId, setReload }) {
   const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     img: "",
+    featuredStatus: false,
+    shortDescription: "", 
   });
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function UpdateCategoryForm({ categoryId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.img) {
+    if (!formData.name || !formData.img || !formData.shortDescription) { // Update this line
       toast.error("Please provide all required fields.");
       return;
     }
@@ -63,14 +66,16 @@ export default function UpdateCategoryForm({ categoryId }) {
         formData
       );
 
-      if (response.data.success) {
-        toast.success("Category updated successfully!");
-      } else {
-        toast.error("Failed to update category. Please try again.");
-      }
+      console.log("Form submitted:", response.data);
+      toast.success("Category updated successfully!");
+      setReload((prev) => prev + 1);
     } catch (error) {
-      console.error("Failed to update category:", error);
-      toast.error("Failed to update category. Please try again.");
+      console.error("Failed to update category:", error.response || error);
+      toast.error(
+        `Failed to update category: ${
+          error.response?.data?.message || error.message
+        }`
+      );
     }
   };
 
@@ -84,6 +89,16 @@ export default function UpdateCategoryForm({ categoryId }) {
             placeholder="Enter category name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="short-description">Short Description</Label>
+          <Input
+            name="short-description"
+            placeholder="Enter short description"
+            value={formData.shortDescription}
+            onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
           />
         </div>
 
@@ -107,6 +122,17 @@ export default function UpdateCategoryForm({ categoryId }) {
             className="size-40"
           />
         )}
+
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="featured-status"
+            checked={formData.featuredStatus}
+            onCheckedChange={(checked) =>
+              setFormData({ ...formData, featuredStatus: checked })
+            }
+          />
+          <Label htmlFor="featured-status">Featured Status</Label>
+        </div>
 
         <Button type="submit" disabled={uploading}>
           Update Category
