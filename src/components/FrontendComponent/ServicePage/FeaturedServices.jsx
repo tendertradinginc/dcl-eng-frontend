@@ -48,7 +48,7 @@ export default function FeaturedServices() {
           {featuredServices.map((service) => (
             <div
               key={service._id}
-              className="relative overflow-hidden shadow-lg h-[400px] group"
+              className="relative overflow-hidden shadow-lg h-[500px] group"
             >
               <Image
                 src={service.img}
