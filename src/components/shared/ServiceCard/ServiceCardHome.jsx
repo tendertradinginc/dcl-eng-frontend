@@ -51,12 +51,12 @@ const ServiceCardHome = ({ data }) => {
         <div className={`p-10 pb-7 text-center ${isShow ? "block" : "hidden"}`}>
           <h1 className="text-white font-semibold text-2xl ">{name}</h1>
           <p className="text-[#EFEFEF] text-sm my-2 mb-4 line-clamp-2">{shortDescription}</p>
-          <Link className="block" href={`/services/road-construction/${category}`}>
+          <Link className="block" href={`/services/${category}`}>
             <Button
               className=" duration-200 mx-auto py-2.5 pl-6 pr-0 gap-4 justify-between rounded-full items-center   border-2  text-white flex "
               variant="tti"
             >
-              Explore Our Prujects{" "}
+              Explore More Services{" "}
               <div className="p-2 rounded-full bg-white">
                 <FaArrowRightLong className="text-lg  text-[#181A39] " />
               </div>

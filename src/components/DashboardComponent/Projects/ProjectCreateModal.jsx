@@ -20,7 +20,7 @@ import { toast } from "sonner";
 
 const ProjectCreateModal = ({ setReload }) => {
   const [imageFile, setImageFile] = useState(null);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("on-going");
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -69,6 +69,7 @@ const ProjectCreateModal = ({ setReload }) => {
         e.target.reset();
         setIsOpen(false);
         setReload((prev) => prev + 1);
+        console.log(projectData)
       }
     } catch (error) {
       toast.error(error.message || "An unexpected error occurred");
@@ -78,7 +79,7 @@ const ProjectCreateModal = ({ setReload }) => {
     } finally {
       toast.dismiss(toastId);
       setLoading(false);
-      console.log({ ...formData, image: imageUrl, category });
+
     }
   };
 
@@ -144,9 +145,10 @@ const ProjectCreateModal = ({ setReload }) => {
               <select
                 onChange={(e) => setCategory(e.target.value)}
                 className="border w-full p-2 rounded-md"
+                
               >
-                <option value="up-coming">Up-Coming</option>
-                <option value="on-going">On-Going</option>
+                <option value="up-coming" >Up-Coming</option>
+                <option value="on-going" selected>On-Going</option>
                 <option value="completed">Completed</option>
               </select>
             </div>
@@ -173,7 +175,7 @@ const ProjectCreateModal = ({ setReload }) => {
           ) : (
             <Button
               type="submit"
-              className="mt-2 w-full rounded-sm  p-1 px-3 font-semibold "
+              className="mt-2 w-full rounded-sm  p-1 px-3 font-semibold bg-blue-950 "
             >
               Submit
             </Button>

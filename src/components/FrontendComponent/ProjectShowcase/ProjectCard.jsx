@@ -7,7 +7,8 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 import { useState } from "react";
 
-const ProjectCard = ({ title, description, imageUrl }) => {
+const ProjectCard = ({ data }) => {
+  const {name:title, shortDescription:description, image:imageUrl, _id} = data
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -29,11 +30,9 @@ const ProjectCard = ({ title, description, imageUrl }) => {
           src={imageUrl}
           height={500}
           width={427}
-          className="h-[500px] "
+          className="h-[500px] w-full object-cover"
         />
-        <div className={`absolute bottom-0 p-10 pb-7 ${isShow ? "hidden":"block"}`}>
-        <h1 className="text-white font-semibold text-2xl">{title}</h1>
-        </div>
+        
        </div>
       </CardContent>
 
@@ -44,8 +43,8 @@ const ProjectCard = ({ title, description, imageUrl }) => {
         >
           <div className="p-10 pb-7">
             <h1 className="text-white font-semibold text-2xl ">{title}</h1>
-            <p className="text-[#EFEFEF] text-sm py-2 mb-4">{description}</p>
-            <Link className="block" href={`/tenders/`}>
+            <p className="text-[#EFEFEF] text-sm my-2 mb-4 line-clamp-2">{description}</p>
+            <Link className="block" href={`/projectShowcase/${_id}`}>
               <Button
                 className=" duration-200 mx-auto py-2.5 pl-6 pr-1 gap-4 justify-between rounded-full items-center   bg-[#F78C40]  text-white flex "
                 variant="tti"
