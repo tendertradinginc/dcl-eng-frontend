@@ -76,6 +76,7 @@ const ProjectUpdate = ({ data, setReload }) => {
         setLoading(false);
         setReload((prev) => prev + 1);
         setIsOpen(false);
+        e.target.reset()
       } else {
         const errorData = await response.json();
         throw new Error(errorData.message || "An unexpected error occurred");
@@ -143,7 +144,7 @@ const ProjectUpdate = ({ data, setReload }) => {
           <div className="mb-4">
             <Label className="mb-2 block">Short Description</Label>
             <Textarea
-              value={shortDescription}
+              value={updatedShorDescription}
               onChange={(e) => {
                 setUpdatedShortDescription(e.target.value);
                 setIsdisabled(false);
@@ -185,7 +186,11 @@ const ProjectUpdate = ({ data, setReload }) => {
               <Label className="mb-2 block">category</Label>
               <select
                 value={updatedCategory}
-                onChange={(e) => setUpdatedCategory(e.target.value)}
+                onChange={(e) =>{
+                  setUpdatedCategory(e.target.value)
+                  setIsdisabled(false)
+                  console.log(e.target.value)
+                }}
                 className="border w-full p-2 rounded-md"
               >
                 <option value="up-coming">Up-Coming</option>
@@ -197,8 +202,8 @@ const ProjectUpdate = ({ data, setReload }) => {
 
           <div className=" ">
             <div
-              className={`flex h-10 items-center justify-center rounded font-semibold text-white hover:text-black ${
-                isDisbaled ? "bg-[#91AADF]" : "bg-si-primary"
+              className={`flex h-10 items-center justify-center rounded font-semibold text-white  ${
+                isDisbaled ? "bg-[#91AADF]" : "bg-blue-950"
               }`}
             >
               <button

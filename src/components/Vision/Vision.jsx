@@ -105,10 +105,10 @@ const Vision = () => {
                     for Excellence
                   </h3>
                   <p className="font-normal text-[#636363] my-3">
-                    We are committed to maintaining the highest standards of
+                    We are committed to maintaining the standards of
                     professionalism, constantly innovating to bring creative
-                    solutions, and delivering exceptional results that exceed
-                    expectations in every project we undertake.
+                    solutions that exceed
+                    expectations in every project.
                   </p>
                 </div>
                 <div className="text-[#090909] font-semibold text-lg mt-10">

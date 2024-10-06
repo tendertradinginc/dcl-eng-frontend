@@ -9,78 +9,37 @@ import "swiper/css/bundle";
 import ProjectCard from "./ProjectCard";
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 
-const ProjectSlide = () => {
+const ProjectSlide = ({ data }) => {
   return (
     <Swiper
-    slidesPerView={1}
-    spaceBetween={0}
-    pagination={{
-      clickable: true,
-    }}
-    breakpoints={{
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 40,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 50,
-      },
-    }}
-    modules={[Pagination]}
-    className="mySwiper "
-  >
-
-    <SwiperSlide className="mb-12 data">
-      <ProjectCard
-        title=" ARCHITECTURE & BUILDING"
-        imageUrl="https://i.postimg.cc/KvYPyzXh/Component-2.png"
-        description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
-      />
-    </SwiperSlide>
-    <SwiperSlide className="mb-12 data">
-      <ProjectCard
-        title=" ARCHITECTURE & BUILDING"
-        imageUrl="https://i.postimg.cc/BbYWj6Q1/Downloader-La-343822.png"
-        description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
-      />
-    </SwiperSlide>
-    <SwiperSlide className="mb-12 data">
-      <ProjectCard
-        title="ARCHITECTURE & BUILDING"
-        imageUrl="https://i.postimg.cc/rFwMq6Fr/Component-2-1.png"
-        description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
-      />
-    </SwiperSlide>
-
-    {/*  */}
-
-    <SwiperSlide className="mb-12 data">
-      <ProjectCard
-        title=" ARCHITECTURE & BUILDING"
-        imageUrl="https://i.postimg.cc/KvYPyzXh/Component-2.png"
-        description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
-      />
-    </SwiperSlide>
-    <SwiperSlide className="mb-12 data">
-      <ProjectCard
-        title=" ARCHITECTURE & BUILDING"
-        imageUrl="https://i.postimg.cc/BbYWj6Q1/Downloader-La-343822.png"
-        description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
-      />
-    </SwiperSlide>
-    <SwiperSlide className="mb-12 data">
-      <ProjectCard
-        title="ARCHITECTURE & BUILDING"
-        imageUrl="https://i.postimg.cc/rFwMq6Fr/Component-2-1.png"
-        description="We maintain this by ensuring transparency and professional conduct in every aspect of our work."
-      />
-    </SwiperSlide>
-  </Swiper>
+      slidesPerView={1}
+      spaceBetween={0}
+      pagination={{
+        clickable: true,
+      }}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      }}
+      modules={[Pagination]}
+      className="mySwiper "
+    >
+      {data?.map((item) => (
+        <SwiperSlide key={item?._id} className="mb-12 data">
+          <ProjectCard data={item} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

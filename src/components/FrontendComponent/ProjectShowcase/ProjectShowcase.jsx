@@ -5,12 +5,16 @@ import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import ProjectSlide from "./ProjectSlide";
 
 const ProjectShowcase = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/projects");
+  const res = await fetch("http://localhost:5000/api/v1/projects",{
+    cache:"no-store"
+  });
   const data = await res.json();
   const projects = data?.data?.allProjects;
   const onGoing = projects?.filter((item) => item?.category == "on-going");
   const upConming = projects?.filter((item) => item?.category == "up-coming");
   const completed = projects?.filter((item) => item?.category == "completed");
+
+
 
   return (
     <MaxWidthWrapper>
@@ -23,7 +27,7 @@ const ProjectShowcase = async () => {
         />
       </div>
       <div className=" mb-20 ">
-        <Tabs defaultValue="Upcoming" className="">
+        <Tabs defaultValue="Completed" className="">
           <TabsList className="grid grid-cols-1 md:grid-cols-2 max-w-max lg:grid-cols-3 justify-center mb-24  gap-3 rounded-full lg:border-2 border-[#F2DAB24D] py-2 h-max mx-auto">
             <TabsTrigger
               className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white text-xl rounded-full py-2.5 px-6"
@@ -45,13 +49,13 @@ const ProjectShowcase = async () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="Upcoming">
-            <ProjectSlide />
+            <ProjectSlide data={upConming} />
           </TabsContent>
           <TabsContent value="Completed">
-            <ProjectSlide />
+            <ProjectSlide data={completed}/>
           </TabsContent>
           <TabsContent value="ongoing">
-            <ProjectSlide />
+            <ProjectSlide data={onGoing} />
           </TabsContent>
         </Tabs>
         {/* <ProjectSlide />  */}
