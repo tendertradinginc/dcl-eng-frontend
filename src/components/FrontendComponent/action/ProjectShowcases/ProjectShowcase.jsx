@@ -58,7 +58,7 @@ const ProjectShowcases = () => {
                                     <div className="relative w-full aspect-square">
                                         <Image
                                             src={project.imageUrl}
-                                            alt={project.title}
+                                            alt={project.name}
                                             layout="fill"
                                             objectFit="cover"
                                             loader={customLoader}
@@ -66,7 +66,7 @@ const ProjectShowcases = () => {
                                         />
                                         <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4 px-10">
                                             <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase">
-                                                {project.title}
+                                                {project.name}
                                                 <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
                                             </h2>
                                             <h4 className="my-2 text-white transition-transform duration-700 group-hover:-translate-y-6 group-hover:opacity-100 opacity-0">
@@ -92,7 +92,7 @@ const ProjectShowcases = () => {
                                     <div className="relative w-full aspect-square">
                                         <Image
                                             src={project.imageUrl}
-                                            alt={project.title}
+                                            alt={project.name}
                                             layout="fill"
                                             objectFit="cover"
                                             loader={customLoader}
@@ -100,7 +100,7 @@ const ProjectShowcases = () => {
                                         />
                                         <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4 px-10">
                                             <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase">
-                                                {project.title}
+                                                {project.name}
                                                 <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
                                             </h2>
                                             <h4 className="my-2 text-white transition-transform duration-700 group-hover:-translate-y-6 group-hover:opacity-100 opacity-0">
@@ -126,7 +126,7 @@ const ProjectShowcases = () => {
                                     <div className="relative w-full aspect-square">
                                         <Image
                                             src={project.imageUrl}
-                                            alt={project.title}
+                                            alt={project.name}
                                             layout="fill"
                                             objectFit="cover"
                                             loader={customLoader}
@@ -134,7 +134,7 @@ const ProjectShowcases = () => {
                                         />
                                         <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4 px-10">
                                             <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase">
-                                                {project.title}
+                                                {project.name}
                                                 <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
                                             </h2>
                                             <h4 className="my-2 text-white transition-transform duration-700 group-hover:-translate-y-6 group-hover:opacity-100 opacity-0">
