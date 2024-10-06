@@ -85,6 +85,11 @@ const SideNavbar = () => {
       href: "/dashboard/message-page",
       label: "Message",
     },
+    {
+      id: 13,
+      href: "/dashboard/banner-page",
+      label: "Banner",
+    },
   ];
 
   return (
@@ -135,6 +140,16 @@ const SideNavbar = () => {
             <SheetContent side="left">
               <div className="mt-5 flex flex-col gap-2">
                 {/* Map over routes and generate links */}
+                {links.map((link) => (
+                  <Button
+                    key={link.id}
+                    variant="secondary"
+                    asChild
+                    className="justify-start"
+                  >
+                    <Link href={link.href}>{link.label}</Link>
+                  </Button>
+                ))}
               </div>
 
               <Button
@@ -160,9 +175,9 @@ const SideNavbar = () => {
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
-                <AvatarImage src={user?.profile || ""} alt="profile-picture" />
+                {/* <AvatarImage src={user?.profile || ""} alt="profile-picture" /> */}
                 <AvatarFallback className="bg-blue-600 font-semibold text-white">
-                  {user?.fullName?.split("")[0]}
+                  {/* {user?.fullName?.split("")[0]} */}
                 </AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>

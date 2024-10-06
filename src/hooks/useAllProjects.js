@@ -15,8 +15,8 @@ const useAllProjects = (page, limit, searchValue) => {
         );
         const data = await response.json();
         setProjects(data?.data?.allProjects);
-      
-        setProjectsCount(data?.data?.totlaProjects );
+
+        setProjectsCount(data?.data?.totlaProjects);
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {

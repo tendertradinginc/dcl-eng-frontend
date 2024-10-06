@@ -21,18 +21,18 @@ const UserTable = () => {
 
   return (
     <div>
-      <div className="min-h-[80vh]">
+      <div className="">
         <div className="container mx-auto px-10">
           <br />
-          <div className="mx-auto w-full max-w-screen-lg bg-white pb-10">
-            <div className="overflow-x-auto sm:px-1">
+          <div className="mx-auto w-full max-w-screen-lg bg-white pb-10 ">
+            <div className="overflow-x-auto sm:px-1 min-h-[60vh]">
               <div className="flex items-center justify-between pb-6">
                 <h2 className="text-2xl font-semibold text-si-primary">
                   <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
                   User List
                 </h2>
                 <div>
-                  <div>
+                  <div className="mt-2">
                     <input
                       className="border border-gray-700 px-3 py-1.5 rounded-md"
                       type="text"
@@ -47,7 +47,7 @@ const UserTable = () => {
 
               {
                 <table className="w-full table-auto">
-                  <thead className="border-2 border-si-primary bg-si-primary text-white">
+                  <thead className=" bg-blue-950 text-white ">
                     <tr className="">
                       <th className="px-4 py-2">No</th>
                       <th className="px-4 py-2 text-left">Title</th>

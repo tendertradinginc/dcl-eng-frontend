@@ -9,10 +9,24 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Mail, MessageCircleMore, Phone } from "lucide-react";
+import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 
-export default function page({ params }) {
+// Add this function for data fetching
+async function getServiceById(id) {
+  const response = await fetch(`http://localhost:5000/api/v1/service/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch service data");
+  }
+  const data = await response.json();
+  return data.data;
+}
+
+export default async function Page({ params }) {
   // Decode the id name
   const decodedId = decodeURIComponent(params.id);
+
+  // Fetch service data
+  const serviceData = await getServiceById(decodedId);
 
   const breadcrumbs = [
     {
@@ -24,11 +38,13 @@ export default function page({ params }) {
       url: "/services",
     },
     {
-      label: "Road Construction",
-      url: `/services/road-construction`,
+      label: serviceData.category,
+      url: `/services/${serviceData.category
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`,
     },
     {
-      label: decodedId,
+      label: serviceData.name,
       url: `/services/${decodedId}`,
     },
   ];
@@ -39,23 +55,27 @@ export default function page({ params }) {
   }));
 
   return (
-    <div>
-      <SectionBanner title="OUR SERVICES" breadcrumbs={breadcrumbs} />
+    <div className="mt-16">
+      <SectionBanner
+        title="OUR SERVICES"
+        breadcrumbs={breadcrumbs}
+        imgUrl="/servicePageBanner.jpg"
+      />
 
       <SectionHeadingCenter
         imageUrl="https://i.postimg.cc/k588y1ZT/SERVICE.png"
-        title={<span className="capitalize">{decodedId}</span>}
-        subTitle="Category Name"
+        title={<span className="capitalize">{serviceData.name}</span>}
+        subTitle={serviceData.category}
         className="my-20"
       />
 
       {/* Details section */}
-      <section className="container mx-auto px-4 my-20">
+      <MaxWidthWrapper>
         <div className="flex flex-col md:flex-row items-start gap-8">
           <div className="md:w-1/2">
             <Image
-              src="https://picsum.photos/id/315/500/300"
-              alt="Construction equipment"
+              src={serviceData.image}
+              alt={serviceData.name}
               width={500}
               height={300}
               layout="responsive"
@@ -64,38 +84,15 @@ export default function page({ params }) {
           </div>
           <div className="md:w-1/2">
             <h2 className="text-3xl font-bold mb-4">
-              We offer commitment at all levels of building project, from
-              construction to management services.
+              {serviceData.shortDescription}
             </h2>
-            <p className="text-gray-600 mb-4">
-              Lorem ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. Lorem
-              ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <p className="text-gray-600 mb-4">
-              Lorem Ipsum has been the industry&apos;s standard dummy text ever
-              since the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book. It has survived not
-              only five centuries, but also the leap into electronic
-              typesetting, remaining essentially unchanged.
-            </p>
-            <p className="text-gray-600">
-              It has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
+            <p className="text-gray-600 mb-4">{serviceData.fullDescription}</p>
           </div>
         </div>
-      </section>
+      </MaxWidthWrapper>
 
       {/* Features section */}
-      <section className="container mx-auto px-4 my-20">
+      <MaxWidthWrapper className="my-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-6">
             <p className="text-[#F78C40] text-xl font-bold mb-2">01</p>
@@ -138,47 +135,59 @@ export default function page({ params }) {
             </p>
           </div>
         </div>
-      </section>
+      </MaxWidthWrapper>
 
       {/* FAQ section */}
-      <div className="w-full px-4 my-20 flex flex-col lg:flex-row justify-evenly items-center">
-        <section className="w-full lg:w-1/2">
-          <h2 className="text-3xl font-bold mb-8">Frequently asked question</h2>
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index + 1}`} className="border">
-                <AccordionTrigger className="text-lg font-semibold px-4 py-2">{item.question}</AccordionTrigger>
-                <AccordionContent className="text-base px-4 py-2">{item.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </section>
-        <section className="px-4 max-w-sm">
-          <div className="bg-[#1E293B] text-white p-6 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">How Can We Help?</h3>
-            <p className="mb-6">
-              Lorem ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <Phone className="w-6 h-6 mr-2 text-[#F78C40]" />
-                <span>Call us</span>
-              </div>
-              <p className="text-[#F78C40] font-bold">+8801705 236365</p>
-              <div className="flex items-center">
-                <Mail className="w-6 h-6 mr-2 text-[#F78C40]" />
-                <span>Email us</span>
-              </div>
-              <p className="text-[#F78C40] font-bold">+8801705 236365</p>
-              <div className="flex items-center">
-                <MessageCircleMore className="w-6 h-6 mr-2 text-[#F78C40]" />
-                <span>Chat with us</span>
+      <MaxWidthWrapper className="my-20">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <section className="w-full lg:w-2/3">
+            <h2 className="text-3xl font-bold mb-8">
+              Frequently asked question
+            </h2>
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqItems.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index + 1}`}
+                  className="border"
+                >
+                  <AccordionTrigger className="text-lg font-semibold px-4 py-4">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-base px-4 py-2">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+          <section className="w-full lg:w-1/3">
+            <div className="bg-[#1E293B] text-white p-6 rounded-lg h-full">
+              <h3 className="text-2xl font-bold mb-4">How Can We Help?</h3>
+              <p className="mb-6">
+                Lorem ipsum is simply dummy text of the printing and typesetting
+                industry.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <Phone className="w-6 h-6 mr-2 text-[#F78C40]" />
+                  <span>Call us</span>
+                </div>
+                <p className="text-[#F78C40] font-bold">+8801705 236365</p>
+                <div className="flex items-center">
+                  <Mail className="w-6 h-6 mr-2 text-[#F78C40]" />
+                  <span>Email us</span>
+                </div>
+                <p className="text-[#F78C40] font-bold">+8801705 236365</p>
+                <div className="flex items-center">
+                  <MessageCircleMore className="w-6 h-6 mr-2 text-[#F78C40]" />
+                  <span>Chat with us</span>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      </MaxWidthWrapper>
     </div>
   );
 }

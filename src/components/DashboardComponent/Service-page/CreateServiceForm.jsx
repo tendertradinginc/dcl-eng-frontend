@@ -1,15 +1,16 @@
 "use client";
 
-import axios from "axios";
-import { uploadImageToImgBB } from "@/utils/imageUpload";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
+import { uploadImageToImgBB } from "@/utils/imageUpload";
+import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
+import { CategoryCombobox } from "@/components/shared/CategoryCombobox/CategoryCombobox";
 
 export default function CreateServiceForm({ setReload }) {
   const [uploading, setUploading] = useState(false);
@@ -79,7 +80,7 @@ export default function CreateServiceForm({ setReload }) {
         fullDescription: "",
         featuredStatus: false,
       });
-      setReload(prev => prev+1);
+      setReload((prev) => prev + 1);
     } catch (error) {
       console.error("Failed to submit form:", error.response || error);
       toast.error(
@@ -124,15 +125,11 @@ export default function CreateServiceForm({ setReload }) {
           />
         )}
 
-        <div className="space-y-2">
+        <div className="space-x-2">
           <Label htmlFor="service-category">Category</Label>
-          <Input
-            name="service-category"
-            placeholder="Enter service category"
-            value={formData.category}
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
+          <CategoryCombobox
+            category={formData.category}
+            setCategory={(category) => setFormData({ ...formData, category })}
           />
         </div>
 

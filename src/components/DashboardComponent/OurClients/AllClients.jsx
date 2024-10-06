@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import PaginationBlog from "@/components/shared/pagination/PaginationShadcn";
+import { Input } from "@/components/ui/input";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
@@ -26,6 +27,7 @@ const AllClients = () => {
   const [totalClient, setTotalClient] = useState(0);
   const [reload, setReload] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -49,51 +51,66 @@ const AllClients = () => {
 
   const totalPage = Math.ceil(totalClient / limit);
 
-  // const ClientsInfo = [
-  //     {
-  //         img: "https://i.postimg.cc/4NmNs3Jb/FH-Plastic-1.png",
-  //         clientName: "FH Plastic Industry",
-  //         details: "https://www.google.com/"
-  //     },
-  //     {
-  //         img: "https://i.postimg.cc/4NmNs3Jb/FH-Plastic-1.png",
-  //         clientName: "FH Plastic Industry",
-  //         details: "https://www.google.com/"
-  //     },
-  //     {
-  //         img: "https://i.postimg.cc/4NmNs3Jb/FH-Plastic-1.png",
-  //         clientName: "FH Plastic Industry",
-  //         details: "https://www.google.com/"
-  //     },
-  //     {
-  //         img: "https://i.postimg.cc/4NmNs3Jb/FH-Plastic-1.png",
-  //         clientName: "FH Plastic Industry",
-  //         details: "https://www.google.com/"
-  //     },
-  // ];
+  const handleSearch = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchQuery(newSearchTerm);
+    setPage(1); // Reset to page 1 when a new search is performed
+    updateURL(1, limit, newSearchTerm); // Update the URL with new search term
+  };
+
+  // Update the URL with the search term
+  const updateURL = (newPage, newLimit, newSearchTerm) => {
+    const params = new URLSearchParams();
+    params.set("page", newPage);
+    params.set("limit", newLimit);
+    if (newSearchTerm) {
+      params.set("search", newSearchTerm);
+    }
+    window.history.replaceState({}, "", `?${params.toString()}`); // Update the URL without reloading
+  };
+
+  // const filteredClients = clients.filter(client =>
+  //   client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //   client.description.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredClients = clients.filter(
+    (client) =>
+      client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      client.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // loading skeleton
   const skeleton = new Array(10).fill(Math.random());
 
   return (
     <div>
-      <div className="min-h-[80vh]">
+      <div className="min-h-[100vh]">
         <div className="container mx-auto px-10">
           <br />
 
-          <div className="mx-auto w-full max-w-screen-lg bg-white">
+          <div className="mx-auto w-full max-w-screen-lg bg-white p-8">
             <div className="overflow-x-auto sm:px-1">
               <div className="flex items-center justify-between pb-6">
-                <h2 className="text-2xl font-semibold text-si-primary">
+                <h2 className="text-2xl font-semibold text-[#F78C40]">
                   <AiFillDatabase className="mb-1 inline"></AiFillDatabase>
                   Clients List
                 </h2>
+
                 <div className="mt-4 flex items-center justify-between px-2">
+                  {/* Search Input */}
+                  <Input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    className="mr-4 w-48"
+                  />
                   <div>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <Button
-                          className="cursor-pointer rounded-lg border bg-secondary px-3 py-1 text-base font-semibold  hover:text-black duration-500 hover:bg-si-secondary text-black"
+                          className="cursor-pointer rounded-lg border px-3 py-1 text-base font-semibold   duration-500  hover:bg-[#F78C40] hover:text-white text-black"
                           variant="outline"
                         >
                           Create Client{" "}
@@ -104,10 +121,10 @@ const AllClients = () => {
                       </AlertDialogTrigger>
 
                       <AlertDialogContent className="max-w-4xl">
-                        <CreateClient />
+                        <CreateClient setReload={setReload} />
 
                         <AlertDialogFooter>
-                          <AlertDialogCancel className="hover:bg-si-primary hover:text-white">
+                          <AlertDialogCancel className="bg-blue-700 hover:bg-blue-300 text-white">
                             Close
                           </AlertDialogCancel>
                         </AlertDialogFooter>
@@ -126,21 +143,21 @@ const AllClients = () => {
                 </div>
               ) : (
                 <table className="w-full table-auto">
-                  <thead className="bg-gradient-to-r from-si-primary to-si-secondary text-white">
+                  <thead className="bg-gradient-to-r from-[#F78C40] to-[#F78C40] text-white">
                     <tr className="text-left">
                       <th className="px-4 py-2">No</th>
-                      <th className="py-2 pl-16">Image</th>
-                      <th className="py-2 pl-16">Title</th>
-                      <th className="py-2">Details</th>
-                      <th className="px-4 pl-6">Actions</th>
+                      <th className="py-2 pl-36">Image</th>
+                      <th className="py-2 pl-32">Title</th>
+                      {/* <th className="py-2">Details</th> */}
+                      <th className="px-4 pl-8">Actions</th>
                     </tr>
                   </thead>
 
                   <tbody>
-                    {clients.length > 0 ? (
-                      clients?.map((client, index) => (
+                    {filteredClients.length > 0 ? (
+                      filteredClients?.map((client, index) => (
                         <SingleClient
-                          key={clients?._id}
+                          key={client?._id}
                           index={index}
                           clientData={client}
                           setReload={setReload}

@@ -1,276 +1,526 @@
 "use client";
 
-import MaxWidthWrapper from '@/components/custom/MaxWidthWrapper';
-import PageBanner from '@/components/shared/PageBanner/PageBanner';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import Link from 'next/link';
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from 'react';
-import Image from 'next/image';
-import { AiOutlineArrowRight } from 'react-icons/ai';
-import { customLoader } from '@/utils/customLoader';
+import { customLoader } from "@/utils/customLoader";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { MdArrowOutward } from "react-icons/md";
 
 const ProjectShowcases = () => {
-    const [loading, setLoading] = useState(true);
+  // const [projectShowcase, setProjectShowcase] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+  // const [totalProjectShowcase, setTotalProjectShowcase] = useState(0);
+  // const [reload, setReload] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-    return (
-        <div>
-            <PageBanner
-                title="Project Showcase"
-                banner="https://i.postimg.cc/15chdz9x/Frame-76591.png"
-                description={(
-                    <Breadcrumb className="flex justify-center mt-5">
-                        <BreadcrumbList>
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link className='text-white' href="/">Home</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="text-white" />
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link className='text-white' href="/projectShowcase">Project Showcase</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
-                )}
-            />
+  // useEffect(() => {
+  //     const fetchProjectShowcase = async () => {
+  //         setLoading(true);
+  //         try {
 
-            <MaxWidthWrapper>
-                <div className="relative z-10 text-center mt-6 mb-8 py-12">
-                    <div className="absolute inset-0 flex justify-center items-center z-0 -mt-24">
-                        <p className="text-8xl font-bold text-gray-300 opacity-30">Showcase</p>
-                    </div>
-                    <div className="relative z-10 mt-4 ">
-                        <p className="text-base text-orange-500">Show Our Projects -</p>
-                        <h2 className="lg:text-3xl text-xl font-bold mt-2 text-black inline-block relative text-center">
-                            PROJECT
-                            <span className="relative inline-block ml-2">
-                                <span className="font-bold text-black">SHOWCASE</span>
-                                <span className="block h-1 w-full bg-orange-500 absolute bottom-0 left-0"></span>
-                            </span>
-                        </h2>
-                    </div>
+  //             const response = await fetch(
+  //                 `http://localhost:5000/api/v1/projects?page=${page}&limit=${limit}`
+  //             );
+  //             const data = await response.json();
+
+  //             setProjectShowcase(data?.data?.allProjects);
+  //             setTotalProjectShowcase(data?.data?.totlaProjects);
+  //         } catch (error) {
+  //             console.error("Error fetching project showcase:", error);
+  //         } finally {
+  //             setLoading(false);
+  //         }
+  //     };
+  //     fetchProjectShowcase();
+  // }, [reload, page, limit]);
+
+  // const totalPage = Math.ceil(totalProjectShowcase / limit);
+
+  return (
+    <div>
+      {/* Tabs Section */}
+      <div className="mb-10 flex justify-center">
+        <Tabs defaultValue="Construction" className="w-full">
+          {/* Rounded TabsList */}
+          <TabsList className="flex justify-center space-x-3 rounded-full bg-gray-100 border max-w-lg h-14 mx-auto px-4">
+            <TabsTrigger
+              value="Commercial"
+              className="rounded-full px-4 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white"
+            >
+              Upcoming Projects
+            </TabsTrigger>
+            <TabsTrigger
+              value="Construction"
+              className="rounded-full px-4 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white"
+            >
+              Completed Projects
+            </TabsTrigger>
+            <TabsTrigger
+              value="Medical"
+              className="rounded-full px-4 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-[#F78C40] data-[state=active]:text-white"
+            >
+              Ongoing Projects
+            </TabsTrigger>
+          </TabsList>
+
+          {/*  Completed Projects */}
+          <TabsContent value="Construction" className="mt-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {/*  Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/x8KzVmCV/Frame-76592.png"
+                    alt="Architecture"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4 px-10">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & builders
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition-transform duration-700 group-hover:-translate-y-6">
+                        Commercial
+                      </p>
+                    </Link>
+                  </div>
                 </div>
+              </Card>
 
-                {/* Tabs Section */}
-                <div className='mb-10 flex justify-center'>
-                    <Tabs defaultValue="Construction" className="w-full">
-                        {/* Rounded TabsList */}
-                        <TabsList className="flex justify-center rounded-full bg-gray-100 border p-2 py-6 gap-6 max-w-xl mx-auto">
-                            <TabsTrigger value="Construction" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                                All Projects
-                            </TabsTrigger>
-                            <TabsTrigger value="Commercial" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                                Commercial
-                            </TabsTrigger>
-                            <TabsTrigger value="Medical" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                                New Build
-                            </TabsTrigger>
-                            <TabsTrigger value="Roads" className="rounded-full px-6 py-2 text-sm font-semibold focus:outline-none transition duration-300 ease-in-out hover:bg-orange-200 data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                                Renovation
-                            </TabsTrigger>
-                        </TabsList>
+              {/*  Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/NjnJbb0N/Frame-76506.png"
+                    alt="Commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Commercial & Industry
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
 
-                        {/* Content for All Projects */}
-                        <TabsContent value="Construction">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                                {/* Construction (All Projects) Card */}
-                                <Card className="relative w-full bg-white shadow-lg rounded overflow-hidden group">
-                                    <div className="relative w-full aspect-square">
-                                        <Image
-                                            src="https://i.postimg.cc/x8KzVmCV/Frame-76592.png"
-                                            alt="Architecture"
-                                            layout="fill"
-                                            objectFit="cover"
-                                            loader={customLoader}
-                                            className="transition-opacity duration-300 group-hover:opacity-80"
-                                        />
-                                        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                            <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                                Architecture & builders
-                                                <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                            </h2>
-                                            <Link href="#">
-                                                <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                    commercial
-                                                </p>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </Card>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
 
-                                {/* Commercial Card */}
-                                <Card className="relative w-full bg-white shadow-lg rounded overflow-hidden group">
-                                    <div className="relative w-full aspect-square">
-                                        <Image
-                                            src="https://i.postimg.cc/QdTygxVX/Frame-1.png"
-                                            alt="Commercial"
-                                            layout="fill"
-                                            objectFit="cover"
-                                            loader={customLoader}
-                                            className="transition-opacity duration-300 group-hover:opacity-80"
-                                        />
-                                        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                            <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                                Commercial & Industry
-                                                <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                            </h2>
-                                            <Link href="#">
-                                                <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                    commercial
-                                                </p>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </Card>
-
-                                {/* Medical Card */}
-                                <Card className="relative w-full bg-white shadow-lg rounded overflow-hidden group">
-                                    <div className="relative w-full aspect-square">
-                                        <Image
-                                            src="https://i.postimg.cc/CMr2S7YG/Frame-2.png"
-                                            alt="Medical"
-                                            layout="fill"
-                                            objectFit="cover"
-                                            loader={customLoader}
-                                            className="transition-opacity duration-300 group-hover:opacity-80"
-                                        />
-                                        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                            <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                                Medical Facilities
-                                                <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                            </h2>
-                                            <Link href="#">
-                                                <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                    medical
-                                                </p>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </Card>
-
-                                {/* Roads Card */}
-                                <Card className="relative w-full bg-white shadow-lg rounded overflow-hidden group">
-                                    <div className="relative w-full aspect-square">
-                                        <Image
-                                            src="https://i.postimg.cc/yd9bYVVZ/Frame-3.png"
-                                            alt="Roads"
-                                            layout="fill"
-                                            objectFit="cover"
-                                            loader={customLoader}
-                                            className="transition-opacity duration-300 group-hover:opacity-80"
-                                        />
-                                        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                            <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                                Road Construction
-                                                <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                            </h2>
-                                            <Link href="#">
-                                                <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                    roads
-                                                </p>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </div>
-                        </TabsContent>
-
-                        {/* Content for Commercial */}
-                        <TabsContent value="Commercial">
-                            {/* Commercial Card */}
-                            <div className="grid grid-cols-1">
-                                <Card className="relative w-full max-w-sm mx-auto bg-white shadow-lg rounded overflow-hidden group">
-                                    <div className="relative w-full aspect-square">
-                                        <Image
-                                            src="https://i.postimg.cc/QdTygxVX/Frame-1.png"
-                                            alt="Commercial"
-                                            layout="fill"
-                                            objectFit="cover"
-                                            loader={customLoader}
-                                            className="transition-opacity duration-300 group-hover:opacity-80"
-                                        />
-                                        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                            <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                                Commercial & Industry
-                                                <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                            </h2>
-                                            <Link href="#">
-                                                <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                    commercial
-                                                </p>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </div>
-                        </TabsContent>
-
-                        {/* Content for Medical */}
-                        <TabsContent value="Medical">
-                            {/* Medical Card */}
-                            <Card className="relative w-full max-w-sm mx-auto bg-white shadow-lg rounded overflow-hidden group">
-                                <div className="relative w-full aspect-square">
-                                    <Image
-                                        src="https://i.postimg.cc/CMr2S7YG/Frame-2.png"
-                                        alt="Medical"
-                                        layout="fill"
-                                        objectFit="cover"
-                                        loader={customLoader}
-                                        className="transition-opacity duration-300 group-hover:opacity-80"
-                                    />
-                                    <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                        <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                            Medical Facilities
-                                            <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                        </h2>
-                                        <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                medical
-                                            </p>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Card>
-                        </TabsContent>
-
-                        {/* Content for Roads */}
-                        <TabsContent value="Roads">
-                            {/* Roads Card */}
-                            <Card className="relative w-full max-w-sm mx-auto bg-white shadow-lg rounded overflow-hidden group">
-                                <div className="relative w-full aspect-square">
-                                    <Image
-                                        src="https://i.postimg.cc/yd9bYVVZ/Frame-3.png"
-                                        alt="Roads"
-                                        layout="fill"
-                                        objectFit="cover"
-                                        loader={customLoader}
-                                        className="transition-opacity duration-300 group-hover:opacity-80"
-                                    />
-                                    <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
-                                        <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6">
-                                            Road Construction
-                                            <AiOutlineArrowRight className="ml-2 h-6 w-6 text-white" />
-                                        </h2>
-                                        <Link href="#">
-                                            <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-black hover:text-white transition transform duration-700 group-hover:-translate-y-6">
-                                                roads
-                                            </p>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Card>
-                        </TabsContent>
-                    </Tabs>
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
                 </div>
+              </Card>
 
+              {/* Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg  overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/Gm3w6Mdd/Frame-76593.png"
+                    alt="Medical"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Medical Facilities
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
 
-            </MaxWidthWrapper>
-        </div>
-    );
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        medical
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg  overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/pTz6m8Rs/Frame-76596.png"
+                    alt="Roads"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Road Construction
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        roads
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/*  Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/cJhBHLR7/Frame-76594.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/*  Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/zf8k8ggX/Frame-76597.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/*  Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/cLQcpm6b/Frame-76595.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+              {/*  Completed Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/Njh4CVGX/Frame-76598.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          {/* Upcoming Projects */}
+          <TabsContent value="Commercial" className="mt-16">
+            {/* Upcoming Projects Card */}
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+              {/* Card 1 */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/cLQcpm6b/Frame-76595.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+              {/* Card 2 */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/x8KzVmCV/Frame-76592.png"
+                    alt="Architecture"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & builders
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+              {/* Card 3 */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/NjnJbb0N/Frame-76506.png"
+                    alt="Commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Commercial & Industry
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          {/*  Ongoing Projects */}
+          <TabsContent value="Medical" className="mt-16">
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+              {/* Ongoing Projects Card */}
+
+              {/* Ongoing Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/cJhBHLR7/Frame-76594.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Ongoing Projects Card */}
+              <Card className="relative w-full bg-white shadow-lg overflow-hidden group rounded-none">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src="https://i.postimg.cc/zf8k8ggX/Frame-76597.png"
+                    alt="commercial"
+                    layout="fill"
+                    objectFit="cover"
+                    loader={customLoader}
+                    className="transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50 flex flex-col justify-end items-start p-4">
+                    <h2 className="text-white text-xl font-semibold flex items-center transition-transform duration-700 group-hover:-translate-y-6 uppercase mb-4">
+                      Architecture & Building
+                      <MdArrowOutward className="lg:ml-10 ml-2 h-6 w-6 text-white" />
+                    </h2>
+                    {/* Hidden by default and shown on hover */}
+                    <h4 className="mb-4 text-white transition-transform duration-700 group-hover:-translate-y-6 hidden group-hover:block">
+                      We maintain this by ensuring transparency and professional
+                      conduct in every aspect of our work
+                    </h4>
+
+                    <Link href="#">
+                      <p className="text-white font-semibold py-2 px-4 border-2 border-white rounded-full hover:bg-[#F78C40] hover:text-white transition transform duration-700 group-hover:-translate-y-6">
+                        commercial
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      {/* <div className="grid lg:grid-cols-2 grid-cols-1 w-full mx-auto">
+                {loading ? (
+                    <div className="flex min-h-[50vh] items-center justify-center">
+                        <span className="animate-spin text-[#F78C40]">
+                            <CgSpinnerAlt className="h-10 w-10" />
+                        </span>
+                    </div>
+                )
+                    : projectShowcase.length > 0 ? (
+                        projectShowcase?.map((project, index) => (
+                            <ProjectShowcaseCard
+                                key={project?._id}
+                                index={index}
+                                projectShowcaseData={project}
+                                setReload={setReload}
+                            />
+                        )))
+                        : (
+                            <p className="text center">No Project Showcase Available.</p>
+                        )}
+            </div>
+            {!loading && (
+                <div className="mt-8">
+                    <PaginationBlog data={{ page, limit, totalPage }} />
+                </div>
+            )} */}
+    </div>
+  );
 };
 
 export default ProjectShowcases;
