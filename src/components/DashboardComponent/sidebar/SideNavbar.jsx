@@ -35,60 +35,64 @@ const SideNavbar = () => {
   const links = [
     { id: 1, href: "/", label: "Home" },
     { id: 2, href: "/dashboard", label: "Dashboard" },
+
     {
       id: 3,
-      href: "/dashboard/user-page",
-      label: "Users",
+      href: "/dashboard/banner-page",
+      label: "Banner",
     },
     {
       id: 4,
-      href: "/dashboard/service-page",
-      label: "Service",
-    },
-    {
-      id: 5,
-      href: "/dashboard/team-member-page",
-      label: "Team Member",
-    },
-    {
-      id: 6,
-      href: "/dashboard/service-category",
-      label: "Service Category",
-    },
-    {
-      id: 7,
-      href: "/dashboard/clients-page",
-      label: "Clients",
-    },
-    {
-      id: 8,
-      href: "/dashboard/clientsFeedback-page",
-      label: "Clients Feedback",
-    },
-    {
-      id: 9,
       href: "/dashboard/blog-page",
       label: "Blogs",
     },
     {
-      id: 10,
+      id: 5,
+      href: "/dashboard/clients-page",
+      label: "Clients",
+    },
+    {
+      id: 6,
+      href: "/dashboard/clientsFeedback-page",
+      label: "Clients Feedback",
+    },
+    {
+      id: 7,
+      href: "/dashboard/message-page",
+      label: "Message",
+    },
+    {
+      id: 8,
       href: "/dashboard/projects",
       label: "Projects",
     },
+    {
+      id: 9,
+      href: "/dashboard/service-page",
+      label: "Service",
+    },
+
+    {
+      id: 10,
+      href: "/dashboard/service-category",
+      label: "Service Category",
+    },
+
     {
       id: 11,
       href: "/dashboard/successStory",
       label: "Success Story",
     },
+
     {
       id: 12,
-      href: "/dashboard/message-page",
-      label: "Message",
+      href: "/dashboard/team-member-page",
+      label: "Team Member",
     },
     {
       id: 13,
-      href: "/dashboard/banner-page",
-      label: "Banner",
+      href: "/dashboard/user-page",
+      label: "Users",
     },
   ];
 
@@ -128,7 +132,7 @@ const SideNavbar = () => {
       </section>
 
       {/* //* For Smaller Devices */}
-      <section className="sticky top-0 z-50 flex w-full items-center justify-between border-b bg-background px-2.5 py-4 lg:hidden">
+      <section className="px-2.5 py-4 flex lg:hidden justify-between items-center w-full sticky top-0 z-50 bg-background border-b">
         {/* //* Slider */}
         <div>
           <Sheet>
@@ -183,10 +187,10 @@ const SideNavbar = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="mr-1.5">
               <DropdownMenuLabel>
-                {user?.fullName || "Not Available"}
+                {/* {user?.fullName || "Not Available"} */}
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <Link to={"/"}>
+              <Link href={"/"}>
                 <DropdownMenuItem asChild>
                   <Button className="my-1 w-full">Home</Button>
                 </DropdownMenuItem>
