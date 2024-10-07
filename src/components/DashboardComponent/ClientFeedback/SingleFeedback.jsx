@@ -8,7 +8,6 @@ import ViewFeedback from "./ViewFeedback";
 const SingleFeedback = ({ clientFeedbackData, index, setReload }) => {
   // const { author, image, authorDesignation: designation, feedback } = clientFeedbackData; // Include feedback
   const { authorName, image, authorDesignation, feedback } = clientFeedbackData;
-  console.log(clientFeedbackData);
 
   return (
     <tr className={index % 2 === 1 ? "bg-[#f2f2f2]" : ""}>

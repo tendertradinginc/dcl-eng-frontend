@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { uploadImageToImgBB } from "@/utils/imageUpload";
@@ -8,7 +9,6 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Checkbox } from "@/components/ui/checkbox";
 
 export default function UpdateCategoryForm({ categoryId, setReload }) {
   const [uploading, setUploading] = useState(false);
@@ -16,7 +16,7 @@ export default function UpdateCategoryForm({ categoryId, setReload }) {
     name: "",
     img: "",
     featuredStatus: false,
-    shortDescription: "", 
+    shortDescription: "",
   });
 
   useEffect(() => {
@@ -55,7 +55,8 @@ export default function UpdateCategoryForm({ categoryId, setReload }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.img || !formData.shortDescription) { // Update this line
+    if (!formData.name || !formData.img || !formData.shortDescription) {
+      // Update this line
       toast.error("Please provide all required fields.");
       return;
     }
@@ -66,7 +67,6 @@ export default function UpdateCategoryForm({ categoryId, setReload }) {
         formData
       );
 
-      console.log("Form submitted:", response.data);
       toast.success("Category updated successfully!");
       setReload((prev) => prev + 1);
     } catch (error) {
@@ -98,7 +98,9 @@ export default function UpdateCategoryForm({ categoryId, setReload }) {
             name="short-description"
             placeholder="Enter short description"
             value={formData.shortDescription}
-            onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, shortDescription: e.target.value })
+            }
           />
         </div>
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { CategoryCombobox } from "@/components/shared/CategoryCombobox/CategoryCombobox";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -10,7 +11,6 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
-import { CategoryCombobox } from "@/components/shared/CategoryCombobox/CategoryCombobox";
 
 export default function CreateServiceForm({ setReload }) {
   const [uploading, setUploading] = useState(false);
@@ -70,7 +70,6 @@ export default function CreateServiceForm({ setReload }) {
         }
       );
 
-      console.log("Form submitted:", response.data);
       toast.success("Service created successfully!");
       setFormData({
         name: "",

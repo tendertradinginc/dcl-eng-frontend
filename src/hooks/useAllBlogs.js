@@ -16,7 +16,6 @@ const useAllblogs = (page, limit, searchValue) => {
         const data = await response.json();
         setBlogs(data?.data?.allBlogs);
         setBlogsCount(data?.data?.totlaBlogs);
-        console.log({ blogs, blogsCount });
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {

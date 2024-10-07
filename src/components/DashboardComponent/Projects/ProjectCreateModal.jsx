@@ -69,17 +69,15 @@ const ProjectCreateModal = ({ setReload }) => {
         e.target.reset();
         setIsOpen(false);
         setReload((prev) => prev + 1);
-        console.log(projectData)
       }
     } catch (error) {
       toast.error(error.message || "An unexpected error occurred");
       console.error("Error:", error);
-      console.log({ ...formData, category });
+
       toast.error(error?.message);
     } finally {
       toast.dismiss(toastId);
       setLoading(false);
-
     }
   };
 
@@ -145,10 +143,11 @@ const ProjectCreateModal = ({ setReload }) => {
               <select
                 onChange={(e) => setCategory(e.target.value)}
                 className="border w-full p-2 rounded-md"
-                
               >
-                <option value="up-coming" >Up-Coming</option>
-                <option value="on-going" selected>On-Going</option>
+                <option value="up-coming">Up-Coming</option>
+                <option value="on-going" selected>
+                  On-Going
+                </option>
                 <option value="completed">Completed</option>
               </select>
             </div>

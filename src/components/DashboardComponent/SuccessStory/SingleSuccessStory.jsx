@@ -7,7 +7,6 @@ const SingleSuccessStory = ({ successStoryData, index, setReload }) => {
   // const { author, image, authorDesignation: designation, feedback } = clientFeedbackData; // Include feedback
 
   const { companyName, projectName } = successStoryData;
-  console.log(successStoryData);
 
   return (
     <tr className={index % 2 === 1 ? "bg-[#f2f2f2]" : ""}>
