@@ -4,7 +4,6 @@ import FeaturedServices from "@/components/FrontendComponent/ServicePage/Feature
 import ServiceCategory from "@/components/FrontendComponent/ServicePage/ServiceCategory";
 import SectionBanner from "@/components/shared/SectionBanner/SectionBanner";
 import SectionHeadingCenter from "@/components/shared/SectionHeading/SectionHeadingCenter";
-
 export default function page() {
   const breadcrumbs = [
     {
@@ -24,7 +23,7 @@ export default function page() {
         breadcrumbs={breadcrumbs}
         imgUrl="/servicePageBanner.jpg"
       />
-      <div className="mb-20 relative">
+      <div className="mb-20 relative  px-2 md:px-0">
         <div className="absolute inset-0 bg-[url('/servicePageBg.png')] bg-cover bg-center bg-no-repeat opacity-20 z-0"></div>
         <div className="relative z-10 py-20">
           <SectionHeadingCenter

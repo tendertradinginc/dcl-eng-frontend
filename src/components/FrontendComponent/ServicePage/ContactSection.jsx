@@ -1,5 +1,5 @@
-import Image from "next/image";
 import SectionHeadingLeft from "@/components/shared/SectionHeading/SectionHeadingLeft";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -10,9 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SelectGroup } from "@radix-ui/react-select";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { FaArrowRightLong } from "react-icons/fa6";
-
 export default function ContactSection() {
   return (
     <div className="relative">
@@ -30,7 +29,7 @@ export default function ContactSection() {
 
       {/* Content */}
       <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row md:gap-8">
           {/* Left Section */}
           <div className="w-full lg:w-1/2 text-white">
             <SectionHeadingLeft
@@ -43,9 +42,7 @@ export default function ContactSection() {
 
           {/* Right Section */}
           <div className="w-full lg:w-1/2 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold text-black mb-4">
-              GET IN TOUCH
-            </h2>
+            <h2 className="text-2xl font-bold text-black mb-4">GET IN TOUCH</h2>
             <p className="text-gray-900 mb-6">
               Focusing on medium to large-scale commercial construction
               projects.
