@@ -19,7 +19,9 @@ const PaginationBlog = ({ data }) => {
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className={`${pageNumber <= 1 ? "bg-secondary" : "bg-[#F78C40] text-white"}`}
+            className={`${
+              pageNumber <= 1 ? "bg-secondary" : "bg-[#F78C40] text-white"
+            }`}
             href={`?page=${page > 1 ? page - 1 : 1}&limit=${limit}`}
           />
         </PaginationItem>
@@ -58,8 +60,14 @@ const PaginationBlog = ({ data }) => {
         }
         <PaginationItem>
           <PaginationNext
-            className={`${totalPage <= pageNumber ? "bg-secondary" : "bg-[#F78C40] text-white"}`}
-            href={`?page=${totalPage <= Number(page) ? page : Number(page) + 1}&limit=${limit}`}
+            className={`${
+              totalPage <= pageNumber
+                ? "bg-secondary"
+                : "bg-[#F78C40] text-white"
+            }`}
+            href={`?page=${
+              totalPage <= Number(page) ? page : Number(page) + 1
+            }&limit=${limit}`}
           />
         </PaginationItem>
       </PaginationContent>

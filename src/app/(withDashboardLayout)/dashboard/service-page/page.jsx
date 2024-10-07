@@ -56,6 +56,7 @@ const Page = () => {
         const response = await axios.get(
           `http://localhost:5000/api/v1/service?page=${selectedPage}&limit=${selectedLimit}&search=${debouncedSearchTerm}`
         );
+        console.log(response.data.data);
         setData(response.data.data);
         setMetadata(response.data.metadata);
       } catch (error) {
