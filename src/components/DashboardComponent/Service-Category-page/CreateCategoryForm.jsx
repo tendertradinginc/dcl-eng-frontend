@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { uploadImageToImgBB } from "@/utils/imageUpload";
@@ -8,7 +9,6 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Checkbox } from "@/components/ui/checkbox";
 
 export default function CreateCategoryForm({ setReload }) {
   const [uploading, setUploading] = useState(false);
@@ -49,8 +49,6 @@ export default function CreateCategoryForm({ setReload }) {
         "http://localhost:5000/api/v1/category",
         formData
       );
-
-      console.log("Form submitted:", response.data);
 
       toast.success("Category created successfully!");
       setReload((prev) => prev + 1);

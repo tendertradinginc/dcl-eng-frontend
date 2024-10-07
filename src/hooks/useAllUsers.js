@@ -14,7 +14,7 @@ const useAllUsers = (page, limit, searchValue) => {
           `http://localhost:5000/api/v1/users/dashboard_all_user?page=${page}&limit=${limit}&search=${searchValue}`
         );
         const data = await response.json();
-        console.log(data);
+
         setUsers(data?.data?.result);
         setUsersCount(data?.data?.total);
       } catch (error) {

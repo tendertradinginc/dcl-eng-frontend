@@ -38,7 +38,7 @@ const CreateSuccessStory = ({ setReload }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
     if (!imageFile) {
       toast.error("Please upload an image.");
       return;
@@ -49,7 +49,6 @@ const CreateSuccessStory = ({ setReload }) => {
     try {
       // Upload the image and get the URL
       const imageUrl = await uploadImageToImgBB(imageFile);
-      console.log("Uploaded image URL:", imageUrl);
 
       if (!imageUrl) {
         throw new Error("Failed to upload image");
@@ -60,7 +59,6 @@ const CreateSuccessStory = ({ setReload }) => {
         ...formData,
         image: imageUrl,
       };
-      console.log(successStoryData);
 
       const response = await fetch(
         "http://localhost:5000/api/v1/successStory/create",
@@ -75,7 +73,6 @@ const CreateSuccessStory = ({ setReload }) => {
 
       // Log the full response for debugging
       const data = await response.json();
-      console.log("Server response:", data);
 
       // Handle success or failure based on the response data
       if (data.success === true) {

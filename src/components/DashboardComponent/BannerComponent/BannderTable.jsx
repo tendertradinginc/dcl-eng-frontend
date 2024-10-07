@@ -25,7 +25,6 @@ const BannderTable = () => {
         const data = await response.json();
         setBanner(data?.data?.result);
         setBannerCount(data?.data?.totlaResult);
-        console.log({ blogs, blogsCount });
       } catch (error) {
         console.error("Error fetching :", error);
       } finally {

@@ -76,7 +76,7 @@ const ProjectUpdate = ({ data, setReload }) => {
         setLoading(false);
         setReload((prev) => prev + 1);
         setIsOpen(false);
-        e.target.reset()
+        e.target.reset();
       } else {
         const errorData = await response.json();
         throw new Error(errorData.message || "An unexpected error occurred");
@@ -186,10 +186,9 @@ const ProjectUpdate = ({ data, setReload }) => {
               <Label className="mb-2 block">category</Label>
               <select
                 value={updatedCategory}
-                onChange={(e) =>{
-                  setUpdatedCategory(e.target.value)
-                  setIsdisabled(false)
-                  console.log(e.target.value)
+                onChange={(e) => {
+                  setUpdatedCategory(e.target.value);
+                  setIsdisabled(false);
                 }}
                 className="border w-full p-2 rounded-md"
               >

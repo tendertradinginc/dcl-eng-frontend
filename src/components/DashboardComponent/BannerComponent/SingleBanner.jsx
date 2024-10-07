@@ -6,7 +6,7 @@ import UpdateBanner from "./UpdateBanner";
 import ViewBanner from "./ViewBanner";
 const SingleBanner = ({ data, index, setReload }) => {
   const { title, colorWord, lastTitle, buttonText, _id } = data;
-  console.log(_id);
+
   return (
     <tr className={` ${index % 2 === 1 ? "bg-[#f2f2f2]" : ""}`}>
       <td className="px-4 py-1">{index + 1}</td>

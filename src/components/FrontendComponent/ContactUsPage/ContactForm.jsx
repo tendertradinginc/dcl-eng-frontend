@@ -33,7 +33,7 @@ const ContactForm = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
+
       if (data?.status === "success") {
         toast.success("Message submitted successfully");
         e.target.reset();

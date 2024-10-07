@@ -57,7 +57,6 @@ export default function CreateTeamMemberForm({ setReload }) {
         }
       );
 
-      console.log("Form submitted:", response.data);
       toast.success("Team member created successfully!");
       setFormData({
         name: "",
