@@ -8,51 +8,31 @@ const Vision = () => {
     <div className="mt-20 py-20">
       <MaxWidthWrapper className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
         <div className="pr-5 font-semibold  ">
-          {/* <div className="">
-            <div className="mb-5 z-10 ">
-              <Image
-                alt="our vision imave"
-                height={64}
-                width={386}
-                className=""
-                src="https://i.postimg.cc/kGgDznXX/VISION.png"
-              ></Image>
-            </div>
-            <div className="flex items-center gap-3 -mt-14 ml-4 ">
-              {" "}
-              <p className="text-[#F78C40] inline-block">Vision & Values</p>
-              <p className="h-1 w-16 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]"></p>
-            </div>
-            <h1 className="text-4xl mt-10 text-center lg:text-left">
-            We have a vision for <br /> the future of <br />
-            <span className="border-b-4 border-[#F78C40]">construction</span>
-          </h1>
-          </div> */}
           <SectionHeadingLeft
             subTitle="Vision & Values"
             imageUrl="https://i.postimg.cc/kGgDznXX/VISION.png"
             title={
               <>
                 {" "}
-                We have a vision for <br /> the future of <br />
+                We have a vision for <br className="hidden md:block" /> the
+                future of <br />
                 <span className="border-b-4 border-[#F78C40]">
                   construction
                 </span>
               </>
             }
           />
-
           <div className="flex justify-center my-8">
             <Tabs defaultValue="vision" className="">
               <TabsList className="grid w-full grid-cols-2 mb-12 mt-5 gap-3 max-w-max rounded-full border-2 border-[#F2DAB24D] py-2 h-max mx-auto">
                 <TabsTrigger
-                  className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white text-xl rounded-full py-2.5 px-6"
+                  className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white text-base md:text-xl rounded-full py-2.5 px-6"
                   value="vision"
                 >
                   Our Vision
                 </TabsTrigger>
                 <TabsTrigger
-                  className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white text-xl rounded-full py-2.5 px-6 "
+                  className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white text-base md:text-xl rounded-full py-2.5 px-6 "
                   value="value"
                 >
                   Our Values
@@ -60,11 +40,11 @@ const Vision = () => {
               </TabsList>
               <TabsContent value="vision">
                 <div>
-                  <h3 className="text-[#090909] font-bold text-xl ">
+                  <h3 className="text-[#090909] text-center md:text-left font-bold text-xl ">
                     Building today to transform <br />
                     tomorrow
                   </h3>
-                  <p className="font-normal text-[#636363] my-3">
+                  <p className="font-normal text-[#636363] text-justify  my-3">
                     Focusing on medium to large-scale commercial construction
                     projects, we work with both investors and developers to
                     create landmarks that make an impact.
@@ -107,8 +87,7 @@ const Vision = () => {
                   <p className="font-normal text-[#636363] my-3">
                     We are committed to maintaining the standards of
                     professionalism, constantly innovating to bring creative
-                    solutions that exceed
-                    expectations in every project.
+                    solutions that exceed expectations in every project.
                   </p>
                 </div>
                 <div className="text-[#090909] font-semibold text-lg mt-10">
@@ -132,13 +111,11 @@ const Vision = () => {
                     <li>
                       <span>•&nbsp;&nbsp;</span>Embracing sustainability
                     </li>
-                    
                   </ul>
                   {/* <ul className="flex "><li>Building to last</li></ul> */}
                 </div>
               </TabsContent>
             </Tabs>
-       
           </div>
         </div>
         <div

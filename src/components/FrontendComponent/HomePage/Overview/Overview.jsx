@@ -20,7 +20,7 @@ const Overview = () => {
         ></SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <div className="text-4xl font-bold mb-2 text-left">
+            <div className="text-2xl  md:text-4xl font-bold mb-2 text-left">
               <h2 className="uppercase">
                 {" "}
                 We Are Best Company In <br />
@@ -30,7 +30,7 @@ const Overview = () => {
                 <hr className="border-t-8 border-t-[#F78C40] mt-[-8px]" />
               </div>
             </div>
-            <h3 className="text-xl font-bold">
+            <h3 className="text-lg md:text-xl font-bold">
               Release of Letraset sheets containing Lorem Ipsum passages.
             </h3>
             <p className="text-[##454545] text-lg my-8">

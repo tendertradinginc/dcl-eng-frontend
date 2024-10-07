@@ -94,7 +94,7 @@ const CustomSlider = ({ slides }) => {
                 <div className="w-full h-full bg-black bg-opacity-50 flex flex-col justify-center px-2 md:px-10">
                   <MaxWidthWrapper>
                     <div className="flex flex-col justify-center items-start h-full text-left text-white">
-                      <h1 className="text-3xl lg:text-6xl font-bold uppercase">
+                      <h1 className="text-2xl lg:text-6xl font-bold uppercase">
                         {slide?.title}
                         <span
                           className="text-transparent stroke-2 stroke-[#F97316] outline-0 ml-2"
