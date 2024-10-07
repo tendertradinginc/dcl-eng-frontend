@@ -12,7 +12,7 @@ export default function FeaturedServices() {
     const fetchFeaturedServices = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/v1/category?page=1&limit=8&featured=true"
+          "http://localhost:5000/api/v1/category?page=1&limit=3&featured=true"
         );
         const data = await response.json();
         setFeaturedServices(data.data || []);
@@ -62,7 +62,9 @@ export default function FeaturedServices() {
                 </h3>
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
                   {service.shortDescription && (
-                    <p className="text-sm mb-4">{service.shortDescription}</p>
+                    <p className="text-sm mb-4  line-clamp-2">
+                      {service.shortDescription}
+                    </p>
                   )}
                   <Link
                     href={`/services/${service?.name}?page=1&limit=12`}

@@ -1,4 +1,3 @@
-// Remove 'use client'; since this will be a server component
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { customLoader } from "@/utils/customLoader";
@@ -6,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 
-// Fetch projects data from the server
 const fetchProjects = async () => {
   const res = await fetch("http://localhost:5000/api/v1/projects");
   const data = await res.json();
@@ -14,7 +12,6 @@ const fetchProjects = async () => {
 };
 
 const ProjectShowcases = async () => {
-  // Fetching the projects directly in the component
   const allProjects = await fetchProjects();
 
   const ongoing = allProjects.filter((item) => item?.category === "on-going");
@@ -25,7 +22,6 @@ const ProjectShowcases = async () => {
 
   return (
     <div>
-      {/* Tabs Section */}
       <div className="mb-10 flex justify-center">
         <Tabs defaultValue="Construction" className="w-full">
           <TabsList className="grid grid-cols-3 rounded-full gap-x-1 bg-gray-100 border max-w-lg h-14 mx-auto px-4 ">
@@ -49,7 +45,6 @@ const ProjectShowcases = async () => {
             </TabsTrigger>
           </TabsList>
 
-          {/* Completed Projects */}
           <TabsContent value="Construction" className="mt-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {completed.map((project) => (
@@ -86,7 +81,6 @@ const ProjectShowcases = async () => {
             </div>
           </TabsContent>
 
-          {/* Upcoming Projects */}
           <TabsContent value="Commercial" className="mt-16">
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
               {upcoming.map((project) => (
@@ -123,7 +117,6 @@ const ProjectShowcases = async () => {
             </div>
           </TabsContent>
 
-          {/* Ongoing Projects */}
           <TabsContent value="Medical" className="mt-16">
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
               {ongoing.map((project) => (
