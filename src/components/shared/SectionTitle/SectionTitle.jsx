@@ -5,7 +5,7 @@ const SectionTitle = ({ title, imageLink, position, width, height }) => {
     <div className={`flex flex-col ${[position]} mb-12`}>
       <div className="mb-5 z-10 ">
         <Image
-          alt="our vision imave"
+          alt="our vision image"
           height={height}
           width={width}
           className={`px-4 md:px-0 `}

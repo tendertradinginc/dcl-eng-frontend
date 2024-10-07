@@ -18,7 +18,7 @@ const SectionHeadingLeft = ({
               alt="our vision image"
               height={64}
               width={386}
-              className="w-auto"
+              className=" "
               src={imageUrl}
             />
           )}
