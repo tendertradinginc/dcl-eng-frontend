@@ -1,69 +1,42 @@
 "use client";
 
-import PaginationBlog from "@/components/shared/pagination/PaginationShadcn";
-import { useEffect, useState } from "react";
-import { CgSpinnerAlt } from "react-icons/cg";
+import PaginationSSR from "@/components/shared/PaginationSSR/PaginationSSR";
+import { useRouter } from "next/navigation";
 import SuccessStoryCard from "./SuccessStoryCard";
 
-const SuccessStories = () => {
-  const [successStory, setSuccessStory] = useState([]);
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
-  const [totalSuccessStory, setTotalSuccessStory] = useState(0);
-  const [reload, setReload] = useState(0);
-  const [loading, setLoading] = useState(true);
+const SuccessStories = ({ successStories, totalPages, currentPage, limit }) => {
+  const router = useRouter();
 
-  useEffect(() => {
-    const fetchSuccessStory = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `http://localhost:5000/api/v1/successStory?page=${page}&limit=${limit}`
-        );
-        const data = await response.json();
-
-        setSuccessStory(data?.data.result);
-        setTotalSuccessStory(data?.data?.total);
-      } catch (error) {
-        console.error("Error fetching :", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchSuccessStory();
-  }, [reload, page, limit]);
-
-  const totalPage = Math.ceil(totalSuccessStory / limit);
+  const handlePageChange = (newPage) => {
+    router.push(`?page=${newPage}&limit=${limit}`, undefined, {
+      shallow: true,
+    });
+  };
 
   return (
     <div>
       <div>
-        {/* Main Section  */}
         <div className="flex flex-col">
-          {loading ? (
-            <div className="flex min-h-[50vh] items-center justify-center">
-              <span className="animate-spin text-[#F78C40]">
-                <CgSpinnerAlt className="h-10 w-10" />
-              </span>
-            </div>
-          ) : successStory.length > 0 ? (
-            successStory?.map((story, index) => (
+          {successStories.length > 0 ? (
+            successStories.map((story, index) => (
               <SuccessStoryCard
-                key={successStory?._id}
+                key={story._id}
                 index={index}
                 successStoryData={story}
-                setReload={setReload}
               />
             ))
           ) : (
-            <p className="text center">No Success Story Available.</p>
+            <p className="text-center">No Success Story Available.</p>
           )}
         </div>
-        {!loading && (
-          <div className="mt-8">
-            <PaginationBlog data={{ page, limit, totalPage }} />
-          </div>
-        )}
+        <div className="mt-8">
+          <PaginationSSR
+            page={currentPage}
+            limit={limit}
+            totalPage={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   );

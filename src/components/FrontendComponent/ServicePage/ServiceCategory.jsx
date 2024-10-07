@@ -1,10 +1,8 @@
 "use client";
-
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 export default function ServiceCategory() {
   const [services, setServices] = useState([]);
   const listRef = useRef(null);
@@ -45,11 +43,11 @@ export default function ServiceCategory() {
               >
                 <li className="flex items-center w-full">
                   <span
-                    className={`text-xl font-extrabold mr-4 text-[#F6CF62] group-hover:text-[#F78C40]`}
+                    className={`md:text-xl font-extrabold mr-4 text-[#F6CF62] group-hover:text-[#F78C40]`}
                   >
                     {(index + 1).toString().padStart(2, "0")}.
                   </span>
-                  <span className="text-xl font-extrabold text-muted-foreground group-hover:text-black">
+                  <span className="md:text-xl font-extrabold text-muted-foreground group-hover:text-black">
                     {service.name.toUpperCase()}
                   </span>
                 </li>

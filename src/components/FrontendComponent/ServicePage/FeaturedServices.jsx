@@ -1,11 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
 import SectionHeadingCenter from "@/components/shared/SectionHeading/SectionHeadingCenter";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-
 export default function FeaturedServices() {
   const [featuredServices, setFeaturedServices] = useState([]);
 

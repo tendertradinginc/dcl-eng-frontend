@@ -2,12 +2,9 @@
 import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 const PageBanner = ({ title, description, banner }) => {
   const pathname = usePathname();
   const pathArray = pathname.split("/").filter((segment) => segment);
-
-  // Generate dynamic breadcrumb items
   const breadcrumb = pathArray.map((segment, index) => {
     const href = "/" + pathArray.slice(0, index + 1).join("/");
     return { label: segment.charAt(0).toUpperCase() + segment.slice(1), href };
@@ -15,7 +12,7 @@ const PageBanner = ({ title, description, banner }) => {
 
   return (
     <div
-      className="min-h-[400px] w-full bg-cover bg-center"
+      className=" h-[300px]  md:h-[400px] w-full bg-cover bg-center"
       style={{ backgroundImage: `url(${banner})` }}
     >
       <MaxWidthWrapper>

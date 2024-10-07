@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 export default function ConstructionTimeline() {
   const steps = [
     {
@@ -49,7 +48,7 @@ export default function ConstructionTimeline() {
 
   return (
     <div className="container mx-auto px-5 py-6 md:py-10 lg:px-14">
-      <div className="flex flex-col md:flex-row-reverse gap-20">
+      <div className="flex flex-col md:flex-row-reverse md:gap-20">
         <div className="container mx-auto px-4 py-8 md:w-1/2" ref={listRef}>
           <div className="relative">
             <div className="absolute left-10 top-0 h-[calc(90%)] w-[2px] bg-gray-300" />
