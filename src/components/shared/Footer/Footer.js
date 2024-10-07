@@ -1,8 +1,5 @@
-import { customLoader } from "@/app/utils/customLoader";
-import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook, FaHome, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
 import MaxWidthWrapper from "../../custom/MaxWidthWrapper";
@@ -17,16 +14,17 @@ const Footer = () => {
     >
       <div className="bg-[#0A2F4D]">
         <MaxWidthWrapper className="pt-12">
-          <div className="flex flex-wrap gap-x-28 gap-y-10 py-10">
+          <div className="flex flex-wrap gap-x-28 gap-y-10 py-10 ">
             {/* First Column */}
             <ul className="flex flex-col gap-3">
               <li className="flex gap-2 text-3xl font-bold text-white">
-                
-               DCL Engineering
+                DCL Engineering
               </li>
               <li className="max-w-80">
                 <p className="mt-5 font-medium leading-7 text-gray-300">
-                Focusing on medium to large-scale commercial construction projects, we work with both investors and developers to create landmarks that make an impact.
+                  Focusing on medium to large-scale commercial construction
+                  projects, we work with both investors and developers to create
+                  landmarks that make an impact.
                 </p>
               </li>
             </ul>
@@ -39,10 +37,10 @@ const Footer = () => {
                   Home
                 </Link>
               </li>
-              
+
               <li className="">
                 <Link href="/services" className="text-gray-300">
-                 Services
+                  Services
                 </Link>
               </li>
               <li>
@@ -97,22 +95,22 @@ const Footer = () => {
             <ul className="flex flex-col gap-y-3">
               <li className="text-2xl font-bold text-white">Socials</li>
               <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1824.3485041533095!2d90.39577399358598!3d23.864890637620633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c411fec45ab9%3A0xa29fdaaa39a7c771!2sSector-04%2CUttara!5e0!3m2!1sen!2sbd!4v1727179036164!5m2!1sen!2sbd"
-                  width="250"
-                  height="170"
-                  style={{ border: 0, marginTop: '0px' }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1824.3485041533095!2d90.39577399358598!3d23.864890637620633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c411fec45ab9%3A0xa29fdaaa39a7c771!2sSector-04%2CUttara!5e0!3m2!1sen!2sbd!4v1727179036164!5m2!1sen!2sbd"
+                width="250"
+                height="170"
+                style={{ border: 0, marginTop: "0px" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
               <li className="mt-5 flex gap-4">
-              <Link href="https://www.facebook.com/" target="_blank">
+                <Link href="https://www.facebook.com/" target="_blank">
                   {" "}
                   <div className="rounded-sm border p-1.5">
                     <FaFacebook className="text-xl text-white" />
                   </div>
                 </Link>
-               
+
                 <Link href="https://www.instagram.com/" target="_blank">
                   {" "}
                   <div className="rounded-sm border p-1.5">
@@ -125,19 +123,16 @@ const Footer = () => {
                     <FaLinkedinIn className="text-xl text-white" />
                   </div>
                 </Link>
-              
-             
               </li>
             </ul>
           </div>
           <div className="border-t bg-[#0A2F4D] border-gray-300 p-5">
-          <h1 className="text-center font-semibold text-gray-300">
-            {" "}
-            &copy; Copyright DCL Engineering 2023 . All right reserved.
-          </h1>
-        </div>
+            <h1 className="text-center font-semibold text-gray-300">
+              {" "}
+              &copy; Copyright DCL Engineering 2023 . All right reserved.
+            </h1>
+          </div>
         </MaxWidthWrapper>
-      
       </div>
     </div>
   );

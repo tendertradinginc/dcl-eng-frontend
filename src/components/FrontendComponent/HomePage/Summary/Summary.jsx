@@ -48,12 +48,12 @@ const Summary = () => {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  {counts?.totalProject + 100}
+                  {counts?.totalProject + 100 || 0}
                 </span>
               </div>
-              <div className="flex items-center mt-[-80px] ml-28">
+              <div className="flex items-center  mt-[-60px]   md:mt-[-80px]  md:ml-28">
                 <p className="text-7xl font-bold">
-                  <CountUp end={counts?.totalProject + 100} duration={4} />
+                  <CountUp end={counts?.totalProject + 100 || 0} duration={4} />
                 </p>
                 <div className="ml-4">
                   <span className=" uppercase">Projects</span>
@@ -70,13 +70,13 @@ const Summary = () => {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  {counts?.totalClientFeedback + 90}
+                  {(counts?.totalClientFeedback + 90) | 0}
                 </span>
               </div>
-              <div className="flex items-center mt-[-80px] ml-28">
+              <div className="flex items-center  mt-[-60px]   md:mt-[-80px]  md:ml-28">
                 <p className="text-7xl font-bold">
                   <CountUp
-                    end={counts?.totalClientFeedback + 90}
+                    end={counts?.totalClientFeedback + 90 || 0}
                     duration={4}
                   />
                 </p>
@@ -95,12 +95,12 @@ const Summary = () => {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  {counts?.totalProject + 200}
+                  {counts?.totalProject + 100 || 0}
                 </span>
               </div>
-              <div className="flex items-center mt-[-80px] ml-28">
+              <div className="flex items-center  mt-[-60px]   md:mt-[-80px]  md:ml-28">
                 <p className="text-7xl font-bold">
-                  <CountUp end={counts?.totalProject + 100} duration={4} />
+                  <CountUp end={counts?.totalProject + 100 || 0} duration={4} />
                 </p>
                 <div className="ml-4">
                   <span className=" uppercase">Completed</span>
@@ -117,12 +117,15 @@ const Summary = () => {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  {counts?.totalSuccessStory + 70}
+                  {counts?.totalSuccessStory + 70 || 0}
                 </span>
               </div>
-              <div className="flex items-center mt-[-80px] ml-28">
+              <div className="flex items-center  mt-[-60px]   md:mt-[-80px]  md:ml-28">
                 <p className="text-7xl font-bold">
-                  <CountUp end={counts?.totalSuccessStory + 70} duration={4} />
+                  <CountUp
+                    end={counts?.totalSuccessStory + 70 || 0}
+                    duration={4}
+                  />
                 </p>
                 <div className="ml-4">
                   <span className=" uppercase">Success</span>

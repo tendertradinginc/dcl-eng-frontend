@@ -1,10 +1,9 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
-import Image from "next/image";
-
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const ReviewSlider = () => {
   return (
@@ -13,17 +12,15 @@ const ReviewSlider = () => {
       spaceBetween={10}
       pagination={{
         clickable: true,
-      
       }}
-    
       modules={[Pagination]}
       className="mySwiper "
     >
       {reviews?.map((item, idx) => (
         <SwiperSlide key={idx}>
-          <div className="p-4 mb-10 mt-8">
+          <div className="p-4  mb-10 mt-8">
             <div className="border-t-4 border-[#F78C40]">
-              <p className="text-[#090909] font-semibold text-2xl leading-normal my-5">
+              <p className="text-[#090909] font-semibold text-base md:text-2xl leading-normal my-5">
                 {item?.review}
               </p>
               <div className="flex from-white items-center justify-center lg:justify-start gap-4">

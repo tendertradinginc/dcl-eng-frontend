@@ -1,14 +1,12 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/bundle";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import ProjectCard from "./ProjectCard";
-import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
-
 const ProjectSlide = ({ data }) => {
   return (
     <Swiper

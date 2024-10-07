@@ -18,7 +18,7 @@ const SectionHeadingLeft = ({
               alt="our vision image"
               height={64}
               width={386}
-              className="w-auto"
+              className=" "
               src={imageUrl}
             />
           )}
@@ -27,10 +27,12 @@ const SectionHeadingLeft = ({
           <p className="text-[#F78C40] font-medium inline-block">{subTitle}</p>
           <div className="h-0.5 w-10 bg-gradient-to-tr from-[#ffc1957e] to-[#F78C40]" />
         </div>
-        <h1 className="text-4xl font-bold my-8 text-left">{title}</h1>
+        <h1 className="text-2xl md:text-4xl font-bold my-8 text-center md:text-left">
+          {title}
+        </h1>
         <p
           className={cn(
-            "text-[#454545] max-w-4xl text-left text-xl",
+            "text-[#454545] max-w-4xl text-left text-lg",
             descriptionClassname
           )}
         >

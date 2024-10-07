@@ -8,19 +8,18 @@ const Overview = () => {
   return (
     <section class="bg-[url('/overviewBg.jpeg')] bg-cover bg-no-repeat bg-bottom  relative py-32 w-full rounded-lg overflow-hidden">
       <div class="absolute top-[-50%] left-[-50%] md:left-[-40%] lg:left-[-20%] xl:left-[-10%] w-[500px] h-[500px] md:w-[600px] md:h-[600px] xl:w-[700px] xl:h-[700px] bg-gradient-to-tr from-red-200 to-transparent rounded-full blur-2xl"></div>
-
       <div class="absolute bottom-[-50%] right-[-50%] md:right-[-40%] lg:right-[-20%] xl:right-[-10%] w-[500px] h-[500px] md:h-[600px] lg:w-[600px] xl:w-[700px] xl:h-[700px] bg-gradient-to-tr from-transparent to-red-200 rounded-full blur-2xl"></div>
       <MaxWidthWrapper>
         <SectionTitle
           title={"Contact Us"}
           imageLink={"/WELCOME.png"}
           position={"items-left"}
-          width={610}
+          width={600}
           height={64}
         ></SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <div className="text-4xl font-bold mb-2 text-left">
+            <div className="text-2xl  md:text-4xl font-bold mb-2 text-left">
               <h2 className="uppercase">
                 {" "}
                 We Are Best Company In <br />
@@ -30,7 +29,7 @@ const Overview = () => {
                 <hr className="border-t-8 border-t-[#F78C40] mt-[-8px]" />
               </div>
             </div>
-            <h3 className="text-xl font-bold">
+            <h3 className="text-lg md:text-xl font-bold">
               Release of Letraset sheets containing Lorem Ipsum passages.
             </h3>
             <p className="text-[##454545] text-lg my-8">
