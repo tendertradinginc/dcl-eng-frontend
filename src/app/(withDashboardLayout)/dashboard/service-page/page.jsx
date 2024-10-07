@@ -54,7 +54,7 @@ const Page = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/v1/service?page=${selectedPage}&limit=${selectedLimit}&search=${debouncedSearchTerm}`
+          `http://localhost:5000/api/v1/service/get-all-dashboard-edition?page=${selectedPage}&limit=${selectedLimit}&search=${debouncedSearchTerm}`
         );
 
         setData(response.data.data);
