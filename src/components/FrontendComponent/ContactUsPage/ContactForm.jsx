@@ -51,7 +51,7 @@ const ContactForm = () => {
         {/* Contact Form */}
         <div className=" bg-[#E7EAED] lg:pr-32 xl:p-32 rounded-lg shadow-md  lg:w-4/5 px-2 py-12">
           <div className="w-full lg:w-4/5 text-center md:text-left">
-            <h3 className="text-3xl font-semibold mb-6 text-gray-800 ">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-800 ">
               INFORMATION REQUEST
             </h3>
             <p className="text-gray-600 mb-24">
@@ -93,7 +93,7 @@ const ContactForm = () => {
                 name="message"
                 onChange={handleInputChange}
               ></textarea>
-              <Button type="submit" variant="dashboard">
+              <Button type="submit" className="w-full hover:bg-[#F78C40]">
                 Submit now
               </Button>
             </form>
@@ -103,7 +103,7 @@ const ContactForm = () => {
           {/* Office Location */}
           <div className="w-full lg:w-[450px] max-h-full ">
             <div className=" bg-white p-8  rounded-lg shadow-md">
-              <h3 className="text-3xl font-semibold mb-6 text-gray-800">
+              <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-800">
                 OFFICE LOCATIONS
               </h3>
               <p>

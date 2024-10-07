@@ -13,7 +13,7 @@ const Contact = () => {
         ></PageBanner>
       </div>
 
-      <section class="bg-white relative py-32 w-full rounded-lg overflow-hidden">
+      <section class="bg-white relative py-16 md:py-32 w-full rounded-lg overflow-hidden">
         <div class="absolute bottom-[-50%] left-[-50%] md:left-[-20%] lg:left-[-20%] xl:left-[-10%] w-[450px] h-[450px] bg-gradient-to-tr from-red-200 to-transparent rounded-full blur-md"></div>
 
         <div class="absolute top-[-50%] right-[-50%] md:right-[-30%] lg:right-[-20%] xl:right-[-10%] w-[450px] h-[450px] bg-gradient-to-tr from-transparent to-red-200 rounded-full blur-md"></div>
@@ -26,7 +26,7 @@ const Contact = () => {
           height={64}
         ></SectionTitle>
 
-        <div className="text-5xl font-bold mb-2 text-center">
+        <div className="text-2xl md:text-5xl font-bold mb-2 text-center">
           <h2> {`WE'D`} LOVE TO HEAR FROM</h2>
           <div className="inline-block mt-2">
             <span className="">YOU</span>
@@ -34,7 +34,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <p className="text-gray-500 text-lg max-w-4xl mx-auto text-center">
+        <p className="text-gray-500 md:text-lg max-w-4xl mx-auto text-center">
           Focusing on medium to large-scale commercial construction projects, we
           work with both investors and developers to create landmarks that make
           an impact.

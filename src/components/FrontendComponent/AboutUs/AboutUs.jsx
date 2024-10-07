@@ -7,34 +7,34 @@ const AboutUs = () => {
     <div className="grid lg:grid-cols-2  mt-10 py-20">
       <div className="mt-5 md:mt-10 lg:mt-0">
         <SectionHeadingLeft
-          imageUrl="https://i.postimg.cc/KzQMB01z/about-us-banner-1.png"
+          imageUrl="/ABOUT US.png"
           subTitle="SINCE FROM 2000"
           title={
             <>
               {" "}
               WE ARE HERE FOR RENOVATE
-              <br />
+              <br className="hidden md:block" />
               <span className="border-b-4 border-[#F78C40]">ANYTHING</span>
             </>
           }
         />
 
         <Tabs defaultValue="Our Goal" className="">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 gap-3 max-w-[441px] rounded-full md:border py-2 h-max">
+          <TabsList className="grid w-full grid-cols-3 gap-3 max-w-[441px] rounded-full border py-2 h-max">
             <TabsTrigger
-              className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white  rounded-full py-4"
+              className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white  rounded-full py-2 md:py-3"
               value="Our Goal"
             >
               Our Goal
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white  rounded-full py-4 "
+              className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white  rounded-full py-2 md:py-3"
               value="History"
             >
               History
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white rounded-full py-4 "
+              className="data-[state=active]:bg-[#F78C40] data-[state=active]:text-white rounded-full py-2 md:py-3"
               value="approach"
             >
               Approach
