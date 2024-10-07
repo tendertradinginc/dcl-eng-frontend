@@ -1,7 +1,7 @@
+import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import SectionBanner from "@/components/shared/SectionBanner/SectionBanner";
 import SectionHeadingCenter from "@/components/shared/SectionHeading/SectionHeadingCenter";
 import ServiceCard from "@/components/shared/ServiceCard/ServiceCard";
-import React from "react";
 import {
   Pagination,
   PaginationContent,
@@ -11,7 +11,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import { notFound } from "next/navigation";
 
 async function getServices(category, page = 1, limit = 12) {
