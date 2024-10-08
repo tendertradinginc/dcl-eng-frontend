@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // import { usePathname } from "next/navigation";
@@ -106,6 +107,7 @@ const SideNavbar = () => {
               {user?.fullName?.split("")[0]}
             </AvatarFallback>
           </Avatar>
+          <p className="font-semibold ">Admin Dashboard</p>
         </div>
 
         {/* Mapping over links */}
@@ -168,12 +170,18 @@ const SideNavbar = () => {
         </div>
 
         {/* //* LOGO */}
-        {/* <Link to={"/"}>
+        <Link href={"/"}>
           <div className="flex items-center gap-1">
-            <img src={logo} alt="tti logo" className="size-10" />
-            <h4 className="font-semibold">Tender Trading Inc.</h4>
+            <Image
+              src="/logo.png"
+              alt="tti logo"
+              width={80}
+              height={80}
+              className="size-10"
+            />
+            <h4 className="font-semibold">DCL Eng.</h4>
           </div>
-        </Link> */}
+        </Link>
 
         <div>
           <DropdownMenu>
