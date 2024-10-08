@@ -38,7 +38,7 @@ export default function ServiceCategory() {
             {services.map((service, index) => (
               <Link
                 key={service._id}
-                href={`http://localhost:3000/services/${service.name}?page=1&limit=12`}
+                href={`https://dcl-eng-frontend.vercel.app/services/${service.name}?page=1&limit=12`}
                 className={`flex items-center py-4 border-b-2 border-muted-foreground hover:border-black transition-colors duration-200 group`}
               >
                 <li className="flex items-center w-full">

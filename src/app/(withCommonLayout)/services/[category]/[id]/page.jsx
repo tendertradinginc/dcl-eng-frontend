@@ -1,7 +1,6 @@
+import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
 import SectionBanner from "@/components/shared/SectionBanner/SectionBanner";
 import SectionHeadingCenter from "@/components/shared/SectionHeading/SectionHeadingCenter";
-import Image from "next/image";
-import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -9,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Mail, MessageCircleMore, Phone } from "lucide-react";
-import MaxWidthWrapper from "@/components/custom/MaxWidthWrapper";
+import Image from "next/image";
 
 // Add this function for data fetching
 async function getServiceById(id) {
